@@ -44,7 +44,7 @@ namespace WpfApp1.Classes
             };
             foreach (var item in cevaplar)
             {
-                sorukayit.Cevaplar.Add(new CevapSistemi(((TextBox)item.Content).Text, (bool)item.IsChecked));
+                sorukayit.Cevaplar.Add(new CevapSistemi(((TextBox)item.Content).Text, item.IsChecked != null && (bool)item.IsChecked));
             }
             _soruKayıtlar.Add(sorukayit);
 
