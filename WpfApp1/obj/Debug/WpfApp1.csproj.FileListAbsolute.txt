@@ -68,3 +68,9 @@ D:\Projeler\L-Test\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
 D:\Projeler\L-Test\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.Cache
 D:\Projeler\L-Test\WpfApp1\obj\Debug\WpfApp1.exe
 D:\Projeler\L-Test\WpfApp1\obj\Debug\WpfApp1.pdb
+D:\Projeler\L-Test\WpfApp1\bin\Debug\Sockets.Plugin.Abstractions.dll
+D:\Projeler\L-Test\WpfApp1\bin\Debug\Sockets.Plugin.dll
+D:\Projeler\L-Test\WpfApp1\bin\Debug\Sockets.Plugin.pdb
+D:\Projeler\L-Test\WpfApp1\bin\Debug\Sockets.Plugin.xml
+D:\Projeler\L-Test\WpfApp1\bin\Debug\Sockets.Plugin.Abstractions.pdb
+D:\Projeler\L-Test\WpfApp1\bin\Debug\Sockets.Plugin.Abstractions.xml

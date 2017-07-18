@@ -16,7 +16,7 @@ namespace WpfApp1
         private void OdayiOlustur(object sender, RoutedEventArgs e)
         {
             var sunucu = new Server();
-            sunucu.StartServer(1234);
+            sunucu.StartServer(3333);
         }
     }
 }

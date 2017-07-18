@@ -4,8 +4,10 @@
              xmlns:local="clr-namespace:PhoneApp"
              x:Class="PhoneApp.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+	<StackLayout Margin="25" Spacing="10">
+        <Entry Text="{Binding RoomIP,Mode=TwoWay}" Placeholder="Room IP Address"></Entry>
+        <Entry Text="{Binding UserId,Mode=TwoWay}" Placeholder="Room Name"></Entry>
+        <Button Text="Connect" Clicked="BtnConnect_OnClicked" x:Name="BtnConnect"></Button>
+    </StackLayout>
 
 </ContentPage>
