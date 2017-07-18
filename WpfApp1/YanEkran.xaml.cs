@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using WpfApp1.Classes;
+﻿using System.Windows;
+using WpfApp1.UserControllers;
 
 namespace WpfApp1
 {
@@ -27,14 +15,14 @@ namespace WpfApp1
         
         private void Kapat(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            for (var i = 0; i < 10; i++)
             {
-                AnaStack.Children.Add(new UserControllers.UcGirenKullanici());
+                AnaStack.Children.Add(new UcGirenKullanici());
             }
         }
     }

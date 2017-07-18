@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using WpfApp1.Classes;
+using WpfApp1.UserControllers;
 
 namespace WpfApp1
 {
@@ -8,69 +10,70 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public YanEkran yanEkran;
+        public YanEkran YanEkran;
         public MainWindow()
         {
             InitializeComponent();
-            this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            yanEkran= new YanEkran();
-            yanEkran.Show();
+            MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            YanEkran= new YanEkran();
+            YanEkran.Show();
+            DatabaseManager.CreateDatabase();
         }
         private void Kapat(object sender, RoutedEventArgs e)
         {
-            this.Close();
-            yanEkran.Close();
+            Close();
+            YanEkran.Close();
         }
         private void UstBorder_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (Mouse.LeftButton==MouseButtonState.Pressed)
             {
-                this.DragMove();
-                var loc = this.PointToScreen(new Point(0, 0));
-                yanEkran.Left = loc.X-yanEkran.Width;
-                yanEkran.Top = loc.Y;
+                DragMove();
+                var loc = PointToScreen(new Point(0, 0));
+                YanEkran.Left = loc.X-YanEkran.Width;
+                YanEkran.Top = loc.Y;
             }
         }
 
         private void Baglangic(object sender, RoutedEventArgs e)
         {
-            Classes.UserControlClass.ControlAdd(icerik, new ucBaslangic());
+            UserControlClass.ControlAdd(icerik, new UcBaslangic());
         }
 
         private void Testler(object sender, RoutedEventArgs e)
         {
-            Classes.UserControlClass.ControlAdd(icerik, new UserControllers.UcTestler());
+            UserControlClass.ControlAdd(icerik, new UcTestler());
         }
 
         private void Ayarlar(object sender, RoutedEventArgs e)
         {
-            Classes.UserControlClass.ControlAdd(icerik, new ucBaslangic());
+            UserControlClass.ControlAdd(icerik, new UcBaslangic());
         }
 
         private void Buyult(object sender, RoutedEventArgs e)
         {
-            if (this.WindowState==WindowState.Normal)
+            if (WindowState==WindowState.Normal)
             {
-                this.WindowState = WindowState.Maximized;
+                WindowState = WindowState.Maximized;
                 anaGrid.Margin = new Thickness(0,0,0,7); // Niye büyüyünce Kenarlardan taşıyor? Entrasan bir sorun. Düzeltmek için eklendi
             }
             else
             {
-                this.WindowState = WindowState.Normal;
+                WindowState = WindowState.Normal;
             }
         }
         private void Simge(object sender, RoutedEventArgs e)
         {
-           this.WindowState = WindowState.Minimized;
+           WindowState = WindowState.Minimized;
         }
 
         private void anaGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            var loc = this.PointToScreen(new Point(0, 0));
-            yanEkran.Left = loc.X - yanEkran.Width;
-            yanEkran.Top = loc.Y;
-            Classes.UserControlClass.ControlAdd(icerik, new ucBaslangic());
+            var loc = PointToScreen(new Point(0, 0));
+            YanEkran.Left = loc.X - YanEkran.Width;
+            YanEkran.Top = loc.Y;
+            UserControlClass.ControlAdd(icerik, new UcBaslangic());
         }
     }
 }

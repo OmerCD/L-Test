@@ -75,6 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\DatabaseManager.cs" />
     <Compile Include="Classes\Server.cs" />
     <Compile Include="Classes\SoruKayit.cs" />
     <Compile Include="Classes\UserControlClass.cs" />

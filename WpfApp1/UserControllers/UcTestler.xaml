@@ -165,23 +165,23 @@
                 <DockPanel x:Name="OlusturMenu" Margin="0,10,0,0" >
                     <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Test adını buradan belirtin.">
                         <Label Content="Test Adı:" Style="{DynamicResource Label}" Width="90"/>
-                        <TextBox Style="{DynamicResource TextBox}" x:Name="testTextbox"/>
+                        <TextBox Style="{DynamicResource TextBox}" x:Name="TestTextbox"/>
                     </DockPanel>
                     <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Test süresini bu kısımdan belirtin.">
                         <Label Content="Süre:" Style="{DynamicResource Label}" Width="90"/>
-                        <TextBox PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" x:Name="sureTextbox"/>
+                        <TextBox PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" x:Name="SureTextbox"/>
                     </DockPanel>
                     <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Test içindeki soru sayısını bu kısımdan belirtin.">
                         <Label Content="Soru Sayısı:" Style="{DynamicResource Label}" Width="90"/>
-                        <TextBox PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" x:Name="soruTextbox" />
+                        <TextBox PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" x:Name="SoruTextbox" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Her soru için kaç cevap olacağını bu kısımdan ayarlayın.">
                         <Label Content="Cevap Sayısı:" Style="{DynamicResource Label}" Width="90"/>
-                        <TextBox PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" x:Name="cevapTextbox" />
+                        <TextBox PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" x:Name="CevapTextbox" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource DockPanelStyle}">
-                        <Button x:Name="ayarla" Background="LightBlue" Click="Ayarla_Click" BorderThickness="0,0,0,3" BorderBrush="DarkBlue" ToolTip="Testi oluşturmak için tıklayın.">
-                            <Label Content="Oluştur" Style="{DynamicResource Label}" HorizontalAlignment="Right" x:Name="odaButonLbl" FontFamily="Titillium Web SemiBold"/>
+                        <Button x:Name="Ayarla" Background="LightBlue" Click="Ayarla_Click" BorderThickness="0,0,0,3" BorderBrush="DarkBlue" ToolTip="Testi oluşturmak için tıklayın.">
+                            <Label Content="Oluştur" Style="{DynamicResource Label}" HorizontalAlignment="Right" x:Name="OdaButonLbl" FontFamily="Titillium Web SemiBold"/>
                         </Button>
                     </DockPanel>
                     <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Testi kaydetmek için tıklayın. Eğer bu kısımdan testi kaydetmezseniz, bu test adına doldurduğunuz tüm veriler yokolur.">

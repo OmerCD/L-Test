@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Data;
 using System.Data.SQLite;
+using System.Windows.Controls;
 
 namespace WpfApp1.Classes
 {
-    class SoruKayit
+    internal class SoruKayit
     {
         public string Soru { get; set; }
         public List<CevapSistemi> Cevaplar { get; set; }
@@ -19,7 +15,8 @@ namespace WpfApp1.Classes
         }
 
     }
-    struct CevapSistemi
+
+    internal struct CevapSistemi
     {
         public CevapSistemi(string cevap, bool dogru)
         {
@@ -36,11 +33,12 @@ namespace WpfApp1.Classes
             _testId = testid;
             _soruKayıtlar = new List<SoruKayit>();
         }
-        int _testId;
-        List<SoruKayit> _soruKayıtlar;
-        public void SoruEkle(String soru, params CheckBox[] cevaplar)
+
+        private int _testId;
+        private List<SoruKayit> _soruKayıtlar;
+        public void SoruEkle(string soru, params CheckBox[] cevaplar)
         {
-            SoruKayit sorukayit = new SoruKayit
+            var sorukayit = new SoruKayit
             {
                 Soru = soru
             };
@@ -56,7 +54,7 @@ namespace WpfApp1.Classes
             foreach (var item in _soruKayıtlar)
             {
                 int soruId;
-                using (SQLiteCommand komut = new SQLiteCommand("Insert Into sorular(test_id,soru) VALUES(@tId,@soru); Select last_insert_rowid()",UserControllers.UcTestler.baglanti))
+                using (var komut = new SQLiteCommand("Insert Into sorular(test_id,soru) VALUES(@tId,@soru); Select last_insert_rowid()", DatabaseManager.Baglanti))
                 {
                     komut.Parameters.AddWithValue("@tId", _testId);
                     komut.Parameters.AddWithValue("@soru", item.Soru);
@@ -64,7 +62,7 @@ namespace WpfApp1.Classes
                 }
                 foreach (var cevap in item.Cevaplar)
                 {
-                    using (var cevapKomut= new SQLiteCommand("Insert Into cevaplar(soru_id,cevap,dogru) VALUES (@sId,@c,@d)",UserControllers.UcTestler.baglanti))
+                    using (var cevapKomut= new SQLiteCommand("Insert Into cevaplar(soru_id,cevap,dogru) VALUES (@sId,@c,@d)",DatabaseManager.Baglanti))
                     {
                         cevapKomut.Parameters.AddWithValue("@sId", soruId);
                         cevapKomut.Parameters.AddWithValue("@c", cevap.Cevap);

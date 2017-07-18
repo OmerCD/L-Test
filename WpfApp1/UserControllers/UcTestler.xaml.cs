@@ -1,143 +1,202 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Text.RegularExpressions;
+using WpfApp1.Classes;
 
 namespace WpfApp1.UserControllers
 {
     /// <summary>
     /// UcTestler.xaml etkileşim mantığı
     /// </summary>
-    public partial class UcTestler : UserControl
+    public partial class UcTestler
     {
         public UcTestler()
         {
             InitializeComponent();
-            baglanti = new SQLiteConnection("Data Source=C:\\Users\\Hasan\\Documents\\Visual Studio 2017\\Projects\\WpfApp1\\WpfApp1\\data.db");           
         }
-        int soru, cevap;
-        TextBox[] textbox;
-        TextBox[,] cevaptextbox;
-        DockPanel[] dockPanel;
-        Label[] label;
-        DockPanel[] dockPanel2;
-        CheckBox[,] checkBox;
-        Button[] buton;
-        Separator[] sp;
-        public static SQLiteConnection baglanti;
-        SQLiteCommand komut;
-        SQLiteDataReader oku;
-        bool BosKontrol(TextBox txt)
-        {
-            if (String.IsNullOrEmpty(txt.Text))
-            {
-                return false;
 
-            }
-            else
-            {
-                return true;
-            }
-        }
+        private int _soru, _cevap;
+        private TextBox[] _textbox;
+        private TextBox[,] _cevaptextbox;
+        private DockPanel[] _dockPanel;
+        private Label[] _label;
+        private DockPanel[] _dockPanel2;
+        private CheckBox[,] _checkBox;
+        private Separator[] _sp;
         private void Ayarla_Click(object sender, RoutedEventArgs e)
         {
-            soruDock.Children.Clear();
-            soru = Convert.ToInt16(soruTextbox.Text);
-            cevap = Convert.ToInt16(cevapTextbox.Text);
-            dockPanel = new DockPanel[soru];
-            label = new Label[soru]; 
-            dockPanel2 = new DockPanel[soru];
-            textbox = new TextBox[soru];
-            sp = new Separator[soru];
-            cevaptextbox = new TextBox[soru, cevap];
-            checkBox = new CheckBox[soru, cevap];
-            Binding myBinding = new Binding()
+            void AssignControlValues()
             {
-                Path = new PropertyPath("soruDock")
-            }; // Bir üst kontrolün genişliğini almanı sağlayan kod.
-            for (int i = 0; i < soru; i++)//Kontroller Burada Tanımlandı.
+                _soru = Convert.ToInt16(SoruTextbox.Text);
+                _cevap = Convert.ToInt16(CevapTextbox.Text);
+                _dockPanel = new DockPanel[_soru];
+                _label = new Label[_soru];
+                _dockPanel2 = new DockPanel[_soru];
+                _textbox = new TextBox[_soru];
+                _sp = new Separator[_soru];
+                _cevaptextbox = new TextBox[_soru, _cevap];
+                _checkBox = new CheckBox[_soru, _cevap];
+            }
+            bool ErrorControl()
             {
-                dockPanel[i] = new DockPanel()
+                
+                {
+                    if (TestTextbox.Text.Length < 1)
+                    {
+                        MessageBox.Show("Test Adı boş bırakılamaz", "Uyarı");
+                        return true;
+                    }
+                    if (SureTextbox.Text.Length < 2)
+                    {
+                        MessageBox.Show("En az 10 dakikalık bir süre girmelisiniz.", "Uyarı");
+                        return true;
+                    }
+                    if (SoruTextbox.Text.Length < 1)
+                    {
+                        MessageBox.Show("Soru sayısını giriniz.", "Uyarı");
+                        return true;
+                    }
+                    if (CevapTextbox.Text.Length < 1)
+                    {
+                        MessageBox.Show("Cevap sayısını giriniz.", "Uyarı");
+                        return true;
+                    }
+                    if (Convert.ToInt32(CevapTextbox.Text) < 2)
+                    {
+                        MessageBox.Show("Her bir soru için cevap sayısı en az 2 olmalıdır.", "Uyarı");
+                        return true;
+                    }
+                    return false;
+                    }
+                    }
+            void ControlCreation(int i)
+            {
+                _dockPanel[i] = new DockPanel
                 {
                     Margin = new Thickness(0, 0, 0, 10),
                     HorizontalAlignment = HorizontalAlignment.Stretch,
                     VerticalAlignment = VerticalAlignment.Stretch,
-                    Width = Double.NaN
+                    Width = double.NaN
                 };
-                label[i] = new Label()
+                _label[i] = new Label
                 {
                     Content = "Soru " + (i + 1) + ":",
                     Style = FindResource("Label") as Style,
                     Width = 120,
-                    Height = Double.NaN, // Auto için bunu yazdık. Niye acaba?
+                    Height = double.NaN, // Auto için bunu yazdık. Niye acaba?
                     Background = Brushes.CornflowerBlue
                 };
-                textbox[i] = new TextBox()
+                _textbox[i] = new TextBox
                 {
                     Style = FindResource("TextBox") as Style,
                     Name = $"SoruTextBox{i}"
                 };
-                dockPanel2[i] = new DockPanel()
+                _dockPanel2[i] = new DockPanel
                 {
-                    Name = $"stackPanel{i.ToString()}",
+                    Name = $"stackPanel{i}",
                     VerticalAlignment = VerticalAlignment.Stretch,
                     HorizontalAlignment = HorizontalAlignment.Stretch,
-                    Margin= new Thickness(0,5,5,0)
+                    Margin = new Thickness(0, 5, 5, 0)
                 };
-                sp[i] = new Separator()
+                _sp[i] = new Separator
                 {
                     Margin = new Thickness(0, 10, 0, 10)
                 };
-                for (int k = 0; k < cevap; k++)
+                for (var k = 0; k < _cevap; k++)
                 {
-                    checkBox[i, k] = new CheckBox()
+                    _checkBox[i, k] = new CheckBox
                     {
                         Name = $"Soru{i}Cevap{k}",
-                        Margin = new Thickness(0, 5, 0, 5),
+                        Margin = new Thickness(0, 5, 0, 5)
                     };
-                    checkBox[i, k].Checked += new RoutedEventHandler(CheckBox_Checked);
-                    cevaptextbox[i, k] = new TextBox()
+                    _checkBox[i, k].Checked += CheckBox_Checked;
+                    _cevaptextbox[i, k] = new TextBox
                     {
-                        Style = FindResource("TextBox") as Style,      
-                        MinWidth=600,
+                        Style = FindResource("TextBox") as Style,
+                        MinWidth = 600
                     };
-                    checkBox[i, k].Content = cevaptextbox[i, k];
+                    _checkBox[i, k].Content = _cevaptextbox[i, k];
                 }
             }
-            for (int i = 0; i < soru; i++) // Kontroller Burada DockPanellere Eklendi.
+            void AddControlsToDockPanel(BindingBase binding, int i)
             {
-                DockPanel.SetDock(dockPanel[i], Dock.Top);
-                DockPanel.SetDock(dockPanel2[i], Dock.Top);
+                DockPanel.SetDock(_dockPanel[i], Dock.Top);
+                DockPanel.SetDock(_dockPanel2[i], Dock.Top);
 
-                dockPanel[i].Children.Add(label[i]);
-                dockPanel[i].Children.Add(textbox[i]);
-                BindingOperations.SetBinding(textbox[i], WidthProperty, myBinding);
-                soruDock.Children.Add(dockPanel[i]);
-                soruDock.Children.Add(dockPanel2[i]);
-                for (int k = 0; k < cevap; k++)
+                _dockPanel[i].Children.Add(_label[i]);
+                _dockPanel[i].Children.Add(_textbox[i]);
+                BindingOperations.SetBinding(_textbox[i], WidthProperty, binding);
+                soruDock.Children.Add(_dockPanel[i]);
+                soruDock.Children.Add(_dockPanel2[i]);
+                for (var k = 0; k < _cevap; k++)
                 {
-                    DockPanel.SetDock(checkBox[i, k], Dock.Top);
-                    dockPanel2[i].Children.Add(checkBox[i, k]);
-                    
+                    DockPanel.SetDock(_checkBox[i, k], Dock.Top);
+                    _dockPanel2[i].Children.Add(_checkBox[i, k]);
+
                 }
-                dockPanel2[i].Children.Add(sp[i]);
+                _dockPanel2[i].Children.Add(_sp[i]);
+            }
+            if (ErrorControl()) return;
+            soruDock.Children.Clear();
+            AssignControlValues();
+            var myBinding = new Binding
+            {
+                Path = new PropertyPath("soruDock")
+            }; // Bir üst kontrolün genişliğini almanı sağlayan kod.
+            for (var i = 0; i < _soru; i++)//Kontroller Burada Tanımlandı.
+            {
+                ControlCreation(i);
+            }
+            for (var i = 0; i < _soru; i++) // Kontroller Burada DockPanellere Eklendi.
+            {
+                AddControlsToDockPanel(myBinding, i);
             }
         }
-
         private void Kaydet(object sender, RoutedEventArgs e)
         {
-            string test = testTextbox.Text;
-            int sure = Convert.ToInt32(sureTextbox.Text);
-            if (baglanti.State==ConnectionState.Closed)
+            int AddQuestion(string testAdi, int süre)
+            {
+                using (var komut =
+                    new SQLiteCommand(
+                        "INSERT INTO testler(sure,soru_sayisi,cevap_sayisi,test_adi) VALUES(@sure,@soru,@cevap,@test); Select last_insert_rowid()",
+                        DatabaseManager.Baglanti))
+                {
+                    komut.Parameters.AddWithValue("@test", testAdi);
+                    komut.Parameters.AddWithValue("@sure", süre);
+                    komut.Parameters.AddWithValue("@soru", _cevap);
+                    komut.Parameters.AddWithValue("@cevap", _soru);
+                    return Convert.ToInt32(komut.ExecuteScalar());
+                }
+            }
+            SoruSistemi SoruSistemiOlustur(short testId)
+            {
+                var soruSis = new SoruSistemi(testId);
+                for (var i = 0; i < _soru; i++)
+                {
+                    var checkBoxes = new List<CheckBox>();
+                    for (var k = 0; k < _cevap; k++)
+                    {
+                        checkBoxes.Add(_checkBox[i, k]);
+                    }
+                    soruSis.SoruEkle(_textbox[i].Text, checkBoxes.ToArray());
+                }
+
+                return soruSis;
+            }
+            var test = TestTextbox.Text;
+            var sure = Convert.ToInt32(SureTextbox.Text);
+            if (DatabaseManager.Baglanti.State == ConnectionState.Closed)
             {
                 try
                 {
-                    baglanti.Open();
+                    DatabaseManager.Baglanti.Open();
                     MessageBox.Show("Baglanti Sağlandı");
                 }
                 catch (Exception ex)
@@ -145,36 +204,17 @@ namespace WpfApp1.UserControllers
                     MessageBox.Show("Hata Kodu: 0x04 " + ex.Message);
                 }
             }
-            komut = new SQLiteCommand("INSERT INTO testler(sure,soru_sayisi,cevap_sayisi,test_adi) VALUES(@sure,@soru,@cevap,@test); Select last_insert_rowid()", baglanti);
-            komut.Parameters.AddWithValue("@test",test);
-            komut.Parameters.AddWithValue("@sure", sure);
-            komut.Parameters.AddWithValue("@soru", cevap);
-            komut.Parameters.AddWithValue("@cevap", soru);
+
             //komut.ExecuteNonQuery();
-            var sonuc = Convert.ToInt16(komut.ExecuteScalar());
-
-
-            var soruSistemi = new Classes.SoruSistemi(sonuc);
-            for (int i = 0; i < soru; i++)
-            {
-                var checkBoxes = new System.Collections.Generic.List<CheckBox>();
-                for (int k = 0; k < cevap; k++)
-                {
-                    checkBoxes.Add(checkBox[i, k]);
-                }
-                soruSistemi.SoruEkle(textbox[i].Text, checkBoxes.ToArray());
-            }
+            var sonuc = Convert.ToInt16(AddQuestion(test, sure));
+            var soruSistemi = SoruSistemiOlustur(sonuc);
 
             soruSistemi.SorulariKaydet();
         }
 
-        private void MenuClick(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void SayiKontrol(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            var regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
 

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Net.Sockets;
-using System.IO;
 using WpfApp1.Classes;
 
 namespace WpfApp1
@@ -12,15 +7,15 @@ namespace WpfApp1
     /// <summary>
     /// ucBaslangic.xaml etkileşim mantığı
     /// </summary>
-    public partial class ucBaslangic : UserControl
+    public partial class UcBaslangic : UserControl
     {
-        public ucBaslangic()
+        public UcBaslangic()
         {
             InitializeComponent();
         }
         private void OdayiOlustur(object sender, RoutedEventArgs e)
         {
-            Server sunucu = new Server();
+            var sunucu = new Server();
             sunucu.StartServer(1234);
         }
     }
