@@ -4,207 +4,136 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.UserControllers"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="683" d:DesignWidth="1024">
     <UserControl.Resources>
-        <!-- Animated Expander Button's Template-->
-        <ControlTemplate x:Key="AnimatedExpanderButtonTemp" TargetType="{x:Type ToggleButton}">
-            <Border x:Name="ExpanderButtonBorder"
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}"
-                    Padding="{TemplateBinding Padding}"
-                    >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Rectangle Fill="Transparent"
-                               Grid.ColumnSpan="2"/>
-                    <Ellipse Name="Circle"
-                         Grid.Column="0"
-                         Stroke="DarkGray"
-                         Width="20"
-                         Height="20"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center"
-                         />
-                    <Path x:Name="Arrow"
-                      Grid.Column="0"
-                      Data="M 1,1.5 L 4.5,5 8,1.5"
-                      Stroke="#FF666666"
-                      StrokeThickness="2"
-                      HorizontalAlignment="Center"
-                      VerticalAlignment="Center"
-                      RenderTransformOrigin="0.5,0.5"
-                      >
-                        <Path.RenderTransform>
-                            <RotateTransform Angle="0"/>
-                        </Path.RenderTransform>
-                    </Path>
-                    <ContentPresenter x:Name="HeaderContent"
-                                      Grid.Column="1"
-                                      Margin="4,0,0,0"
-                                      ContentSource="Content"/>
-                </Grid>
-            </Border>
-            <ControlTemplate.Triggers>
-                <!-- Animate arrow when toggled-->
-                <Trigger Property="IsChecked"
-                         Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="Arrow"
-                                                 Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                 To="180"
-                                                 Duration="0:0:0.4"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="Arrow"
-                                                 Storyboard.TargetProperty="(Path.RenderTransform).(RotateTransform.Angle)"
-                                                 To="0"
-                                                 Duration="0:0:0.4"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
+        <system:String x:Key="TestString">Test Adı:</system:String>
+        <system:String x:Key="TestToolTip">Test adını buradan belirtin.</system:String>
 
-                <!-- MouseOver, Pressed behaviours-->
-                <Trigger Property="IsMouseOver"
-                                 Value="true">
-                    <Setter Property="Stroke"
-                                    Value="#FF3C7FB1"
-                                    TargetName="Circle"/>
-                    <Setter Property="Stroke"
-                                    Value="#222"
-                                    TargetName="Arrow"/>
-                </Trigger>
-                <Trigger Property="IsPressed"
-                                 Value="true">
-                    <Setter Property="Stroke"
-                                    Value="#FF526C7B"
-                                    TargetName="Circle"/>
-                    <Setter Property="StrokeThickness"
-                                    Value="1.5"
-                                    TargetName="Circle"/>
-                    <Setter Property="Stroke"
-                                    Value="#FF003366"
-                                    TargetName="Arrow"/>
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
+        <system:String x:Key="SureString">Süre:</system:String>
+        <system:String x:Key="SureToolTip">Test süresini bu kısımdan belirtin.</system:String>
 
-        <!-- Stretch Out Content Expander's Template,
-        Uses: AnimatedExpanderButtonTemp from above-->
-        <ControlTemplate x:Key="StretchyExpanderTemp" TargetType="{x:Type Expander}">
-            <DockPanel>
-                <ToggleButton x:Name="ExpanderButton" 
-                              DockPanel.Dock="Top"
-                              Template="{StaticResource AnimatedExpanderButtonTemp}"
-                              Content="{TemplateBinding Header}"
-                              IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}"
-                              OverridesDefaultStyle="True"
-                              Padding="1.5,0">
-                </ToggleButton>
-                <ContentPresenter x:Name="ExpanderContent"
-                                  ContentSource="Content"
-                                  DockPanel.Dock="Bottom"
-                                  >
-                    <ContentPresenter.LayoutTransform>
-                        <ScaleTransform ScaleY="0"/>
-                    </ContentPresenter.LayoutTransform>
-                </ContentPresenter>
-            </DockPanel>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsExpanded" Value="True">
-                    <Trigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="ExpanderContent"
-                                                 Storyboard.TargetProperty="(ContentPresenter.LayoutTransform).(ScaleTransform.ScaleY)"                                                 
-                                                 To="1"
-                                                 Duration="0:0:0.4"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.EnterActions>
-                    <Trigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="ExpanderContent"
-                                                 Storyboard.TargetProperty="(ContentPresenter.LayoutTransform).(ScaleTransform.ScaleY)"
-                                                 To="0"
-                                                 Duration="0:0:0.4"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </Trigger.ExitActions>
-                </Trigger>
+        <system:String x:Key="SoruString">Soru Sayısı:</system:String>
+        <system:String x:Key="SoruToolTip">Test içindeki soru sayısını bu kısımdan belirtin.</system:String>
 
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
+        <system:String x:Key="CevapString">Cevap Sayısı:</system:String>
+        <system:String x:Key="CevapToolTip">Her soru için kaç cevap olacağını bu kısımdan ayarlayın.</system:String>
+
+        <system:String x:Key="OlusturString">Oluştur</system:String>
+        <system:String x:Key="OlusturToolTip">Testi oluşturmak için tıklayın.</system:String>
+
+        <system:String x:Key="KaydetString">Kaydet</system:String>
+        <system:String x:Key="KaydetToolTip">Testi kaydetmek için tıklayın. Eğer bu kısımdan testi kaydetmezseniz, bu test adına doldurduğunuz tüm veriler yokolur.</system:String>
+
+
     </UserControl.Resources>
     <UserControl.Background>
-        <ImageBrush Stretch="UniformToFill" ImageSource="/WpfApp1;component/Images/Untitled-1.png"/>
+        <ImageBrush Stretch="UniformToFill" ImageSource="/WpfApp1;component/Images/Background.png"/>
     </UserControl.Background>
     <Grid>
         <Grid Background="#FFF7F7F7">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Name="Column0" Width="200" />
+                <ColumnDefinition  Width="5" />
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <!--Sol Menü-->
-            <Grid Grid.Column="0" Background="#F3BB4359">
+            <Grid 
+                Grid.Column="0" 
+                Background="#D3798A">
                 <Grid.Effect>
-                    <DropShadowEffect Direction="0" Opacity="0.2" BlurRadius="10"/>
+                    <DropShadowEffect 
+                        Direction="0" 
+                        Opacity="0.2" 
+                        BlurRadius="10"/>
                 </Grid.Effect>
-                <DockPanel x:Name="OlusturMenu" Margin="0,10,0,0" >
-                    <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Test adını buradan belirtin.">
-                        <Label Content="Test Adı:" Style="{DynamicResource Label}" Width="90"/>
-                        <TextBox Style="{DynamicResource TextBox}" x:Name="TestTextbox"/>
+
+                <DockPanel x:Name="OlusturMenu" >
+                    <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="{StaticResource TestToolTip}">
+                        <Label Content="{StaticResource TestString}" 
+                               Width="90"
+                               Style="{DynamicResource Label}" />
+                        <TextBox x:Name="TestTextbox"
+                                 Style="{DynamicResource TextBox}"/>
                     </DockPanel>
-                    <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Test süresini bu kısımdan belirtin.">
-                        <Label Content="Süre:" Style="{DynamicResource Label}" Width="90"/>
-                        <TextBox PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" x:Name="SureTextbox"/>
+                    <DockPanel 
+                        ToolTip="{StaticResource SureToolTip}"
+                        Style="{DynamicResource DockPanelStyle}">
+                        <Label 
+                            Content="{StaticResource SureString}" 
+                            Width="90" 
+                            Style="{DynamicResource Label}" />
+                        <TextBox 
+                            x:Name="SureTextbox" 
+                            PreviewTextInput="SayiKontrol"  
+                            Width="Auto"
+                            Style="{DynamicResource TextBox}"/>
                     </DockPanel>
-                    <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Test içindeki soru sayısını bu kısımdan belirtin.">
-                        <Label Content="Soru Sayısı:" Style="{DynamicResource Label}" Width="90"/>
-                        <TextBox PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" x:Name="SoruTextbox" />
+                    <DockPanel 
+                        ToolTip="{StaticResource SoruToolTip}"
+                        Style="{DynamicResource DockPanelStyle}">
+                        <Label 
+                            Content="{StaticResource SoruString}"                             
+                            Width="90"
+                            Style="{DynamicResource Label}"/>
+                        <TextBox 
+                            x:Name="SoruTextbox" 
+                            PreviewTextInput="SayiKontrol" 
+                            Style="{DynamicResource TextBox}"/>
                     </DockPanel>
-                    <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Her soru için kaç cevap olacağını bu kısımdan ayarlayın.">
-                        <Label Content="Cevap Sayısı:" Style="{DynamicResource Label}" Width="90"/>
-                        <TextBox PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" x:Name="CevapTextbox" />
+                    <DockPanel 
+                        ToolTip="{StaticResource CevapToolTip}" 
+                        Style="{DynamicResource DockPanelStyle}">
+                        <Label 
+                            Content="{StaticResource CevapString}" 
+                            Width="90" 
+                            Style="{DynamicResource Label}"/>
+                        <TextBox 
+                            x:Name="CevapTextbox" 
+                            PreviewTextInput="SayiKontrol"
+                            Style="{DynamicResource TextBox}" />
                     </DockPanel>
                     <DockPanel Style="{DynamicResource DockPanelStyle}">
-                        <Button x:Name="Ayarla" Background="LightBlue" Click="Ayarla_Click" BorderThickness="0,0,0,3" BorderBrush="DarkBlue" ToolTip="Testi oluşturmak için tıklayın.">
-                            <Label Content="Oluştur" Style="{DynamicResource Label}" HorizontalAlignment="Right" x:Name="OdaButonLbl" FontFamily="Titillium Web SemiBold"/>
-                        </Button>
-                    </DockPanel>
-                    <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="Testi kaydetmek için tıklayın. Eğer bu kısımdan testi kaydetmezseniz, bu test adına doldurduğunuz tüm veriler yokolur.">
-                        <Button Background="LightGreen" BorderThickness="0,0,0,3" BorderBrush="DarkGreen" Click="Kaydet">
-                            <Label Content="Kaydet" Style="{DynamicResource Label}" HorizontalAlignment="Right" FontFamily="Titillium Web SemiBold" />
+                        <Button Click="Olustur_Click" ToolTip="{StaticResource OlusturToolTip}" Style="{DynamicResource TestButonlar}" >
+                            <Label Content="{StaticResource OlusturString}" Style="{StaticResource Label}"/>
                         </Button>
                     </DockPanel>
                     <DockPanel Style="{DynamicResource DockPanelStyle}">
-                        <Image Source="/WpfApp1;component/Images/note.png" Margin="0,0,0,25" Opacity="0.5" Width="170" Height="170" VerticalAlignment="Bottom">
+                        <Button Click="Kaydet" ToolTip="{StaticResource KaydetToolTip}" Style="{DynamicResource TestButonlar}" >
+                            <Label Content="{StaticResource KaydetString}" Style="{StaticResource Label}"/>
+                        </Button>
+                    </DockPanel>
+                    <DockPanel 
+                        Style="{DynamicResource DockPanelStyle}">
+                        <Image 
+                            Source="/WpfApp1;component/Images/note.png" 
+                            Margin="0,0,0,25" 
+                            Opacity="0.5" 
+                            Width="170" 
+                            Height="170" 
+                            VerticalAlignment="Bottom">
                         </Image>
                     </DockPanel>
                 </DockPanel>
             </Grid>
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />
             <!--Soru Hazırlama Kısmı-->
-            <ScrollViewer Grid.Column="1" DockPanel.Dock="Left" HorizontalAlignment="Stretch" Width="Auto" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ScrollViewer 
+                Grid.Column="2" 
+                DockPanel.Dock="Left" 
+                HorizontalAlignment="Stretch" 
+                Width="Auto" 
+                VerticalScrollBarVisibility="Auto" 
+                HorizontalScrollBarVisibility="Disabled">
                 <Grid  
                        Margin="10,20,10,10" 
                        HorizontalAlignment="Stretch" 
-                       VerticalAlignment="Stretch"                       
-                    >
+                       VerticalAlignment="Stretch"                       >
                     <!--Kod ile Doluyor-->
-                    <DockPanel x:Name="soruDock" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
+                    <DockPanel x:Name="soruDock" 
+                               HorizontalAlignment="Stretch" 
+                               VerticalAlignment="Stretch">
                     </DockPanel>
                 </Grid>
             </ScrollViewer>

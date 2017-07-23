@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Projeler\L-Test\WpfApp1\obj\Debug\
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\
 WpfApp1
 none
 false
 DEBUG;TRACE
-D:\Projeler\L-Test\WpfApp1\App.xaml
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\App.xaml
 61151590777
 
-18-1899121502
-73-1201414730
+25-2119992348
+741503864217
 MainWindow.xaml;UserControllers\UcBaslangic.xaml;UserControllers\UcGirenKullanici.xaml;UserControllers\UcTest.xaml;UserControllers\UcTestler.xaml;YanEkran.xaml;
 
-True
+False
 

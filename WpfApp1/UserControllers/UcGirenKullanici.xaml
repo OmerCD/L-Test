@@ -4,8 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.UserControllers"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="300">
+    <UserControl.Resources>
+        <system:String x:Key="KullaniciString">Kullanıcı Adı:</system:String>
+        <system:String x:Key="DurumString">Durum:</system:String>
+        <system:String x:Key="TestDurumString">Test Durumu:</system:String>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Titillium Web Light"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Border Margin="5" BorderThickness="2" CornerRadius="8,8,8,8" BorderBrush="#FFBBBBBB" Background="WhiteSmoke">
             <DockPanel>
@@ -18,47 +29,25 @@
                 <StackPanel>
                     <DockPanel Margin="2">
                         <TextBlock
-                           HorizontalAlignment="Stretch" 
-                           VerticalAlignment="Center"
-                           Text="Kullanıcı Adı: "  
-                           FontFamily="Titillium Web Light" 
-                           FontSize="14"/>
+                           Text="{StaticResource KullaniciString}"/>
                         <TextBlock
-                           HorizontalAlignment="Left" 
-                           VerticalAlignment="Center"
-                           Text="Soul741 "  
-                           FontFamily="Titillium Web Light" 
-                           FontSize="14"/>
+                           Text="Soul741 "/>
                     </DockPanel>
                     <DockPanel Margin="2">
                         <TextBlock
-                           HorizontalAlignment="Stretch" 
-                           VerticalAlignment="Center"
-                           Text="Durum: "  
-                           FontFamily="Titillium Web Light" 
-                           FontSize="14"/>
+                           Text="{StaticResource DurumString}"/>
                         <TextBlock
-                           HorizontalAlignment="Stretch"
                            TextAlignment="Center"        
-                           VerticalAlignment="Center"
                            Text="Bağlı"       
-                           FontFamily="Titillium Web Light" 
-                           FontSize="14" Background="#FF16E41F"/>
+                           Background="#FF16E41F"/>
                     </DockPanel>
                     <DockPanel Margin="2">
                         <TextBlock
-                           HorizontalAlignment="Stretch" 
-                           VerticalAlignment="Center"
-                           Text="Test Durumu: "  
-                           FontFamily="Titillium Web Light" 
-                           FontSize="14"/>
+                           Text="{StaticResource TestDurumString}"/>
                         <TextBlock
-                           HorizontalAlignment="Stretch"
                            TextAlignment="Center"        
-                           VerticalAlignment="Center"
                            Text="Bitirmedi"       
-                           FontFamily="Titillium Web Light" 
-                           FontSize="14" Background="#FFFF1700"/>
+                           Background="#FFFF1700"/>
                     </DockPanel>
                 </StackPanel>
             </DockPanel>

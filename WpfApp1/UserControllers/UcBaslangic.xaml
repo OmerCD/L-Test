@@ -4,10 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600">
+    <UserControl.Resources>
+        <system:String x:Key="BirinciString">1.</system:String>
+        <system:String x:Key="IkinciString">2.</system:String>
+        <system:String x:Key="UcuncuString">3.</system:String>
+        <system:String x:Key="AdımString">ADIM</system:String>
+        <system:String x:Key="OdaAdıString">Oda Adı</system:String>
+        <system:String x:Key="OdayıOlusturString">Odayı Oluştur</system:String>
+        <system:String x:Key="TestAdıString">Test Adı</system:String>
+        <system:String x:Key="TestiBaslatString">Testi Başlat</system:String>
+        <system:String x:Key="BitirString">Bitir</system:String>
+    </UserControl.Resources>
     <UserControl.Background>
-        <ImageBrush ImageSource="/WpfApp1;component/Images/Untitled-1.png" Stretch="UniformToFill"/>
+        <ImageBrush 
+            ImageSource="/WpfApp1;component/Images/Background.png" 
+            Stretch="UniformToFill"/>
     </UserControl.Background>
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
@@ -15,49 +29,129 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Column="0" Name="ustDock" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5">
-            <StackPanel Width="{Binding ActualWidth, ElementName=ustDock}">
+        <DockPanel 
+            Grid.Column="0" 
+            Name="UstDock" 
+            Margin="5">
+            <StackPanel Width="{Binding ActualWidth, ElementName=UstDock}">
                 <Button>
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
                                 <Image Width="130" Style="{DynamicResource DonusAnimasyonu}" Source="/WpfApp1;component/Images/tick.png" Margin="30,0"/>
-                                <TextBlock LineStackingStrategy="BlockLineHeight" LineHeight="100" Text="1." FontFamily="Titillium Web Light" Foreground="#FF9C9C9C" FontSize="80" Width="60" Height="90"/>
+                                <TextBlock LineStackingStrategy="BlockLineHeight" LineHeight="100" Text="{StaticResource BirinciString}" FontFamily="Titillium Web Light" Foreground="#FF9C9C9C" FontSize="80" Width="60" Height="90"/>
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
                 <TextBlock Text="ADIM" FontFamily="Titillium Web Light" FontSize="20" Foreground="#FF999999" TextAlignment="Center" />
-                <Label  Margin="0,5,0,0" Content="Oda Adı" Style="{DynamicResource Label}" HorizontalContentAlignment="Center" Background="LightGray"/>
-                <TextBox Style="{DynamicResource TextBox}" x:Name="odaAdiTextBox"/>
-                <Button Background="LightGreen" Click="OdayiOlustur" x:Name="odaButon" Margin="0,10,0,0">
-                    <Label Content="Odayı Oluştur" Style="{DynamicResource Label}" x:Name="odaButonLbl" FontFamily="Titillium Web SemiBold"/>
+                <Label  
+                    Margin="0,5,0,0" 
+                    Content="{StaticResource OdaAdıString}" 
+                    Style="{DynamicResource Label}" 
+                    HorizontalContentAlignment="Center" 
+                    Background="LightGray"/>
+                <TextBox 
+                    Style="{DynamicResource TextBox}" 
+                    x:Name="OdaAdiTextBox"/>
+                <Button 
+                    Background="LightGreen" 
+                    Click="OdayiOlustur" 
+                    x:Name="OdaButon" 
+                    Margin="0,10,0,0">
+                    <Label 
+                        Content="{StaticResource OdayıOlusturString}" 
+                        Style="{DynamicResource Label}" 
+                        x:Name="OdaButonLbl" 
+                        FontFamily="Titillium Web SemiBold"/>
                 </Button>
             </StackPanel>
-            <Separator Style="{DynamicResource DikeySeparator}" Width="5"/>
         </DockPanel>
 
-        <DockPanel Grid.Column="1" Name="ustDock2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5">
-            <StackPanel Width="{Binding ActualWidth, ElementName=ustDock2}">
+        <DockPanel 
+            Grid.Column="1" 
+            Name="UstDock2" 
+            Margin="5">
+            <StackPanel Width="{Binding ActualWidth, ElementName=UstDock2}">
                 <Button>
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Grid>
-                                <Image Width="130" Style="{DynamicResource DonusAnimasyonu}" Source="/WpfApp1;component/Images/tick.png" Margin="30,0"/>
-                                <TextBlock LineStackingStrategy="BlockLineHeight" LineHeight="100" Text="2." FontFamily="Titillium Web Light" Foreground="#FF9C9C9C" FontSize="80" Width="60" Height="90"/>
+                                <Image 
+                                    Width="130" 
+                                    Style="{DynamicResource DonusAnimasyonu}" 
+                                    Source="/WpfApp1;component/Images/tick.png" 
+                                    Margin="30,0"/>
+                                <TextBlock 
+                                    LineStackingStrategy="BlockLineHeight" 
+                                    LineHeight="100" 
+                                    Text="{StaticResource IkinciString}" 
+                                    FontFamily="Titillium Web Light" 
+                                    Foreground="#FF9C9C9C" 
+                                    FontSize="80" 
+                                    Width="60" 
+                                    Height="90"/>
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <TextBlock Text="ADIM" FontFamily="Titillium Web Light" FontSize="20" Foreground="#FF999999" TextAlignment="Center" />
-                <Label  Margin="0,5,0,0" Content="Test Adı" Style="{DynamicResource Label}" HorizontalContentAlignment="Center" Background="LightGray"/>
-                <TextBox Style="{DynamicResource TextBox}" x:Name="testAdiTextBox"/>
-                <Button Background="LightGreen" Click="OdayiOlustur" x:Name="testBaslatButton" Margin="0,10,0,0">
-                    <Label Content="Testi Başlat" Style="{DynamicResource Label}" FontFamily="Titillium Web SemiBold"/>
+                <TextBlock 
+                    Text="{StaticResource AdımString}" 
+                    FontFamily="Titillium Web Light" 
+                    FontSize="20" 
+                    Foreground="#FF999999" 
+                    TextAlignment="Center" />
+                <Label  
+                    Margin="0,5,0,0" 
+                    Content="{StaticResource TestAdıString}" 
+                    Style="{DynamicResource Label}" 
+                    HorizontalContentAlignment="Center" 
+                    Background="LightGray"/>
+                <ComboBox  x:Name="TestAdiTextBox" Height="30" FontFamily="Titillium Web" FontSize="16" />
+                <Button Background="#FF4197D3" Click="OdayiOlustur" x:Name="TestBaslatButton" Margin="0,10,0,0">
+                    <Label Content="{StaticResource TestiBaslatString}" Style="{DynamicResource Label}" FontFamily="Titillium Web SemiBold"/>
                 </Button>
             </StackPanel>
         </DockPanel>
 
+        <DockPanel 
+            Grid.Column="2" 
+            Name="UstDock3" 
+            Margin="5">
+            <StackPanel Width="{Binding ActualWidth, ElementName=UstDock2}">
+                <Button>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Image 
+                                    Width="130" 
+                                    Style="{DynamicResource DonusAnimasyonu}" 
+                                    Source="/WpfApp1;component/Images/tick.png" 
+                                    Margin="30,0"/>
+                                <TextBlock 
+                                    LineStackingStrategy="BlockLineHeight" 
+                                    LineHeight="100" 
+                                    Text="{StaticResource UcuncuString}" 
+                                    FontFamily="Titillium Web Light" 
+                                    Foreground="#FF9C9C9C" 
+                                    FontSize="80" 
+                                    Width="60" 
+                                    Height="90"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <TextBlock 
+                    Text="{StaticResource AdımString}" 
+                    FontFamily="Titillium Web Light" 
+                    FontSize="20" 
+                    Foreground="#FF999999" 
+                    TextAlignment="Center" />
+                <Button Background="#FFE23131" Click="OdayiOlustur" Margin="0,75,0,0">
+                    <Label Content="{StaticResource BitirString}" Style="{DynamicResource Label}" FontFamily="Titillium Web SemiBold"/>
+                </Button>
+            </StackPanel>
+        </DockPanel>
 
     </Grid>
 </UserControl>

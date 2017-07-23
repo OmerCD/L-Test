@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
+using System.Windows;
 
 namespace WpfApp1.Classes
 {
@@ -10,6 +11,20 @@ namespace WpfApp1.Classes
         private static readonly string Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\L-Test\";
         public static SQLiteConnection Baglanti = new SQLiteConnection("Data Source=" + Path + "database.db");
 
+        public static void BaglantiAc()
+        {
+            if (Baglanti.State == ConnectionState.Closed)
+            {
+                try
+                {
+                   Baglanti.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Hata Kodu: 0x04 " + ex.Message);
+                }
+            }
+        }
         public static void CreateDatabase()
         {
             if (!Directory.Exists(Path))

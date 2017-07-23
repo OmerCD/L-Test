@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using WpfApp1.Classes;
 
 namespace WpfApp1.UserControllers
@@ -30,7 +31,7 @@ namespace WpfApp1.UserControllers
         private DockPanel[] _dockPanel2;
         private CheckBox[,] _checkBox;
         private Separator[] _sp;
-        private void Ayarla_Click(object sender, RoutedEventArgs e)
+        private void Olustur_Click(object sender, RoutedEventArgs e)
         {
             void AssignControlValues()
             {
@@ -197,7 +198,6 @@ namespace WpfApp1.UserControllers
                 try
                 {
                     DatabaseManager.Baglanti.Open();
-                    MessageBox.Show("Baglanti Sağlandı");
                 }
                 catch (Exception ex)
                 {
@@ -205,7 +205,6 @@ namespace WpfApp1.UserControllers
                 }
             }
 
-            //komut.ExecuteNonQuery();
             var sonuc = Convert.ToInt16(AddQuestion(test, sure));
             var soruSistemi = SoruSistemiOlustur(sonuc);
 
@@ -216,6 +215,23 @@ namespace WpfApp1.UserControllers
         {
             var regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void DaraltGenislet(object sender, RoutedEventArgs e)
+        {
+            if (OlusturMenu.Visibility==Visibility.Visible)
+            {
+                GridLength g2 = new GridLength(35, GridUnitType.Pixel);
+                OlusturMenu.Visibility = Visibility.Hidden;
+                Column0.Width = g2;
+                //DaraltGenisletButton.Background = new ImageBrush(new BitmapImage(new Uri(@"/Images/Genislet.png", UriKind.Relative)));
+            }
+            else
+            {
+                GridLength g2 = new GridLength(200, GridUnitType.Pixel);
+                OlusturMenu.Visibility = Visibility.Visible;
+                Column0.Width = g2;
+            }
         }
 
         private void CheckBox_Checked(object sender, EventArgs e)

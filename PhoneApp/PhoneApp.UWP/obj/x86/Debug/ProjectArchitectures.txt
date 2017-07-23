@@ -1,2 +1,0 @@
-D:\Projeler\L-Test\PhoneApp\PhoneApp.UWP\PhoneApp.UWP.csproj;x86
-D:\Projeler\L-Test\PhoneApp\PhoneApp\PhoneApp.csproj;neutral

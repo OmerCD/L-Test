@@ -11,18 +11,18 @@
             <RowDefinition Height="35"/>
             <RowDefinition Height="50"/>
             <RowDefinition />
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" ForceCursor="True" MouseDown="UstBorder_MouseDown" Background="#F3AC122E">
-            <DockPanel Width="142" HorizontalAlignment="Right">
-                <Button FontSize="20" Style="{DynamicResource MiniButonlar}" Margin="0,0,0,1">
-                    <TextBlock Text="&#9776;" Margin="0,0,0,0"/>
+            <DockPanel HorizontalAlignment="Right">
+                <Button FontSize="20" Style="{DynamicResource MiniButonlar}" >
+                    <TextBlock Text="&#9776;" Margin="0,0,0,5"/>
                 </Button>
-                <Button Style="{DynamicResource MiniButonlar}" Margin="0,0,0,0" Click="Simge">
-                    <TextBlock Text="_" Margin="0,0,0,5"/>
+                <Button Style="{DynamicResource MiniButonlar}" Click="Simge">
+                    <Label Content="_" Width="35" Height="35" Style="{DynamicResource UstMenuLabel}"/>
                 </Button>
-                <Button Content="▢" Style="{DynamicResource MiniButonlar}" Margin="1,0,1,0" Click="Buyult"/>
-                <Button Content="X" Style="{DynamicResource MiniButonlarCikis}" Margin="0,0,0,0" Click="Kapat"/>
+                <Button Content="▢" Style="{DynamicResource MiniButonlar}" Click="Buyult"/>
+                <Button Content="X" Style="{DynamicResource MiniButonlarCikis}" Click="Kapat"/>
             </DockPanel>
         </Border>
         <Border Grid.Row="1" Background="#F3BB4359">
@@ -43,14 +43,14 @@
         <!--İçerik-->
         <Border Grid.Row="2">
             <Border.Background>
-                <ImageBrush ImageSource="Images/Untitled-1.png" Stretch="UniformToFill"/>
+                <ImageBrush ImageSource="Images/Background.png" Stretch="UniformToFill"/>
             </Border.Background>
             <Grid x:Name="icerik">
             </Grid>
         </Border>
-        <DockPanel Grid.Row="3">
-            <Label Content="Durum:" HorizontalContentAlignment="Center" Height="auto" Width="200"  Background="#FF83E3F7" FontSize="20" Foreground="White" Padding="0" FontFamily="Titillium Web SemiBold"  />
-            <Label x:Name="yaz" Content="" Height="auto"  Style="{DynamicResource Label}" Background="#FFB8ECF7"/>
+        <!-- Alt Bar -->
+        <DockPanel Grid.Row="3" Background="#F3AC122E">
+            <Label x:Name="yaz" Height="auto" Style="{DynamicResource Label}" />
         </DockPanel>
     </Grid>
 </Window>

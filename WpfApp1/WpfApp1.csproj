@@ -63,6 +63,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Linq.1.0.105.2\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -82,8 +83,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\DatabaseManager.cs" />
+    <Compile Include="Classes\EntityLayer\Cevaplar.cs" />
+    <Compile Include="Classes\EntityLayer\Kullanicilar.cs" />
+    <Compile Include="Classes\EntityLayer\Raporlar.cs" />
+    <Compile Include="Classes\EntityLayer\Sorular.cs" />
+    <Compile Include="Classes\FacedeLayer\FKullanicilar.cs" />
+    <Compile Include="Classes\FacedeLayer\FTestler.cs" />
     <Compile Include="Classes\Server.cs" />
-    <Compile Include="Classes\SoruKayit.cs" />
+    <Compile Include="Classes\FacedeLayer\SoruKayit.cs" />
+    <Compile Include="Classes\EntityLayer\Testler.cs" />
     <Compile Include="Classes\UserControlClass.cs" />
     <Compile Include="UserControllers\UcBaslangic.xaml.cs">
       <DependentUpon>UcBaslangic.xaml</DependentUpon>
@@ -161,31 +169,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\lowercase.png" />
-    <Resource Include="Images\uppercase.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Untitled-1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\menu_beyaz.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\menu_gri.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="resize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\resize.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\ic_settings_white_48dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Background.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\default-kullanici-resmi.png" />
   </ItemGroup>
   <ItemGroup>
@@ -193,7 +176,27 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\tick.png" />
-    <Resource Include="Images\tick-inside-circle.png" />
+    <Resource Include="Images\TickYesil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Daralt.png" />
+    <Resource Include="Images\Genislet.png" />
+    <Resource Include="Images\Goster.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Kaydet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Kaydet2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Daralt2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Goster2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" />
