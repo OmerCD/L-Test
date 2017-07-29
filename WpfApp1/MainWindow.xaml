@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" ResizeMode="NoResize">
-    <Grid x:Name="anaGrid" Loaded="anaGrid_Loaded">
+    <Grid x:Name="AnaGrid" Loaded="anaGrid_Loaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
             <RowDefinition Height="50"/>
             <RowDefinition />
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" ForceCursor="True" MouseDown="UstBorder_MouseDown" Background="#F3AC122E">
             <DockPanel HorizontalAlignment="Right">
@@ -49,8 +49,14 @@
             </Grid>
         </Border>
         <!-- Alt Bar -->
-        <DockPanel Grid.Row="3" Background="#F3AC122E">
-            <Label x:Name="yaz" Height="auto" Style="{DynamicResource Label}" />
+        <DockPanel Grid.Row="3" Background="#F3AC122E" Name="ustDock3">
+            <Label x:Name="DurumLabel" x:FieldModifier="public" Style="{DynamicResource Label}"  DockPanel.Dock="Left" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
+            <Border Background="AliceBlue"  CornerRadius="5" Margin="2" Width="110" DockPanel.Dock="Right" HorizontalAlignment="Right" >
+                <DockPanel Margin="2">
+                    <Image x:Name="ActiveImage" x:FieldModifier="public" Margin="3,0,0,0" HorizontalAlignment="Left" Source="Images/Online.png" Style="{DynamicResource ImageBuyult}"/>
+                    <Label x:Name="ActiveLabel" x:FieldModifier="public" Width="82" Foreground="Black" Padding="0" FontFamily="Titillium Web SemiBold" FontSize="14"/>
+                </DockPanel>
+            </Border>
         </DockPanel>
     </Grid>
 </Window>

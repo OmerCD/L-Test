@@ -8,16 +8,16 @@ namespace WpfApp1.Classes
 {
     class DatabaseManager
     {
-        private static readonly string Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\L-Test\";
+        private static readonly string Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\L-Test\";
         public static SQLiteConnection Baglanti = new SQLiteConnection("Data Source=" + Path + "database.db");
 
         public static void BaglantiAc()
         {
-            if (Baglanti.State == ConnectionState.Closed)
+            if (Baglanti.State==ConnectionState.Closed)
             {
                 try
                 {
-                   Baglanti.Open();
+                    Baglanti.Open();
                 }
                 catch (Exception ex)
                 {
@@ -40,28 +40,28 @@ namespace WpfApp1.Classes
             tableQueries= new string[3,2];
             tableQueries[0, 0] = "testler";
             tableQueries[0, 1] = "CREATE TABLE `testler` (" +
-                "`test_id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                "`sure`	INTEGER," +
-                "`soru_sayisi`	INTEGER," +
-                "`cevap_sayisi`	INTEGER," +
-                "`test_adi`	TEXT," +
-                "FOREIGN KEY(`test_id`) REFERENCES `testler`(`test_id`)" +
+                "`TestId`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "`Sure`	INTEGER," +
+                "`SoruSayisi`	INTEGER," +
+                "`CevapSayisi`	INTEGER," +
+                "`TestAdi`	TEXT," +
+                "FOREIGN KEY(`TestId`) REFERENCES `testler`(`TestId`)" +
                 " ); ";
             tableQueries[1, 0] = "sorular";
             tableQueries[1, 1] = "CREATE TABLE `sorular` (" +
-                "`soru_id`	INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "`test_id`	INTEGER," +
-                "`soru`	TEXT NOT NULL," +
-                "FOREIGN KEY(`test_id`) REFERENCES `testler`(`test_id`)" +
+                "`SoruId`	INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "`TestId`	INTEGER," +
+                "`Soru`	TEXT NOT NULL," +
+                "FOREIGN KEY(`TestId`) REFERENCES `testler`(`TestId`)" +
                 "); ";
 
             tableQueries[2, 0] = "cevaplar";
             tableQueries[2, 1] = "CREATE TABLE `cevaplar` (" +
-                "`cevap_id`	INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "`soru_id`	INTEGER," +
-                "`cevap`	TEXT," +
-                "`dogru`	INTEGER," +
-                "FOREIGN KEY(`soru_id`) REFERENCES `sorular`(`soru_id`)" +
+                "`Cevap_id`	INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "`SoruId`	INTEGER," +
+                "`Cevap`	TEXT," +
+                "`Dogru`	INTEGER," +
+                "FOREIGN KEY(`SoruId`) REFERENCES `sorular`(`SoruId`)" +
                 "); ";
         }
 

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfApp1"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="600">
+             d:DesignHeight="450" d:DesignWidth="600" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <system:String x:Key="BirinciString">1.</system:String>
         <system:String x:Key="IkinciString">2.</system:String>
@@ -54,16 +54,8 @@
                 <TextBox 
                     Style="{DynamicResource TextBox}" 
                     x:Name="OdaAdiTextBox"/>
-                <Button 
-                    Background="LightGreen" 
-                    Click="OdayiOlustur" 
-                    x:Name="OdaButon" 
-                    Margin="0,10,0,0">
-                    <Label 
-                        Content="{StaticResource OdayıOlusturString}" 
-                        Style="{DynamicResource Label}" 
-                        x:Name="OdaButonLbl" 
-                        FontFamily="Titillium Web SemiBold"/>
+                <Button Click="OdayiOlustur" x:Name="OdaButon" Margin="0,10,0,0" Height="80" Style="{DynamicResource BaslangicOdaButon}">
+                    <Label Content="{StaticResource OdayıOlusturString}" x:Name="OdaButonLbl" FontFamily="Titillium Web SemiBold" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </Button>
             </StackPanel>
         </DockPanel>
@@ -107,9 +99,9 @@
                     Style="{DynamicResource Label}" 
                     HorizontalContentAlignment="Center" 
                     Background="LightGray"/>
-                <ComboBox  x:Name="TestAdiTextBox" Height="30" FontFamily="Titillium Web" FontSize="16" />
-                <Button Background="#FF4197D3" Click="OdayiOlustur" x:Name="TestBaslatButton" Margin="0,10,0,0">
-                    <Label Content="{StaticResource TestiBaslatString}" Style="{DynamicResource Label}" FontFamily="Titillium Web SemiBold"/>
+                <ComboBox  x:Name="TestAdiComboBox" Height="30" FontFamily="Titillium Web" FontSize="16" />
+                <Button  Click="OdayiOlustur" x:Name="TestBaslatButton" Margin="0,10,0,0" Height="80" Style="{DynamicResource BaslangicTestButon}">
+                    <Label Content="{StaticResource TestiBaslatString}" Foreground="White"  FontFamily="Titillium Web SemiBold" FontSize="24"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </Button>
             </StackPanel>
         </DockPanel>
@@ -147,8 +139,8 @@
                     FontSize="20" 
                     Foreground="#FF999999" 
                     TextAlignment="Center" />
-                <Button Background="#FFE23131" Click="OdayiOlustur" Margin="0,75,0,0">
-                    <Label Content="{StaticResource BitirString}" Style="{DynamicResource Label}" FontFamily="Titillium Web SemiBold"/>
+                <Button Click="OdayiOlustur" Margin="0,75,0,0" Height="80" Style="{DynamicResource BaslangicBitirButon}">
+                    <Label Content="{StaticResource BitirString}" Foreground="White"  FontFamily="Titillium Web SemiBold" FontSize="24"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </Button>
             </StackPanel>
         </DockPanel>

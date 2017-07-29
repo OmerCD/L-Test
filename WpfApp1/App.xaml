@@ -1,7 +1,6 @@
 ﻿<Application x:Class="WpfApp1.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:WpfApp1"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style x:Key="DonusAnimasyonu" TargetType="Image">
@@ -14,7 +13,7 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Trigger.EnterActions>
                         <BeginStoryboard>
-                            <Storyboard FillBehavior="Stop">
+                            <Storyboard>
                                 <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.Angle"
                                         From="0"
@@ -27,6 +26,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
         <!--BUTONLAR-->
         <Style x:Key="MiniButonlar" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
@@ -38,10 +38,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Name="border"
-                            BorderThickness="0"
-                            BorderBrush="#FF8F8F8F"
-                            Background="{x:Null}">
+                        <Border Name="border" BorderThickness="0" BorderBrush="#FF8F8F8F" Background="{x:Null}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -124,7 +121,80 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        
+        <Style x:Key="BaslangicOdaButon" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="Border" Background="LightGreen" BorderThickness="1" BorderBrush="LightGray">
+                            <ContentPresenter Name="content"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="LightGray"/>
+                            </Trigger>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="White"/>
+                                <Setter TargetName="content" Property="ContentPresenter.Content">
+                                    <Setter.Value>
+                                        <Label Content="Odayı Oluştur"  FontFamily="Titillium Web SemiBold" FontSize="24" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BaslangicTestButon" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="Border" Background="LightBlue" BorderThickness="1" BorderBrush="LightGray">
+                            <ContentPresenter Name="content"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="LightGray"/>
+                            </Trigger>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="White"/>
+                                <Setter TargetName="content" Property="ContentPresenter.Content">
+                                    <Setter.Value>
+                                        <Label Content="Testi Başlat"  FontFamily="Titillium Web SemiBold" FontSize="24" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="BaslangicBitirButon" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="Border" Background="LightCoral" BorderThickness="1" BorderBrush="LightGray">
+                            <ContentPresenter Name="content"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="LightGray"/>
+                            </Trigger>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="White"/>
+                                <Setter TargetName="content" Property="ContentPresenter.Content">
+                                    <Setter.Value>
+                                        <Label Content="Bitir"  FontFamily="Titillium Web SemiBold" FontSize="24" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
         <Style x:Key="UstMenuLabel" TargetType="Label">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18"/>
@@ -143,13 +213,13 @@
         </Style>
         <Style x:Key="Label" TargetType="Label">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="Titillium Web"/>
+            <Setter Property="FontFamily" Value="Titillium Web SemiBold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Height" Value="30"/>
         </Style>
         <Style x:Key="TextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontFamily" Value="Titillium Web"/>
+            <Setter Property="FontFamily" Value="Titillium Web SemiBold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Height" Value="30"/>
         </Style>
@@ -205,6 +275,16 @@
             <Setter  Property="DockPanel.Dock" Value="Top"/>
             <Setter Property="Margin" Value="3,15,3,0"/>
         </Style>
-        
+
+        <Style x:Key="ImageBuyult" TargetType="Image">
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="20"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Width" Value="22"></Setter>
+                    <Setter Property="Height" Value="22"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 using WpfApp1.Classes;
 using WpfApp1.UserControllers;
 
@@ -10,15 +12,37 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        static MainWindow _main;
         public YanEkran YanEkran;
         public MainWindow()
         {
+            _main = this;
             InitializeComponent();
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             YanEkran= new YanEkran();
             YanEkran.Show();
             DatabaseManager.CreateDatabase();
+        }
+        public static void Durum(string drm)
+        {
+            _main.DurumLabel.Content = drm;
+        }
+        public static void Active(string active)
+        {
+            _main.ActiveLabel.Content = active;
+            if (active=="Online")
+            {
+                _main.ActiveImage.Source = new BitmapImage(new Uri(@"/Images/Online.png", UriKind.Relative));
+            }
+            else if (active == "Abandoned")
+            {
+                _main.ActiveImage.Source = new BitmapImage(new Uri(@"/Images/Abandoned.png", UriKind.Relative));
+            }
+            else
+            {
+                _main.ActiveImage.Source = new BitmapImage(new Uri(@"/Images/Offline.png", UriKind.Relative));
+            }
         }
         private void Kapat(object sender, RoutedEventArgs e)
         {
@@ -45,18 +69,12 @@ namespace WpfApp1
         {
             UserControlClass.ControlAdd(icerik, new UcTestler());
         }
-
-        private void Ayarlar(object sender, RoutedEventArgs e)
-        {
-            UserControlClass.ControlAdd(icerik, new UcBaslangic());
-        }
-
         private void Buyult(object sender, RoutedEventArgs e)
         {
             if (WindowState==WindowState.Normal)
             {
                 WindowState = WindowState.Maximized;
-                anaGrid.Margin = new Thickness(0,0,0,7); // Niye büyüyünce Kenarlardan taşıyor? Entrasan bir sorun. Düzeltmek için eklendi
+                AnaGrid.Margin = new Thickness(0,0,0,7); // Niye büyüyünce Kenarlardan taşıyor? Entrasan bir sorun. Düzeltmek için eklendi
             }
             else
             {
@@ -74,6 +92,7 @@ namespace WpfApp1
             YanEkran.Left = loc.X - YanEkran.Width;
             YanEkran.Top = loc.Y;
             UserControlClass.ControlAdd(icerik, new UcBaslangic());
+            Active("Offline");
         }
     }
 }
