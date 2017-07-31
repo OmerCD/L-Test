@@ -7,6 +7,17 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600" Loaded="UserControl_Loaded">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="Opacity"
+                        From="0.0" To="1.0" Duration="0:0:1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
     <UserControl.Resources>
         <system:String x:Key="BirinciString">1.</system:String>
         <system:String x:Key="IkinciString">2.</system:String>

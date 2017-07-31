@@ -6,18 +6,15 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" ResizeMode="NoResize">
-    <Grid x:Name="AnaGrid" Loaded="anaGrid_Loaded">
+    <Grid x:Name="AnaGrid" Loaded="AnaGrid_Loaded">
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
             <RowDefinition Height="50"/>
             <RowDefinition />
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" ForceCursor="True" MouseDown="UstBorder_MouseDown" Background="#F3AC122E">
+        <Border Name="UstBorder" Grid.Row="0" ForceCursor="True" MouseDown="UstBorder_MouseDown" Background="#F3AC122E" x:FieldModifier="public">
             <DockPanel HorizontalAlignment="Right">
-                <Button FontSize="20" Style="{DynamicResource MiniButonlar}" >
-                    <TextBlock Text="&#9776;" Margin="0,0,0,5"/>
-                </Button>
                 <Button Style="{DynamicResource MiniButonlar}" Click="Simge">
                     <Label Content="_" Width="35" Height="35" Style="{DynamicResource UstMenuLabel}"/>
                 </Button>
@@ -25,19 +22,30 @@
                 <Button Content="X" Style="{DynamicResource MiniButonlarCikis}" Click="Kapat"/>
             </DockPanel>
         </Border>
-        <Border Grid.Row="1" Background="#F3BB4359">
+        <Border Name="UstBorderAlt" Grid.Row="1" Background="#F3BB4359">
             <Border.Effect>
                 <DropShadowEffect Direction="220" Opacity="0.35" ShadowDepth="4" BlurRadius="10"/>
             </Border.Effect>
             <Grid>
-                <StackPanel Orientation="Horizontal" >
+                <DockPanel>
                     <Button Style="{DynamicResource MenuButonlar}" Click="Baglangic">
                         <Label Content="Başlangıç" Style="{DynamicResource UstMenuLabel}"/>
                     </Button>
                     <Button Style="{DynamicResource MenuButonlar}" Click="Testler">
                         <Label Content="Testler" Style="{DynamicResource UstMenuLabel}"/>
                     </Button>
-                </StackPanel>
+                    <Button Style="{DynamicResource MenuButonlar}" Click="Sonuclar" >
+                        <Label Content="Sonuçlar" Style="{DynamicResource UstMenuLabel}"/>
+                    </Button>
+                    <DockPanel HorizontalAlignment="Right" >
+                        <Button Style="{DynamicResource MediumButonlar}" Click="Colors" >
+                            <Image Source="Images/Renkler.png" RenderOptions.BitmapScalingMode="HighQuality" Width="35" />
+                        </Button>
+                        <Button Style="{DynamicResource MediumButonlar}" >
+                            <Image Source="Images/Menu.png" RenderOptions.BitmapScalingMode="HighQuality" Width="25"/>
+                        </Button>
+                    </DockPanel>
+                </DockPanel>
             </Grid>
         </Border>
         <!--İçerik-->
@@ -49,7 +57,7 @@
             </Grid>
         </Border>
         <!-- Alt Bar -->
-        <DockPanel Grid.Row="3" Background="#F3AC122E" Name="ustDock3">
+        <DockPanel Grid.Row="3" Background="#F3AC122E" Name="AltBorder">
             <Label x:Name="DurumLabel" x:FieldModifier="public" Style="{DynamicResource Label}"  DockPanel.Dock="Left" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
             <Border Background="AliceBlue"  CornerRadius="5" Margin="2" Width="110" DockPanel.Dock="Right" HorizontalAlignment="Right" >
                 <DockPanel Margin="2">

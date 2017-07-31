@@ -6,6 +6,17 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="683" d:DesignWidth="1024" Loaded="UserControl_Loaded">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+                        Storyboard.TargetProperty="Opacity"
+                        From="0.0" To="1.0" Duration="0:0:1"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
     <UserControl.Resources>
         <!--Genel Tab Stringleri-->
         <system:String x:Key="SureString">Süre:</system:String>
@@ -41,19 +52,17 @@
                 <ColumnDefinition  Width="5" />
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <!--Sol Menü-->          
-            <Grid 
-                Grid.Column="0" 
-                Background="#D3798A">
+            <!--Sol Menü-->
+            <Grid Grid.Column="0" Background="#FFB4B4B4" Name="UcTestlerGrid1">
                 <Grid.Effect>
                     <DropShadowEffect 
                         Direction="0" 
                         Opacity="0.2" 
                         BlurRadius="10"/>
                 </Grid.Effect>
-                <TabControl>
-                    <TabItem Header="{StaticResource TabItem1String}" Width="98" FontFamily="Titillium Web SemiBold" FontSize="14" Foreground="#FF898484" >
-                        <DockPanel Background="#D3798A" >
+                <TabControl BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}">
+                    <TabItem Header="{StaticResource TabItem1String}" Width="98" FontFamily="Titillium Web SemiBold" FontSize="14" Foreground="#FF898484">
+                        <DockPanel Name="Olustur" Background="#FF898484"  x:FieldModifier="public">
                             <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="{StaticResource TestToolTip}">
                                 <Label Content="{StaticResource TestString}" Width="90" Style="{DynamicResource Label}" />
                                 <TextBox x:Name="TestTextbox" Style="{DynamicResource TextBox}"/>
@@ -86,7 +95,7 @@
                         </DockPanel>
                     </TabItem>
                     <TabItem Header="{StaticResource TabItem2String}" Width="98" FontFamily="Titillium Web SemiBold" FontSize="14" Foreground="#FF898484"  >
-                        <DockPanel Background="#D3798A" >
+                        <DockPanel Name="Duzenle" x:FieldModifier="public" Background="#FF898484" >
                             <DockPanel Style="{DynamicResource DockPanelStyle}" ToolTip="{StaticResource TestDuzeltToolTip}">
                                 <Label Content="{StaticResource TestDuzeltString}" Width="90" Style="{DynamicResource Label}" />
                                 <ComboBox x:Name="TestDuzeltCombobox" SelectionChanged="TestDuzeltCombobox_SelectionChanged" />

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\App.xaml
-61151590777
+8-1915212692
 
-271273087176
+30-132283638
 741503864217
-MainWindow.xaml;UserControllers\UcBaslangic.xaml;UserControllers\UcGirenKullanici.xaml;UserControllers\UcTest.xaml;UserControllers\UcTestler.xaml;YanEkran.xaml;
+Colors.xaml;MainWindow.xaml;UserControllers\UcBaslangic.xaml;UserControllers\UcGirenKullanici.xaml;UserControllers\UcSonuclar.xaml;UserControllers\UcTest.xaml;UserControllers\UcTestler.xaml;YanEkran.xaml;
 
 False
 

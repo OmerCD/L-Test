@@ -74,7 +74,7 @@ namespace WpfApp1
             if (WindowState==WindowState.Normal)
             {
                 WindowState = WindowState.Maximized;
-                AnaGrid.Margin = new Thickness(0,0,0,7); // Niye büyüyünce Kenarlardan taşıyor? Entrasan bir sorun. Düzeltmek için eklendi
+                //AnaGrid.Margin = new Thickness(0,0,0,7); // Niye büyüyünce Kenarlardan taşıyor? Entrasan bir sorun. Düzeltmek için eklendi
             }
             else
             {
@@ -86,13 +86,24 @@ namespace WpfApp1
            WindowState = WindowState.Minimized;
         }
 
-        private void anaGrid_Loaded(object sender, RoutedEventArgs e)
+        private void AnaGrid_Loaded(object sender, RoutedEventArgs e)
         {
             var loc = PointToScreen(new Point(0, 0));
             YanEkran.Left = loc.X - YanEkran.Width;
             YanEkran.Top = loc.Y;
             UserControlClass.ControlAdd(icerik, new UcBaslangic());
             Active("Offline");
+        }
+
+        private void Sonuclar(object sender, RoutedEventArgs e)
+        {
+            UserControlClass.ControlAdd(icerik, new UcSonuclar());
+        }
+
+        private void Colors(object sender, RoutedEventArgs e)
+        {
+            Colors colors = new Colors();
+            colors.Show();
         }
     }
 }

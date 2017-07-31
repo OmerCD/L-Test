@@ -43,7 +43,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#F3B25566"/>
+                                <Setter TargetName="border" Property="Background" Value="#F3EEEEEE"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -91,12 +91,33 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#FFAA4A5B"/>
+                                <Setter TargetName="border" Property="Background" Value="#F3EEEEEE"/>
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="LightGreen"/>
-                                <Setter TargetName="border" Property="Background" Value="#FFAA4A5B"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FFF7FDF7"/>
+                                <Setter TargetName="border" Property="Background" Value="#F3BBBBBB"/>
                                 <Setter TargetName="border" Property="BorderThickness" Value="0,0,0,5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MediumButonlar" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#F3AC122E"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Width" Value="40"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="#FF8F8F8F" Background="{x:Null}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#F3EEEEEE"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -193,8 +214,35 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="YuvarlakButon" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Ellipse Name="Ellipse" Width="35" Height="35" RenderOptions.BitmapScalingMode="HighQuality">
+                                <Ellipse.Fill>
+                                    <SolidColorBrush/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter TargetName="Ellipse" Property="Width" Value="40"/>
+                                <Setter TargetName="Ellipse" Property="Height" Value="40"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="Ellipse" TargetType="Ellipse">
+            <Setter Property="Margin" Value="0,0,1,0"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="50"/>
+        </Style>
 
-
+        <!--Girişler-->
         <Style x:Key="UstMenuLabel" TargetType="Label">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18"/>
@@ -227,6 +275,7 @@
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontFamily" Value="Titillium Web Light"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="Height" Value="Auto"/>
             <Setter Property="AcceptsReturn" Value="True"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
@@ -254,6 +303,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
+        
         <Style x:Key="DikeySeparator" 
        TargetType="{x:Type Separator}"
        BasedOn="{StaticResource {x:Type Separator}}">
@@ -275,10 +326,10 @@
             <Setter  Property="DockPanel.Dock" Value="Top"/>
             <Setter Property="Margin" Value="3,15,3,0"/>
         </Style>
-
         <Style x:Key="ImageBuyult" TargetType="Image">
             <Setter Property="Width" Value="20"/>
             <Setter Property="Height" Value="20"/>
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Width" Value="22"></Setter>
@@ -286,5 +337,24 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="DataGridRowStyle1" TargetType="{x:Type DataGridRow}">
+            <Setter Property="Foreground" Value="#FFB3B3B3"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Template" Value="{DynamicResource DataGridRowControlTemplate1}"/>
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#FF262626"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                    <Setter Property="Background" Value="#FF383838"/>
+                </Trigger>
+                <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#FF333333"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
     </Application.Resources>
 </Application>

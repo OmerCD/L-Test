@@ -115,3 +115,7 @@ C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.res
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.Cache
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\WpfApp1.exe
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcSonuclar.g.cs
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcSonuclar.baml
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\Colors.g.cs
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\Colors.baml
