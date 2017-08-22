@@ -20,6 +20,17 @@ namespace WpfApp1.Classes
             var yeniRenk = new SolidColorBrush(Color.FromArgb(255, (byte)r, (byte)g, (byte)b));
             return yeniRenk;
         }
+        public Brush DarkColourAnimasyon(Ellipse item)
+        {
+            var renk = (SolidColorBrush)item.Fill;
+            var r = renk.Color.R - 30;
+            var g = renk.Color.G + 30;
+            var b = renk.Color.B + 30;
+            var yeniRenk = new SolidColorBrush(Color.FromArgb(255, (byte)r, (byte)g, (byte)b));
+            return yeniRenk;
+        }
+
+
         public Brush MediumColour(Ellipse item)
         {
             var renk = (SolidColorBrush)item.Fill;
@@ -29,6 +40,16 @@ namespace WpfApp1.Classes
             var yeniRenk = new SolidColorBrush(Color.FromArgb(255, (byte)r, (byte)g, (byte)b));
             return yeniRenk;
         }
+        public Brush MediumColourAnimasyon(Ellipse item)
+        {
+            var renk = (SolidColorBrush)item.Fill;
+            var r = renk.Color.R - 15;
+            var g = renk.Color.G - 15;
+            var b = renk.Color.B - 15;
+            var yeniRenk = new SolidColorBrush(Color.FromArgb(255, (byte)r, (byte)g, (byte)b));
+            return yeniRenk;
+        }
+
         public Brush LightColour(Ellipse item)
         {
             var renk = (SolidColorBrush)item.Fill;

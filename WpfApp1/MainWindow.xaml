@@ -13,7 +13,7 @@
             <RowDefinition />
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Border Name="UstBorder" Grid.Row="0" ForceCursor="True" MouseDown="UstBorder_MouseDown" Background="#F3AC122E" x:FieldModifier="public">
+        <Border Name="UstBorder" Grid.Row="0" ForceCursor="True" MouseDown="UstBorder_MouseDown" Background="{DynamicResource DarkColor}" x:FieldModifier="public">
             <DockPanel HorizontalAlignment="Right">
                 <Button Style="{DynamicResource MiniButonlar}" Click="Simge">
                     <Label Content="_" Width="35" Height="35" Style="{DynamicResource UstMenuLabel}"/>
@@ -22,7 +22,7 @@
                 <Button Content="X" Style="{DynamicResource MiniButonlarCikis}" Click="Kapat"/>
             </DockPanel>
         </Border>
-        <Border Name="UstBorderAlt" Grid.Row="1" Background="#F3BB4359">
+        <Border Name="UstBorderAlt" Grid.Row="1" Background="{DynamicResource MediumColor}">
             <Border.Effect>
                 <DropShadowEffect Direction="220" Opacity="0.35" ShadowDepth="4" BlurRadius="10"/>
             </Border.Effect>
@@ -38,8 +38,8 @@
                         <Label Content="Sonuçlar" Style="{DynamicResource UstMenuLabel}"/>
                     </Button>
                     <DockPanel HorizontalAlignment="Right" >
-                        <Button Style="{DynamicResource MediumButonlar}" Click="Colors" >
-                            <Image Source="Images/Renkler.png" RenderOptions.BitmapScalingMode="HighQuality" Width="35" />
+                        <Button Style="{DynamicResource MediumButonlar}" Click="Colors">
+                            <Image Source="Images/Renkler.png" RenderOptions.BitmapScalingMode="HighQuality" Width="30" />
                         </Button>
                         <Button Style="{DynamicResource MediumButonlar}" >
                             <Image Source="Images/Menu.png" RenderOptions.BitmapScalingMode="HighQuality" Width="25"/>
@@ -57,7 +57,7 @@
             </Grid>
         </Border>
         <!-- Alt Bar -->
-        <DockPanel Grid.Row="3" Background="#F3AC122E" Name="AltBorder">
+        <DockPanel Grid.Row="3" Background="{DynamicResource DarkColor}" Name="AltBorder">
             <Label x:Name="DurumLabel" x:FieldModifier="public" Style="{DynamicResource Label}"  DockPanel.Dock="Left" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch"/>
             <Border Background="AliceBlue"  CornerRadius="5" Margin="2" Width="110" DockPanel.Dock="Right" HorizontalAlignment="Right" >
                 <DockPanel Margin="2">

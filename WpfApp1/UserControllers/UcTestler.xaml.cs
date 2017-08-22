@@ -102,9 +102,12 @@ namespace WpfApp1.UserControllers
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             var testler = BTestler.SelectAll();
-            foreach (var item in testler)
+            if (testler!=null)
             {
-                TestDuzeltCombobox.Items.Add(item.TestAdi);
+                foreach (var item in testler)
+                {
+                    TestDuzeltCombobox.Items.Add(item.TestAdi);
+                }
             }
         }
 

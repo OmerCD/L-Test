@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.Classes;
@@ -29,22 +30,33 @@ namespace WpfApp1
 
         private void ChangeColour(object sender, MouseButtonEventArgs e)
         {
-                var ellipse = (Ellipse)e.Source;
-                MainWindow.Durum(ellipse.Name);
-                foreach (Window window in Application.Current.Windows)
-                {
-                    if (window.GetType() != typeof(MainWindow)) continue;
-                    ((MainWindow)window).UstBorder.Background = new ColorPallet().DarkColour(ellipse);
-                    ((MainWindow)window).UstBorderAlt.Background = new ColorPallet().MediumColour(ellipse);
-                    ((MainWindow) window).AltBorder.Background = new ColorPallet().MediumColour(ellipse);
-                    ((MainWindow)window).YanEkran.YanUstBorder.Background = new ColorPallet().DarkColour(ellipse);
-                    ((MainWindow)window).YanEkran.TextBlock.Background = new ColorPallet().MediumColour(ellipse);
-            }
+            var ellipse = (Ellipse)e.Source;
+            Application.Current.Resources["DarkColor"] = new ColorPallet().DarkColour(ellipse);
+            Application.Current.Resources["DarkColorAnimasyon"] = new ColorPallet().DarkColour(ellipse);
 
+            Application.Current.Resources["MediumColor"] = new ColorPallet().MediumColour(ellipse);
+            Application.Current.Resources["MediumColorAnimasyon"] = new ColorPallet().MediumColour(ellipse);;
+
+            MainWindow.Durum(ellipse.Name);
+                //foreach (Window window in Application.Current.Windows)
+                //{
+                //    if (window.GetType() != typeof(MainWindow)) continue;
+                //    ((MainWindow)window).UstBorder.Background = new ColorPallet().DarkColour(ellipse);
+                //    ((MainWindow)window).UstBorderAlt.Background = new ColorPallet().MediumColour(ellipse);
+                //    ((MainWindow) window).AltBorder.Background = new ColorPallet().MediumColour(ellipse);
+                //    ((MainWindow)window).YanEkran.YanUstBorder.Background = new ColorPallet().DarkColour(ellipse);
+                //    ((MainWindow)window).YanEkran.TextBlock.Background = new ColorPallet().MediumColour(ellipse);
+                //}
         }
 
         private void Kapat(object sender, RoutedEventArgs e)
         {
+            var blurEffect = new BlurEffect {Radius = 0.0};
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.GetType() != typeof(MainWindow)) continue;
+                ((MainWindow)window).Effect = blurEffect;
+            }
             Close();
         }
     }

@@ -3,6 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <SolidColorBrush x:Key="DarkColor" Color="#F3AC122E"/>
+        <SolidColorBrush x:Key="DarkColorAnimasyon" Color="#F3F5778F"/>
+
+        <SolidColorBrush x:Key="MediumColor" Color="#F3BB4359"/>
+        <SolidColorBrush x:Key="MediumColorAnimasyon" Color="#F3F5778F"/>
+        
+        <SolidColorBrush x:Key="SoftColor" Color="#F3AC122E"/>
         <Style x:Key="DonusAnimasyonu" TargetType="Image">
             <Setter Property="Image.RenderTransform">
                 <Setter.Value>
@@ -30,7 +37,7 @@
         <!--BUTONLAR-->
         <Style x:Key="MiniButonlar" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#F3AC122E"/>
+            <Setter Property="Background" Value="{DynamicResource DarkColor}"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Height" Value="35"/>
@@ -38,12 +45,12 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Name="border" BorderThickness="0" BorderBrush="#FF8F8F8F" Background="{x:Null}">
+                        <Border Name="border" BorderThickness="0" BorderBrush="{DynamicResource DarkColorAnimasyon}" Background="{x:Null}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#F3EEEEEE"/>
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource DarkColorAnimasyon}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -52,7 +59,7 @@
         </Style>
         <Style x:Key="MiniButonlarCikis" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#F3AC122E"/>
+            <Setter Property="Background" Value="{DynamicResource DarkColor}"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Height" Value="35"/>
@@ -60,10 +67,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Name="border"
-                            BorderThickness="0,0,0,0"
-                            BorderBrush="#FF8F8F8F"
-                            Background="{x:Null}">
+                        <Border Name="border">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -78,24 +82,22 @@
             </Setter>
         </Style>
         <Style x:Key="MenuButonlar" TargetType="Button">
-            <Setter Property="Foreground" Value="#FFDEDEDE"/>
+            <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="Height" Value="50"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Name="border"
-                            BorderBrush="{x:Null}"
-                            Background="{x:Null}">
+                        <Border Name="border">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#F3EEEEEE"/>
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource MediumColorAnimasyon}"/>
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="#FFF7FDF7"/>
-                                <Setter TargetName="border" Property="Background" Value="#F3BBBBBB"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="White"/>
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource MediumColorAnimasyon}"/>
                                 <Setter TargetName="border" Property="BorderThickness" Value="0,0,0,5"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -105,19 +107,19 @@
         </Style>
         <Style x:Key="MediumButonlar" TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="#F3AC122E"/>
+            <Setter Property="Background" Value="{DynamicResource MediumColor}"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Width" Value="40"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Name="border" BorderThickness="0" BorderBrush="#FF8F8F8F" Background="{x:Null}">
+                        <Border Name="border">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#F3EEEEEE"/>
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource MediumColorAnimasyon}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -138,7 +140,7 @@
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#F38B0B22"/>
+                    <Setter Property="Background" Value="{DynamicResource MediumColorAnimasyon}"/>
                 </Trigger>
             </Style.Triggers>
         </Style>

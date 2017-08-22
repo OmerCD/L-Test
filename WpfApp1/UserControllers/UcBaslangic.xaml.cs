@@ -25,10 +25,14 @@ namespace WpfApp1
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             List<Testler> testler = BTestler.SelectAll();
-            foreach (Testler item in testler)
+            if (testler != null)
             {
-                TestAdiComboBox.Items.Add(item.TestAdi);
+                foreach (Testler item in testler)
+                {
+                    TestAdiComboBox.Items.Add(item.TestAdi);
+                }
             }
+
         }
     }
 }

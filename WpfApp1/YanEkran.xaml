@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:st="http://schemas.spicytaco.io/"
         mc:Ignorable="d"
-        Title="YanEkran" Height="600" Width="300" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}" Loaded="Window_Loaded">
+        Title="YanEkran" Height="768" Width="300" Visibility="Visible" WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Name="YanUstBorder" Grid.Row="0" ForceCursor="True" Background="#F3AC122E">
+        <Border Name="YanUstBorder" Grid.Row="0" ForceCursor="True" Background="{DynamicResource DarkColor}">
             <DockPanel Width="35" HorizontalAlignment="Right">
                 <Button Content="X" Style="{DynamicResource MiniButonlarCikis}" Margin="0,0,0,0" Click="Kapat"/>
             </DockPanel>
@@ -28,7 +28,7 @@
                            Text="Kullanıcılar "  
                            TextAlignment="Center"
                            FontFamily="Titillium Web SemiBold"
-                           Background="#F3BB4359"
+                           Background="{DynamicResource MediumColor}"
                            Foreground="White"
                            FontSize="26"/>
                     </StackPanel>

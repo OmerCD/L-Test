@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using WpfApp1.Classes;
 using WpfApp1.UserControllers;
@@ -55,7 +57,7 @@ namespace WpfApp1
             {
                 DragMove();
                 var loc = PointToScreen(new Point(0, 0));
-                YanEkran.Left = loc.X-YanEkran.Width;
+                YanEkran.Left = loc.X-YanEkran.Width-5;
                 YanEkran.Top = loc.Y;
             }
         }
@@ -89,7 +91,7 @@ namespace WpfApp1
         private void AnaGrid_Loaded(object sender, RoutedEventArgs e)
         {
             var loc = PointToScreen(new Point(0, 0));
-            YanEkran.Left = loc.X - YanEkran.Width;
+            YanEkran.Left = loc.X - YanEkran.Width-5;
             YanEkran.Top = loc.Y;
             UserControlClass.ControlAdd(icerik, new UcBaslangic());
             Active("Offline");
@@ -102,8 +104,13 @@ namespace WpfApp1
 
         private void Colors(object sender, RoutedEventArgs e)
         {
+            Storyboard myStoryboard = new Storyboard();
+            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
+            BlurEffect blurEffect = new BlurEffect();
+            blurEffect.Radius = 5.0;
+            Effect = blurEffect;
             Colors colors = new Colors();
-            colors.Show();
+            colors.ShowDialog();
         }
     }
 }

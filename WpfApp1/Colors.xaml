@@ -11,7 +11,7 @@
             <RowDefinition Height="35"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" ForceCursor="True" Background="#F3AC122E">
+        <Border Grid.Row="0" ForceCursor="True" Background="{DynamicResource DarkColor}">
             <DockPanel Width="35" HorizontalAlignment="Right">
                 <Button Content="X" Style="{DynamicResource MiniButonlarCikis}" Margin="0,0,0,0" Click="Kapat"/>
             </DockPanel>
