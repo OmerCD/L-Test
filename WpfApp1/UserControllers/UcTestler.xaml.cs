@@ -53,6 +53,9 @@ namespace WpfApp1.UserControllers
             };
             MainWindow.Durum(BTestler.Insert(item) > 0 ? "Kayıt Başarılı" : "Kayıt Başarısız");
 
+            //TODO: Veritabanına kaydetme konusunda bir sıkıntı lakin textboxlara nasıl erişeceğim? Önceden kaydederken nesnelere buradan eriştiğimiz için kolayca ekleyebiliyorduk.
+            //TODO: Şimdi sınıftan instance yapıp oluşturuyorum. Ne yapmalı? Nesneleri oluşturduğum sınıf TestOlustur. Veritabanı kısmı ben de. Sadece o nesnelere kolayca nasıl erişebilirim onu hallet
+
             //var soru=new Sorular
             //{
             //       TestId = item.TestId,
@@ -102,12 +105,10 @@ namespace WpfApp1.UserControllers
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             var testler = BTestler.SelectAll();
-            if (testler!=null)
+            if (testler == null) return;
+            foreach (var item in testler)
             {
-                foreach (var item in testler)
-                {
-                    TestDuzeltCombobox.Items.Add(item.TestAdi);
-                }
+                TestDuzeltCombobox.Items.Add(item.TestAdi);
             }
         }
 
@@ -133,12 +134,14 @@ namespace WpfApp1.UserControllers
             tst.AddControlsToDockPanel(myBinding, SoruDock);
 
             var sorular= BSorular.SelectAll(testId);
+            //var cevaplar=BCevaplar //Business Katmanını oluşturduğumda bu kısmı yazacağım. Sorun yok.
             var i = 0;
             foreach (var item in sorular)
             {
                 tst.Textbox[i].Text = item.Soru;
                 i++;
             }
+
         }
     }
 }
