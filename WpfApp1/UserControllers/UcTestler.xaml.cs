@@ -28,6 +28,8 @@ namespace WpfApp1.UserControllers
 
         private int _cevap;
         private int _soru;
+        private TextBox[] _tanımlanmışSorularTxtBoxes;
+        private CheckBox[,] _tanımlanmışŞıklarChckBoxes;
         private void Olustur_Click(object sender, RoutedEventArgs e)
         {                    
             var myBinding = new Binding // Bir üst kontrolün genişliğini almanı sağlayan kod.
@@ -40,7 +42,7 @@ namespace WpfApp1.UserControllers
             SoruDock.Children.Clear();
             var tst = new TestGoster(_soru, _cevap);
             tst.ControlCreation();
-            tst.AddControlsToDockPanel(myBinding, SoruDock);
+            (_tanımlanmışSorularTxtBoxes, _tanımlanmışŞıklarChckBoxes) = tst.AddControlsToDockPanel(myBinding, SoruDock);
         }
         private void Kaydet(object sender, RoutedEventArgs e)
         {
@@ -53,8 +55,7 @@ namespace WpfApp1.UserControllers
             };
             MainWindow.Durum(BTestler.Insert(item) > 0 ? "Kayıt Başarılı" : "Kayıt Başarısız");
 
-            //TODO: Veritabanına kaydetme konusunda bir sıkıntı lakin textboxlara nasıl erişeceğim? Önceden kaydederken nesnelere buradan eriştiğimiz için kolayca ekleyebiliyorduk.
-            //TODO: Şimdi sınıftan instance yapıp oluşturuyorum. Ne yapmalı? Nesneleri oluşturduğum sınıf TestOlustur. Veritabanı kısmı ben de. Sadece o nesnelere kolayca nasıl erişebilirim onu hallet
+            //TODO: Kullanıcılara göndermek için XML dosyası oluşturulacak.
 
             //var soru=new Sorular
             //{
@@ -110,6 +111,7 @@ namespace WpfApp1.UserControllers
             {
                 TestDuzeltCombobox.Items.Add(item.TestAdi);
             }
+            TestDuzeltCombobox.SelectedIndex = 0;
         }
 
         private void TestDuzeltCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -131,7 +133,7 @@ namespace WpfApp1.UserControllers
             SoruDock.Children.Clear();
             var tst = new TestGoster(soruSayisi, cevapSayisi);
             tst.ControlCreation();
-            tst.AddControlsToDockPanel(myBinding, SoruDock);
+            (_tanımlanmışSorularTxtBoxes, _tanımlanmışŞıklarChckBoxes) = tst.AddControlsToDockPanel(myBinding, SoruDock);
 
             var sorular= BSorular.SelectAll(testId);
             //var cevaplar=BCevaplar //Business Katmanını oluşturduğumda bu kısmı yazacağım. Sorun yok.
@@ -140,13 +142,13 @@ namespace WpfApp1.UserControllers
             if (sorular == null) return;
             foreach (var item in sorular)
             {
-                tst.Textbox[i].Text = item.Soru;
+                tst.SoruTextBoxes[i].Text = item.Soru;
                 var cevaplar = BCevaplar.SelectAll(item.SoruId);
                 if (cevaplar == null) return;
                 foreach (var item2 in cevaplar)
                 {
                     tst.Cevaptextbox[i, q].Text = item2.Cevap;
-                    tst.CheckBox[i, q].IsChecked = item2.Dogru == 1;
+                    tst.CevapCheckBoxes[i, q].IsChecked = item2.Dogru == 1;
                     q++;
                 }
                 q = 0;

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -13,10 +14,10 @@ namespace WpfApp1.Classes
         public readonly DockPanel[] DockPanel;
         public readonly Label[] Label;
         public readonly DockPanel[] DockPanel2;
-        public readonly TextBox[] Textbox;
+        public readonly TextBox[] SoruTextBoxes;
         public readonly Separator[] Sp;
         public readonly TextBox[,] Cevaptextbox;
-        public readonly CheckBox[,] CheckBox;
+        public readonly CheckBox[,] CevapCheckBoxes;
         public TestGoster(int soru, int cevap)
         {
             _soru = soru;
@@ -24,10 +25,10 @@ namespace WpfApp1.Classes
             DockPanel = new DockPanel[_soru];
             Label = new Label[_soru];
             DockPanel2 = new DockPanel[_soru];
-            Textbox = new TextBox[_soru];
+            SoruTextBoxes = new TextBox[_soru];
             Sp = new Separator[_soru];
              Cevaptextbox = new TextBox[_soru, _cevap];
-            CheckBox = new CheckBox[_soru, _cevap];
+            CevapCheckBoxes = new CheckBox[_soru, _cevap];
         }
 
         public void ControlCreation()//Kontroller Burada Tanımlandı.
@@ -46,10 +47,10 @@ namespace WpfApp1.Classes
                     Content = "Soru " + (i + 1) + ":",
                     Style = FindResource("Label") as Style,
                     Width = 120,
-                    Height = double.NaN, // Auto için bunu yazdık. Niye acaba?
+                    Height = double.NaN, // Auto için bunu yazdık. Niye acaba?Cevap : Onu öyle yapmışlar. Yapana sormak gerek.
                     Background = Brushes.CornflowerBlue
                 };
-                Textbox[i] = new TextBox
+                SoruTextBoxes[i] = new TextBox
                 {
                     Style = FindResource("TextBox") as Style,
                     Name = $"SoruTextBox{i}"
@@ -67,7 +68,7 @@ namespace WpfApp1.Classes
                 };
                 for (var k = 0; k < _cevap; k++)
                 {
-                    CheckBox[i, k] = new CheckBox
+                    CevapCheckBoxes[i, k] = new CheckBox
                     {
                         Name = $"Soru{i}Cevap{k}",
                         Margin = new Thickness(0, 5, 0, 5)
@@ -78,11 +79,11 @@ namespace WpfApp1.Classes
                         Style = FindResource("TextBox") as Style,
                         MinWidth = 600
                     };
-                    CheckBox[i, k].Content = Cevaptextbox[i, k];
+                    CevapCheckBoxes[i, k].Content = Cevaptextbox[i, k];
                 }
             }
         }
-        public void AddControlsToDockPanel(BindingBase binding, DockPanel soruDock)
+        public (TextBox[] Sorular, CheckBox[,] Şıklar) AddControlsToDockPanel(BindingBase binding, DockPanel soruDock)
         {
             for (var i = 0; i < _soru; i++) // Kontroller Burada DockPanellere Eklendi.
             {
@@ -90,18 +91,19 @@ namespace WpfApp1.Classes
                 System.Windows.Controls.DockPanel.SetDock(DockPanel2[i], Dock.Top);
 
                 DockPanel[i].Children.Add(Label[i]);
-                DockPanel[i].Children.Add(Textbox[i]);
-                BindingOperations.SetBinding(Textbox[i], WidthProperty, binding);
+                DockPanel[i].Children.Add(SoruTextBoxes[i]);
+                BindingOperations.SetBinding(SoruTextBoxes[i], WidthProperty, binding);
                 soruDock.Children.Add(DockPanel[i]);
                 soruDock.Children.Add(DockPanel2[i]);
                 for (var k = 0; k < _cevap; k++)
                 {
-                    System.Windows.Controls.DockPanel.SetDock(CheckBox[i, k], Dock.Top);
-                    DockPanel2[i].Children.Add(CheckBox[i, k]);
+                    System.Windows.Controls.DockPanel.SetDock(CevapCheckBoxes[i, k], Dock.Top);
+                    DockPanel2[i].Children.Add(CevapCheckBoxes[i, k]);
 
                 }
                 DockPanel2[i].Children.Add(Sp[i]);
             }
+            return (SoruTextBoxes, CevapCheckBoxes);
         }
     }
 }
