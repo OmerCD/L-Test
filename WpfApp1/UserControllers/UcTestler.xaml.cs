@@ -136,12 +136,22 @@ namespace WpfApp1.UserControllers
             var sorular= BSorular.SelectAll(testId);
             //var cevaplar=BCevaplar //Business Katmanını oluşturduğumda bu kısmı yazacağım. Sorun yok.
             var i = 0;
+            var q = 0;
+            if (sorular == null) return;
             foreach (var item in sorular)
             {
                 tst.Textbox[i].Text = item.Soru;
+                var cevaplar = BCevaplar.SelectAll(item.SoruId);
+                if (cevaplar == null) return;
+                foreach (var item2 in cevaplar)
+                {
+                    tst.Cevaptextbox[i, q].Text = item2.Cevap;
+                    tst.CheckBox[i, q].IsChecked = item2.Dogru == 1;
+                    q++;
+                }
+                q = 0;
                 i++;
             }
-
         }
     }
 }

@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Business Logic Layer\BCevaplar.cs" />
     <Compile Include="Classes\Business Logic Layer\BKullanicilar.cs" />
     <Compile Include="Classes\Business Logic Layer\BSorular.cs" />
     <Compile Include="Classes\Business Logic Layer\BTestler.cs" />

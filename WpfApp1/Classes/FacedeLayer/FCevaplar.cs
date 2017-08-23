@@ -37,20 +37,19 @@ namespace WpfApp1.Classes.FacedeLayer
             return com.ExecuteNonQuery();
         }
 
-        public static List<Cevaplar> Select(int testId, int soruId)
+        public static List<Cevaplar> SelectAll(int soruId)
         {
             DatabaseManager.BaglantiAc();
             List<Cevaplar> itemList = null;
-            SQLiteCommand com = new SQLiteCommand("SELECT * FROM cevaplar WHERE TestId=@TestId AND SoruId=@SoruId", DatabaseManager.Baglanti);
-            com.Parameters.AddWithValue("@TestId", testId);
+            var com = new SQLiteCommand("SELECT * FROM cevaplar WHERE SoruId=@SoruId", DatabaseManager.Baglanti);
             com.Parameters.AddWithValue("@SoruId", soruId);
-            SQLiteDataReader rdr = com.ExecuteReader();
+            var rdr = com.ExecuteReader();
             if (rdr.HasRows)
             {
                 itemList = new List<Cevaplar>();
                 while (rdr.Read())
                 {
-                    Cevaplar item = new Cevaplar
+                    var item = new Cevaplar
                     {
                         CevapId = Convert.ToInt16(rdr["CevapId"]),
                         SoruId = Convert.ToInt16(rdr["SoruId"]),
