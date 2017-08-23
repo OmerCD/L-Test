@@ -97,7 +97,6 @@ C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\WpfApp1.csprojResolveAssemblyRef
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\MainWindow.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcGirenKullanici.g.cs
-C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcTest.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcTestler.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\YanEkran.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\App.g.cs
@@ -107,7 +106,6 @@ C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\App.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\MainWindow.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcGirenKullanici.baml
-C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcTest.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcTestler.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\YanEkran.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\WpfApp1.g.resources

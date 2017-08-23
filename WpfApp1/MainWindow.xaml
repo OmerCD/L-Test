@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
+        RenderOptions.BitmapScalingMode="HighQuality"
         Title="MainWindow" Height="768" Width="1024" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" ResizeMode="NoResize">
     <Grid x:Name="AnaGrid" Loaded="AnaGrid_Loaded">
         <Grid.RowDefinitions>
@@ -37,14 +38,26 @@
                     <Button Style="{DynamicResource MenuButonlar}" Click="Sonuclar" >
                         <Label Content="Sonuçlar" Style="{DynamicResource UstMenuLabel}"/>
                     </Button>
-                    <DockPanel HorizontalAlignment="Right" >
-                        <Button Style="{DynamicResource MediumButonlar}" Click="Colors">
-                            <Image Source="Images/Renkler.png" RenderOptions.BitmapScalingMode="HighQuality" Width="30" />
-                        </Button>
-                        <Button Style="{DynamicResource MediumButonlar}" >
-                            <Image Source="Images/Menu.png" RenderOptions.BitmapScalingMode="HighQuality" Width="25"/>
-                        </Button>
-                    </DockPanel>
+                    <Menu HorizontalAlignment="Right" Background="{x:Null}">
+                        <MenuItem Height="50" Background="{DynamicResource MediumColor}" Click="Colors" >
+                            <MenuItem.Header>
+                                <Image Source="Images/Renkler.png" Width="30"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <MenuItem Height="50" Background="{DynamicResource MediumColor}">
+                            <MenuItem.Header>
+                                <Image Source="Images/Menu.png" Width="30"></Image>
+                            </MenuItem.Header>
+                            <MenuItem>
+                                <MenuItem.Icon>
+                                    <Image Source="Images/Hakkinda.png" RenderOptions.BitmapScalingMode="HighQuality"></Image>
+                                </MenuItem.Icon>
+                                <MenuItem.Header>
+                                    <TextBlock Text="Hakkında" Style="{StaticResource TextBlock}" Foreground="Black" Padding="4"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                        </MenuItem>
+                    </Menu>
                 </DockPanel>
             </Grid>
         </Border>

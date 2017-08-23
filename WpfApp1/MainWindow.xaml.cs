@@ -104,12 +104,10 @@ namespace WpfApp1
 
         private void Colors(object sender, RoutedEventArgs e)
         {
-            Storyboard myStoryboard = new Storyboard();
-            DoubleAnimation myDoubleAnimation = new DoubleAnimation();
-            BlurEffect blurEffect = new BlurEffect();
-            blurEffect.Radius = 5.0;
+            var blurEffect = new BlurEffect {Radius = 5.0};
             Effect = blurEffect;
-            Colors colors = new Colors();
+            YanEkran.Effect = blurEffect;
+            var colors = new Colors();
             colors.ShowDialog();
         }
     }

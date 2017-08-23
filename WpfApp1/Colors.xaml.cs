@@ -38,15 +38,6 @@ namespace WpfApp1
             Application.Current.Resources["MediumColorAnimasyon"] = new ColorPallet().MediumColour(ellipse);;
 
             MainWindow.Durum(ellipse.Name);
-                //foreach (Window window in Application.Current.Windows)
-                //{
-                //    if (window.GetType() != typeof(MainWindow)) continue;
-                //    ((MainWindow)window).UstBorder.Background = new ColorPallet().DarkColour(ellipse);
-                //    ((MainWindow)window).UstBorderAlt.Background = new ColorPallet().MediumColour(ellipse);
-                //    ((MainWindow) window).AltBorder.Background = new ColorPallet().MediumColour(ellipse);
-                //    ((MainWindow)window).YanEkran.YanUstBorder.Background = new ColorPallet().DarkColour(ellipse);
-                //    ((MainWindow)window).YanEkran.TextBlock.Background = new ColorPallet().MediumColour(ellipse);
-                //}
         }
 
         private void Kapat(object sender, RoutedEventArgs e)
@@ -54,8 +45,14 @@ namespace WpfApp1
             var blurEffect = new BlurEffect {Radius = 0.0};
             foreach (Window window in Application.Current.Windows)
             {
-                if (window.GetType() != typeof(MainWindow)) continue;
-                ((MainWindow)window).Effect = blurEffect;
+                if (window.GetType() == typeof(MainWindow))
+                {
+                    ((MainWindow)window).Effect = blurEffect;
+                }
+                if (window.GetType() == typeof(YanEkran))
+                {
+                    ((YanEkran) window).Effect = blurEffect;
+                }               
             }
             Close();
         }
