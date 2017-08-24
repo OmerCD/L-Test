@@ -100,7 +100,6 @@
     <Compile Include="Classes\FacedeLayer\FSorular.cs" />
     <Compile Include="Classes\FacedeLayer\FTestler.cs" />
     <Compile Include="Classes\Server.cs" />
-    <Compile Include="Classes\FacedeLayer\SoruKayit.cs" />
     <Compile Include="Classes\EntityLayer\Testler.cs" />
     <Compile Include="Classes\TestGoster.cs" />
     <Compile Include="Classes\UserControlClass.cs" />

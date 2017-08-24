@@ -16,7 +16,7 @@ namespace WpfApp1.Classes
         public readonly DockPanel[] DockPanel2;
         public readonly TextBox[] SoruTextBoxes;
         public readonly Separator[] Sp;
-        public readonly TextBox[,] Cevaptextbox;
+        public readonly TextBox[,] CevapTextboxes;
         public readonly CheckBox[,] CevapCheckBoxes;
         public TestGoster(int soru, int cevap)
         {
@@ -27,7 +27,7 @@ namespace WpfApp1.Classes
             DockPanel2 = new DockPanel[_soru];
             SoruTextBoxes = new TextBox[_soru];
             Sp = new Separator[_soru];
-             Cevaptextbox = new TextBox[_soru, _cevap];
+            CevapTextboxes = new TextBox[_soru, _cevap];
             CevapCheckBoxes = new CheckBox[_soru, _cevap];
         }
 
@@ -53,6 +53,7 @@ namespace WpfApp1.Classes
                 SoruTextBoxes[i] = new TextBox
                 {
                     Style = FindResource("TextBox") as Style,
+                    FontFamily = new FontFamily("Titillium Web SemiBold"),
                     Name = $"SoruTextBox{i}"
                 };
                 DockPanel2[i] = new DockPanel
@@ -74,16 +75,16 @@ namespace WpfApp1.Classes
                         Margin = new Thickness(0, 5, 0, 5)
                     };
                     //_checkBox[i, k].Checked += CheckBox_Checked;
-                    Cevaptextbox[i, k] = new TextBox
+                    CevapTextboxes[i, k] = new TextBox
                     {
                         Style = FindResource("TextBox") as Style,
                         MinWidth = 600
                     };
-                    CevapCheckBoxes[i, k].Content = Cevaptextbox[i, k];
+                    CevapCheckBoxes[i, k].Content = CevapTextboxes[i, k];
                 }
             }
         }
-        public (TextBox[] Sorular, CheckBox[,] Şıklar) AddControlsToDockPanel(BindingBase binding, DockPanel soruDock)
+        public (TextBox[] Sorular,TextBox[,] Cevaplar, CheckBox[,] Şıklar) AddControlsToDockPanel(BindingBase binding, DockPanel soruDock)
         {
             for (var i = 0; i < _soru; i++) // Kontroller Burada DockPanellere Eklendi.
             {
@@ -103,7 +104,7 @@ namespace WpfApp1.Classes
                 }
                 DockPanel2[i].Children.Add(Sp[i]);
             }
-            return (SoruTextBoxes, CevapCheckBoxes);
+            return (SoruTextBoxes,CevapTextboxes, CevapCheckBoxes);
         }
     }
 }

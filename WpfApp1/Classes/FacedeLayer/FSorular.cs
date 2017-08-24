@@ -16,7 +16,7 @@ namespace WpfApp1.Classes.FacedeLayer
             SQLiteCommand com = new SQLiteCommand("INSERT INTO sorular(TestId, Soru) VALUES(@TestId, @Soru); Select last_insert_rowid()", DatabaseManager.Baglanti);//
             com.Parameters.AddWithValue("@TestId", item.TestId);
             com.Parameters.AddWithValue("@Soru", item.Soru);
-            return (int)com.ExecuteScalar();
+            return Convert.ToInt16(com.ExecuteScalar());
         }
 
         public static int Update(Sorular item)

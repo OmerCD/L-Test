@@ -165,3 +165,4 @@ D:\Projeler\L-Test\WpfApp1\obj\Debug\UserControllers\UcSonuclar.g.cs
 D:\Projeler\L-Test\WpfApp1\obj\Debug\Colors.baml
 D:\Projeler\L-Test\WpfApp1\obj\Debug\UserControllers\UcSonuclar.baml
 D:\Projeler\L-Test\WpfApp1\bin\Debug\System.ValueTuple.dll
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\bin\Debug\System.ValueTuple.dll

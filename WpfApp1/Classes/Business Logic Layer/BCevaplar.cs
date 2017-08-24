@@ -14,5 +14,9 @@ namespace WpfApp1.Classes.Business_Logic_Layer
         {
             return FCevaplar.SelectAll(soruId);
         }
+        public static int Insert(Cevaplar item)
+        {
+            return FCevaplar.Insert(item);
+        }
     }
 }

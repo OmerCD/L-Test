@@ -18,7 +18,7 @@ namespace WpfApp1.Classes.FacedeLayer
             com.Parameters.AddWithValue("@SoruId", item.SoruId);
             com.Parameters.AddWithValue("@Cevap", item.Cevap);
             com.Parameters.AddWithValue("@Dogru", item.Dogru);
-            return (int)com.ExecuteScalar();
+            return com.ExecuteNonQuery();
         }
 
         public static int Update(Cevaplar item)

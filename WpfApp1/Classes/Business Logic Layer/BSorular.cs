@@ -14,5 +14,10 @@ namespace WpfApp1.Classes.Business_Logic_Layer
         {
             return FSorular.SelectAll(testId);
         }
+
+        public static int Insert(Sorular item)
+        {
+            return FSorular.Insert(item);
+        }
     }
 }

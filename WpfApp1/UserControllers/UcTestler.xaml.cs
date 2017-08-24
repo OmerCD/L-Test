@@ -28,8 +28,9 @@ namespace WpfApp1.UserControllers
 
         private int _cevap;
         private int _soru;
-        private TextBox[] _tanımlanmışSorularTxtBoxes;
-        private CheckBox[,] _tanımlanmışŞıklarChckBoxes;
+        private TextBox[] _soruTextBox;
+        private TextBox[,] _cevapTextBox;
+        private CheckBox[,] _cevapCheckBox;
         private void Olustur_Click(object sender, RoutedEventArgs e)
         {                    
             var myBinding = new Binding // Bir üst kontrolün genişliğini almanı sağlayan kod.
@@ -42,59 +43,62 @@ namespace WpfApp1.UserControllers
             SoruDock.Children.Clear();
             var tst = new TestGoster(_soru, _cevap);
             tst.ControlCreation();
-            (_tanımlanmışSorularTxtBoxes, _tanımlanmışŞıklarChckBoxes) = tst.AddControlsToDockPanel(myBinding, SoruDock);
+            (_soruTextBox, _cevapTextBox, _cevapCheckBox) = tst.AddControlsToDockPanel(myBinding, SoruDock);
         }
         private void Kaydet(object sender, RoutedEventArgs e)
         {
+            var cevapSayisi=Convert.ToInt16(CevapTextbox.Text);
+            var soruSayisi = Convert.ToInt16(SoruTextbox.Text);
             var item = new Testler
             {
                 TestAdi = TestTextbox.Text,
-                CevapSayisi = Convert.ToInt16(CevapTextbox.Text),
-                SoruSayisi = Convert.ToInt16(SoruTextbox.Text),
+                CevapSayisi = cevapSayisi,
+                SoruSayisi = soruSayisi,
                 Sure = Convert.ToInt16(SureTextbox.Text)
             };
-            MainWindow.Durum(BTestler.Insert(item) > 0 ? "Kayıt Başarılı" : "Kayıt Başarısız");
+            var testId = BTestler.Insert(item);
+            if (testId>= 0)
+            {
+                for (var i = 0; i < soruSayisi; i++)
+                {
+                    var soru = new Sorular
+                    {
+                        TestId = testId,
+                        Soru = _soruTextBox[i].Text
+                    };
+                    var soruId = BSorular.Insert(soru);
+
+                    if (soruId >= 0)
+                    {
+                        for (var j = 0; j < cevapSayisi; j++)
+                        {
+                            var cevap = new Cevaplar
+                            {
+                                SoruId = soruId,
+                                Cevap = _cevapTextBox[i, j].Text,
+                                Dogru = _cevapCheckBox[i, j].IsChecked == false ? 0 : 1
+                            };
+                            MainWindow.Durum(BCevaplar.Insert(cevap) >= 0 ? "Tüm Kayıtlar Başarılı" : "Kayıt Başarısız");
+                        }
+                    }
+                    else
+                    {
+                        MainWindow.Durum(soruId >= 0 ? "Soru Kayıtları Başarılı" : "Kayıt Başarısız");
+                    }
+                }
+            }
+            else
+            {
+                MainWindow.Durum(testId >= 0 ? "Test Kayıtları Başarılı" : "Kayıt Başarısız");
+            }
 
             //TODO: Kullanıcılara göndermek için XML dosyası oluşturulacak.
-
-            //var soru=new Sorular
-            //{
-            //       TestId = item.TestId,
-            //       Soru = ;
-            //}
-            //SoruSistemi SoruSistemiOlustur(short testId)
-            //{
-            //    var soruSis = new SoruSistemi(testId);
-            //    for (var i = 0; i < _soru; i++)
-            //    {
-            //        var checkBoxes = new List<CheckBox>();
-            //        for (var k = 0; k < _cevap; k++)
-            //        {
-            //            checkBoxes.Add(_checkBox[i, k]);
-            //        }
-            //        soruSis.SoruEkle(_textbox[i].Text, checkBoxes.ToArray());
-            //    }
-
-            //    return soruSis;
-            //}
-            //var test = TestTextbox.Text;
-            //var sure = Convert.ToInt32(SureTextbox.Text);
-            //if (DatabaseManager.Baglanti.State == ConnectionState.Closed)
-            //{
-            //    try
-            //    {
-            //        DatabaseManager.Baglanti.Open();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show("Hata Kodu: 0x04 " + ex.Message);
-            //    }
-            //}
-
-            //var sonuc = Convert.ToInt16(AddQuestion(test, sure));
-            //var soruSistemi = SoruSistemiOlustur(sonuc);
-
-            //soruSistemi.SorulariKaydet();
+            var testler = BTestler.SelectAll();
+            if (testler == null) return;
+            foreach (var test in testler)
+            {
+                TestDuzeltCombobox.Items.Add(test.TestAdi);
+            }
         }
 
         private void SayiKontrol(object sender, TextCompositionEventArgs e)
@@ -111,7 +115,6 @@ namespace WpfApp1.UserControllers
             {
                 TestDuzeltCombobox.Items.Add(item.TestAdi);
             }
-            TestDuzeltCombobox.SelectedIndex = 0;
         }
 
         private void TestDuzeltCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -133,13 +136,14 @@ namespace WpfApp1.UserControllers
             SoruDock.Children.Clear();
             var tst = new TestGoster(soruSayisi, cevapSayisi);
             tst.ControlCreation();
-            (_tanımlanmışSorularTxtBoxes, _tanımlanmışŞıklarChckBoxes) = tst.AddControlsToDockPanel(myBinding, SoruDock);
-
+            (_soruTextBox, _cevapTextBox, _cevapCheckBox) = tst.AddControlsToDockPanel(myBinding, SoruDock);
             var sorular= BSorular.SelectAll(testId);
-            //var cevaplar=BCevaplar //Business Katmanını oluşturduğumda bu kısmı yazacağım. Sorun yok.
+
             var i = 0;
             var q = 0;
             if (sorular == null) return;
+
+
             foreach (var item in sorular)
             {
                 tst.SoruTextBoxes[i].Text = item.Soru;
@@ -147,8 +151,8 @@ namespace WpfApp1.UserControllers
                 if (cevaplar == null) return;
                 foreach (var item2 in cevaplar)
                 {
-                    tst.Cevaptextbox[i, q].Text = item2.Cevap;
-                    tst.CevapCheckBoxes[i, q].IsChecked = item2.Dogru == 1;
+                    _cevapTextBox[i,q].Text = item2.Cevap;
+                    _cevapCheckBox[i,q].IsChecked = item2.Dogru == 1;
                     q++;
                 }
                 q = 0;
