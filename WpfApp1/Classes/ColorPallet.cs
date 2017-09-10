@@ -11,7 +11,7 @@ namespace WpfApp1.Classes
 {
     class ColorPallet
     {
-        public Brush DarkColour(Ellipse item)
+        public Brush DarkColor(Ellipse item)
         {
             var renk = (SolidColorBrush)item.Fill;
             var r = renk.Color.R-60;
@@ -20,18 +20,7 @@ namespace WpfApp1.Classes
             var yeniRenk = new SolidColorBrush(Color.FromArgb(255, (byte)r, (byte)g, (byte)b));
             return yeniRenk;
         }
-        public Brush DarkColourAnimasyon(Ellipse item)
-        {
-            var renk = (SolidColorBrush)item.Fill;
-            var r = renk.Color.R - 30;
-            var g = renk.Color.G + 30;
-            var b = renk.Color.B + 30;
-            var yeniRenk = new SolidColorBrush(Color.FromArgb(255, (byte)r, (byte)g, (byte)b));
-            return yeniRenk;
-        }
-
-
-        public Brush MediumColour(Ellipse item)
+        public Brush DarkColorAnimasyon(Ellipse item)
         {
             var renk = (SolidColorBrush)item.Fill;
             var r = renk.Color.R - 30;
@@ -40,17 +29,28 @@ namespace WpfApp1.Classes
             var yeniRenk = new SolidColorBrush(Color.FromArgb(255, (byte)r, (byte)g, (byte)b));
             return yeniRenk;
         }
-        public Brush MediumColourAnimasyon(Ellipse item)
+
+
+        public Brush MediumColor(Ellipse item)
         {
             var renk = (SolidColorBrush)item.Fill;
-            var r = renk.Color.R - 15;
-            var g = renk.Color.G - 15;
-            var b = renk.Color.B - 15;
+            var r = renk.Color.R - 20;
+            var g = renk.Color.G - 20;
+            var b = renk.Color.B - 20;
+            var yeniRenk = new SolidColorBrush(Color.FromArgb(255, (byte)r, (byte)g, (byte)b));
+            return yeniRenk;
+        }
+        public Brush MediumColorAnimasyon(Ellipse item)
+        {
+            var renk = (SolidColorBrush)item.Fill;
+            var r = renk.Color.R - 10;
+            var g = renk.Color.G - 10;
+            var b = renk.Color.B - 10;
             var yeniRenk = new SolidColorBrush(Color.FromArgb(255, (byte)r, (byte)g, (byte)b));
             return yeniRenk;
         }
 
-        public Brush LightColour(Ellipse item)
+        public Brush SoftColor(Ellipse item)
         {
             var renk = (SolidColorBrush)item.Fill;
             var r = renk.Color.R;

@@ -31,18 +31,26 @@ namespace WpfApp1
         private void ChangeColour(object sender, MouseButtonEventArgs e)
         {
             var ellipse = (Ellipse)e.Source;
-            Application.Current.Resources["DarkColor"] = new ColorPallet().DarkColour(ellipse);
-            Application.Current.Resources["DarkColorAnimasyon"] = new ColorPallet().DarkColour(ellipse);
+            Application.Current.Resources["DarkColor"] = new ColorPallet().DarkColorAnimasyon(ellipse);
+            Application.Current.Resources["DarkColorAnimasyon"] = new ColorPallet().DarkColor(ellipse);
 
-            Application.Current.Resources["MediumColor"] = new ColorPallet().MediumColour(ellipse);
-            Application.Current.Resources["MediumColorAnimasyon"] = new ColorPallet().MediumColour(ellipse);;
+            Application.Current.Resources["MediumColor"] = new ColorPallet().MediumColorAnimasyon(ellipse);
+            Application.Current.Resources["MediumColorAnimasyon"] = new ColorPallet().MediumColor(ellipse);
 
-            MainWindow.Durum(ellipse.Name);
+            Application.Current.Resources["SoftColor"] = new ColorPallet().SoftColor(ellipse);
+
+            Efekt();
+            Close();
         }
 
         private void Kapat(object sender, RoutedEventArgs e)
         {
-            var blurEffect = new BlurEffect {Radius = 0.0};
+            Efekt();
+            Close();
+        }
+        private void Efekt()
+        {
+            var blurEffect = new BlurEffect { Radius = 0.0 };
             foreach (Window window in Application.Current.Windows)
             {
                 if (window.GetType() == typeof(MainWindow))
@@ -51,10 +59,9 @@ namespace WpfApp1
                 }
                 if (window.GetType() == typeof(YanEkran))
                 {
-                    ((YanEkran) window).Effect = blurEffect;
-                }               
+                    ((YanEkran)window).Effect = blurEffect;
+                }
             }
-            Close();
         }
     }
 }
