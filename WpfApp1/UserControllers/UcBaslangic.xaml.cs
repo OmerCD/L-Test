@@ -38,10 +38,10 @@ namespace WpfApp1
 
         private void TestiBaslat(object sender, RoutedEventArgs e)
         {
-            var testler = BTestler.Select(TestAdiComboBox.SelectedValue.ToString());
-            int testId = Convert.ToInt16(testler.TestId);
-            int soruSayisi = Convert.ToInt16(testler.SoruSayisi);
-            int cevapSayisi = Convert.ToInt16(testler.CevapSayisi);
+            var test = BTestler.Select(TestAdiComboBox.SelectedValue.ToString());
+            int testId = Convert.ToInt16(test.TestId);
+            int soruSayisi = Convert.ToInt16(test.SoruSayisi);
+            int cevapSayisi = Convert.ToInt16(test.CevapSayisi);
             string[] sorular = new string[soruSayisi];
             string[,] cevaplar = new string[soruSayisi, cevapSayisi];
 
@@ -66,6 +66,12 @@ namespace WpfApp1
             TxtDonustur txt = new TxtDonustur();
             txt.Yazdir(sorular, cevaplar, TestAdiComboBox.SelectedValue.ToString());
 
+        }
+
+        private void TestAdiComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var test = BTestler.Select(TestAdiComboBox.SelectedValue.ToString());
+            Sure.Text = test.Sure.ToString();
         }
     }
 }
