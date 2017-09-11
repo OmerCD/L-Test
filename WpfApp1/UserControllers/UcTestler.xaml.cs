@@ -125,16 +125,13 @@ namespace WpfApp1.UserControllers
             SoruDuzeltTextbox.Text = testler.SoruSayisi.ToString();
             CevapDuzeltTextbox.Text = testler.CevapSayisi.ToString();
 
-            int soruSayisi= Convert.ToInt16(testler.SoruSayisi);
-            int cevapSayisi = Convert.ToInt16(testler.CevapSayisi);
-
             var myBinding = new Binding // Bir üst kontrolün genişliğini almanı sağlayan kod.
             {
                 Path = new PropertyPath("soruDock")
             };
 
             SoruDock.Children.Clear();
-            var tst = new TestGoster(soruSayisi, cevapSayisi);
+            var tst = new TestGoster(Convert.ToInt16(testler.SoruSayisi), Convert.ToInt16(testler.CevapSayisi));
             tst.ControlCreation();
             (_soruTextBox, _cevapTextBox, _cevapCheckBox) = tst.AddControlsToDockPanel(myBinding, SoruDock);
             var sorular= BSorular.SelectAll(testId);

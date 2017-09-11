@@ -111,7 +111,7 @@
                     HorizontalContentAlignment="Center" 
                     Background="LightGray"/>
                 <ComboBox  x:Name="TestAdiComboBox" Height="30" FontFamily="Titillium Web" FontSize="16" />
-                <Button  Click="OdayiOlustur" x:Name="TestBaslatButton" Margin="0,10,0,0" Height="80" Style="{DynamicResource BaslangicTestButon}">
+                <Button  Click="TestiBaslat" x:Name="TestBaslatButton" Margin="0,10,0,0" Height="80" Style="{DynamicResource BaslangicTestButon}">
                     <Label Content="{StaticResource TestiBaslatString}" Foreground="White"  FontFamily="Titillium Web SemiBold" FontSize="24"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 </Button>
             </StackPanel>

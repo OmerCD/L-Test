@@ -102,6 +102,7 @@
     <Compile Include="Classes\Server.cs" />
     <Compile Include="Classes\EntityLayer\Testler.cs" />
     <Compile Include="Classes\TestGoster.cs" />
+    <Compile Include="Classes\TxtDonustur.cs" />
     <Compile Include="Classes\UserControlClass.cs" />
     <Compile Include="Colors.xaml.cs">
       <DependentUpon>Colors.xaml</DependentUpon>
