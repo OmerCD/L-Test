@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Client"
+             BackgroundColor="LightBlue"
+             x:Class="Client.MainPage">
+    <StackLayout VerticalOptions="Center">
+        <Label x:Name="Label01" x:FieldModifier="public" Text="L-Test Uygulamasına Hoşgeldiniz!" 
+            VerticalOptions="Start" HorizontalOptions="Center"  FontFamily="Titillium Web SemiBold"/>
+        <Entry x:Name="Entry01" x:FieldModifier="public" Placeholder="Kullanıcı Adı" HorizontalTextAlignment="Center" HeightRequest="50" WidthRequest="200"
+            HorizontalOptions="Center" VerticalOptions="Center" FontFamily="Titillium Web SemiBold"/>
+        <Entry x:Name="Entry02" x:FieldModifier="public" Placeholder="Şifre" IsPassword="true"  HorizontalTextAlignment="Center" HeightRequest="50" WidthRequest="200"
+            HorizontalOptions="Center" VerticalOptions="Center" FontFamily="Titillium Web SemiBold" StyleClass="Header"/>
+    </StackLayout>
+</ContentPage>
