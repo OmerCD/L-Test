@@ -14,7 +14,7 @@ namespace Client
 		{
 			InitializeComponent();
 
-			MainPage = new Giris();
+			MainPage = new TestSayfasi();
 
 		}
 

@@ -56,3 +56,14 @@ C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\Xamarin.Forms.Them
 C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\ModernHttpClient.dll.mdb
 C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\android\assets\ModernHttpClient.dll.mdb
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\res\drawable\mobilarkaplan.png
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\Client.Droid.TestSayfasi.xaml.g.cs
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\ExifLib.dll
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\XLabs.Core.dll
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\XLabs.Forms.dll
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\XLabs.Forms.Droid.dll
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\XLabs.IOC.dll
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\XLabs.Platform.dll
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\XLabs.Platform.Droid.dll
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\XLabs.Serialization.dll
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\RadialProgress.Android.dll

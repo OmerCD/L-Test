@@ -99,10 +99,12 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "Client.Android.dll" comes first in this list. */
 		"Client.Android.dll",
+		"ExifLib.dll",
 		"FormsViewGroup.dll",
 		"ModernHttpClient.dll",
 		"Newtonsoft.Json.dll",
 		"OkHttp.dll",
+		"RadialProgress.Android.dll",
 		"Xamarin.Android.Support.Animated.Vector.Drawable.dll",
 		"Xamarin.Android.Support.Design.dll",
 		"Xamarin.Android.Support.v4.dll",
@@ -120,6 +122,13 @@ class MonoPackageManager_Resources {
 		"Xamarin.Forms.Theme.Dark.dll",
 		"Xamarin.Forms.Theme.Light.dll",
 		"Xamarin.Forms.Xaml.dll",
+		"XLabs.Core.dll",
+		"XLabs.Forms.dll",
+		"XLabs.Forms.Droid.dll",
+		"XLabs.IOC.dll",
+		"XLabs.Platform.dll",
+		"XLabs.Platform.Droid.dll",
+		"XLabs.Serialization.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

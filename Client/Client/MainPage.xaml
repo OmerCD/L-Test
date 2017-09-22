@@ -1,15 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:progress="clr-namespace:Client.M_CustomControls"
              xmlns:local="clr-namespace:Client"
-             BackgroundColor="LightBlue"
+             Title="L-Test"
+             BackgroundColor="DarkSlateGray"
              x:Class="Client.MainPage">
-    <StackLayout VerticalOptions="Center">
-        <Label x:Name="Label01" x:FieldModifier="public" Text="L-Test Uygulamasına Hoşgeldiniz!" 
-            VerticalOptions="Start" HorizontalOptions="Center"  FontFamily="Titillium Web SemiBold"/>
-        <Entry x:Name="Entry01" x:FieldModifier="public" Placeholder="Kullanıcı Adı" HorizontalTextAlignment="Center" HeightRequest="50" WidthRequest="200"
-            HorizontalOptions="Center" VerticalOptions="Center" FontFamily="Titillium Web SemiBold"/>
-        <Entry x:Name="Entry02" x:FieldModifier="public" Placeholder="Şifre" IsPassword="true"  HorizontalTextAlignment="Center" HeightRequest="50" WidthRequest="200"
-            HorizontalOptions="Center" VerticalOptions="Center" FontFamily="Titillium Web SemiBold" StyleClass="Header"/>
-    </StackLayout>
+    <Grid>
+        <Grid HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="250" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0"  x:Name="Label01" HorizontalTextAlignment="Center" Text="L-Test Uygulamasına Hoşgeldiniz!" 
+            VerticalOptions="Start" HorizontalOptions="Center"  FontFamily="Titillium Web SemiBold" StyleClass="Header" TextColor="White"/>
+            <Frame CornerRadius="15" BackgroundColor="AntiqueWhite" Grid.Column="0" Grid.Row="1">
+                <StackLayout VerticalOptions="Center">
+                    <Entry x:Name="Entry01"  Placeholder="Kullanıcı Adı" HorizontalTextAlignment="Center" HeightRequest="50" WidthRequest="200"
+            HorizontalOptions="Center" VerticalOptions="Center" FontFamily="Titillium Web SemiBold" TextColor="Black"/>
+                    <Entry x:Name="Entry02" Placeholder="Şifre" IsPassword="true"  HorizontalTextAlignment="Center" HeightRequest="50" WidthRequest="200"
+            HorizontalOptions="Center" VerticalOptions="Center" FontFamily="Titillium Web SemiBold" />
+                    <Button Text="Giriş Yap" StyleClass="Info"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                        <Label Text="Üyeliği Hatırla" Margin="0,4,0,0"/>
+                        <Switch/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Column="0" Grid.Row="2">
+                <Label Text="Şifremi Unuttum" StyleClass="Inverse"/>
+                <Label Text="Yeni Üyelik" Margin="15,0,0,0" StyleClass="Inverse"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
 </ContentPage>
