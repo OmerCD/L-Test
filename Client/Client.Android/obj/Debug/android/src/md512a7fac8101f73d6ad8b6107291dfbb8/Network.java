@@ -16,7 +16,7 @@ public class Network
 	}
 
 
-	public Network () throws java.lang.Throwable
+	public Network ()
 	{
 		super ();
 		if (getClass () == Network.class)

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
-  <Jars></Jars>
+  <Jars>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\__library_projects__\FormsViewGroup\library_project_imports\formsviewgroup.jar;C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\__library_projects__\OkHttp\library_project_imports\okhttp-2.3.0-jar-with-dependencies.jar</Jars>
   <ResolvedResourceDirectories>
     <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\__library_projects__\ModernHttpClient\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\__library_projects__\RadialProgress.Android\library_project_imports\res</ResolvedResourceDirectory>

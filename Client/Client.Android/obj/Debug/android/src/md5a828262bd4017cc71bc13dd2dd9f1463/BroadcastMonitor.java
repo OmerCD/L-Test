@@ -15,7 +15,7 @@ public abstract class BroadcastMonitor
 	}
 
 
-	public BroadcastMonitor () throws java.lang.Throwable
+	public BroadcastMonitor ()
 	{
 		super ();
 		if (getClass () == BroadcastMonitor.class)

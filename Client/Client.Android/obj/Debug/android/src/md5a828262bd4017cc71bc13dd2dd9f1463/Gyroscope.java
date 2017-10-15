@@ -18,7 +18,7 @@ public class Gyroscope
 	}
 
 
-	public Gyroscope () throws java.lang.Throwable
+	public Gyroscope ()
 	{
 		super ();
 		if (getClass () == Gyroscope.class)

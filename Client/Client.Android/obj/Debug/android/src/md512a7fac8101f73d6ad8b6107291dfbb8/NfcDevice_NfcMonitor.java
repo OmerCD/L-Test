@@ -16,7 +16,7 @@ public class NfcDevice_NfcMonitor
 	}
 
 
-	public NfcDevice_NfcMonitor () throws java.lang.Throwable
+	public NfcDevice_NfcMonitor ()
 	{
 		super ();
 		if (getClass () == NfcDevice_NfcMonitor.class)

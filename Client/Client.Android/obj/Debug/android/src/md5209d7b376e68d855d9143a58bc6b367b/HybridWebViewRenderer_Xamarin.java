@@ -16,14 +16,14 @@ public class HybridWebViewRenderer_Xamarin
 	}
 
 
-	public HybridWebViewRenderer_Xamarin () throws java.lang.Throwable
+	public HybridWebViewRenderer_Xamarin ()
 	{
 		super ();
 		if (getClass () == HybridWebViewRenderer_Xamarin.class)
 			mono.android.TypeManager.Activate ("XLabs.Forms.Controls.HybridWebViewRenderer+Xamarin, XLabs.Forms.Droid, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
-	public HybridWebViewRenderer_Xamarin (md5209d7b376e68d855d9143a58bc6b367b.HybridWebViewRenderer p0) throws java.lang.Throwable
+	public HybridWebViewRenderer_Xamarin (md5209d7b376e68d855d9143a58bc6b367b.HybridWebViewRenderer p0)
 	{
 		super ();
 		if (getClass () == HybridWebViewRenderer_Xamarin.class)

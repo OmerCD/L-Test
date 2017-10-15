@@ -17,7 +17,7 @@ public class TouchListener
 	}
 
 
-	public TouchListener () throws java.lang.Throwable
+	public TouchListener ()
 	{
 		super ();
 		if (getClass () == TouchListener.class)

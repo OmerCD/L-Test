@@ -18,7 +18,7 @@ public class AwaitableOkHttp_OkTaskCallback
 	}
 
 
-	public AwaitableOkHttp_OkTaskCallback () throws java.lang.Throwable
+	public AwaitableOkHttp_OkTaskCallback ()
 	{
 		super ();
 		if (getClass () == AwaitableOkHttp_OkTaskCallback.class)

@@ -15,7 +15,7 @@ public class JavaObject_1
 	}
 
 
-	public JavaObject_1 () throws java.lang.Throwable
+	public JavaObject_1 ()
 	{
 		super ();
 		if (getClass () == JavaObject_1.class)

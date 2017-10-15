@@ -17,7 +17,7 @@ public class CalendarMonthPageTransformer
 	}
 
 
-	public CalendarMonthPageTransformer () throws java.lang.Throwable
+	public CalendarMonthPageTransformer ()
 	{
 		super ();
 		if (getClass () == CalendarMonthPageTransformer.class)

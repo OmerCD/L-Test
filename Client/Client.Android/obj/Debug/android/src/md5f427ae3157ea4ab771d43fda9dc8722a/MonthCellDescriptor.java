@@ -16,7 +16,7 @@ public class MonthCellDescriptor
 	}
 
 
-	public MonthCellDescriptor () throws java.lang.Throwable
+	public MonthCellDescriptor ()
 	{
 		super ();
 		if (getClass () == MonthCellDescriptor.class)

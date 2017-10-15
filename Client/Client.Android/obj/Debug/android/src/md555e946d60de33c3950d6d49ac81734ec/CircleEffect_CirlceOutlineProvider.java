@@ -16,7 +16,7 @@ public class CircleEffect_CirlceOutlineProvider
 	}
 
 
-	public CircleEffect_CirlceOutlineProvider () throws java.lang.Throwable
+	public CircleEffect_CirlceOutlineProvider ()
 	{
 		super ();
 		if (getClass () == CircleEffect_CirlceOutlineProvider.class)

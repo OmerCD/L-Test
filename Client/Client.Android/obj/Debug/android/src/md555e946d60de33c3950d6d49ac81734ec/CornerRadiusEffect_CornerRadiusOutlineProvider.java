@@ -16,7 +16,7 @@ public class CornerRadiusEffect_CornerRadiusOutlineProvider
 	}
 
 
-	public CornerRadiusEffect_CornerRadiusOutlineProvider () throws java.lang.Throwable
+	public CornerRadiusEffect_CornerRadiusOutlineProvider ()
 	{
 		super ();
 		if (getClass () == CornerRadiusEffect_CornerRadiusOutlineProvider.class)

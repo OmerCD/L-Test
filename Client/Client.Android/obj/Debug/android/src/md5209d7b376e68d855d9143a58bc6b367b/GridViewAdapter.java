@@ -19,14 +19,14 @@ public class GridViewAdapter
 	}
 
 
-	public GridViewAdapter () throws java.lang.Throwable
+	public GridViewAdapter ()
 	{
 		super ();
 		if (getClass () == GridViewAdapter.class)
 			mono.android.TypeManager.Activate ("XLabs.Forms.Controls.GridViewAdapter, XLabs.Forms.Droid, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
-	public GridViewAdapter (android.content.Context p0) throws java.lang.Throwable
+	public GridViewAdapter (android.content.Context p0)
 	{
 		super ();
 		if (getClass () == GridViewAdapter.class)

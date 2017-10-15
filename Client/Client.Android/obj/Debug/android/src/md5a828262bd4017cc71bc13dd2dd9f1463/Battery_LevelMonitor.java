@@ -16,7 +16,7 @@ public class Battery_LevelMonitor
 	}
 
 
-	public Battery_LevelMonitor () throws java.lang.Throwable
+	public Battery_LevelMonitor ()
 	{
 		super ();
 		if (getClass () == Battery_LevelMonitor.class)

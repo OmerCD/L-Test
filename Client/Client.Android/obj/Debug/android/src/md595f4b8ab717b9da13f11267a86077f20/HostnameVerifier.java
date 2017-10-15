@@ -17,7 +17,7 @@ public class HostnameVerifier
 	}
 
 
-	public HostnameVerifier () throws java.lang.Throwable
+	public HostnameVerifier ()
 	{
 		super ();
 		if (getClass () == HostnameVerifier.class)

@@ -51,19 +51,19 @@ namespace Client.M_Classes
                 {
                     Text = (i + 1).ToString()+". Soru",
                     MinimumWidthRequest=150,
-                    BackgroundColor = Color.CornflowerBlue,
-                    TextColor = Color.White,
+                    //BackgroundColor = Color.CornflowerBlue,
+                    TextColor = Color.Black,
+                    FontSize=24,
                     HorizontalOptions=LayoutOptions.CenterAndExpand,
-                    HorizontalTextAlignment = TextAlignment.Center,
+                    HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment = TextAlignment.Center
                 };
                 SoruLabel[i] = new Label()
                 {
-                    BackgroundColor=Color.LightSkyBlue,
+                    //BackgroundColor=Color.LightSkyBlue,
                     Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas magna ipsum, sagittis eget orci eget, vulputate pretium leo. Cras et elit tortor. Proin quam sem, placerat quis augue eu, consectetur laoreet mauris. Aliquam erat volutpat. Cras cursus sem et posuere efficitur. Integer velit ex, condimentum id volutpat vel, pretium vitae risus metus.",
-                    TextColor = Color.White,
-                    
-                    HorizontalTextAlignment = TextAlignment.Center,
+                    TextColor = Color.Black,                   
+                    HorizontalTextAlignment = TextAlignment.Start,
                     VerticalTextAlignment=TextAlignment.Center
 
                 };

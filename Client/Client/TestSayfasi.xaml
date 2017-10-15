@@ -5,11 +5,10 @@
              x:Class="Client.TestSayfasi">
     <ContentPage.Content>
         <Grid x:Name="AnaGrid" x:FieldModifier="public">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <progress:RadialProgressBar Grid.Row="0" x:Name="Sure" Minimum="0" 
+            <ScrollView x:Name="ScrollView">
+                
+            </ScrollView>
+            <progress:RadialProgressBar x:Name="Sure" Minimum="0" 
                                     Maximum="60" 
                                     HorizontalOptions="Start"
                                     VerticalOptions="Start"
@@ -17,10 +16,8 @@
                                     ProgressColor="DeepSkyBlue"
                                     HeightRequest="50"                                      
                                     WidthRequest="50"
+                                        Margin="10,10,0,0"
                                     />
-            <ScrollView Grid.Row="1" x:Name="ScrollView">
-                
-            </ScrollView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

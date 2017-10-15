@@ -17,7 +17,7 @@ public class CustomTypefaceSpan
 	}
 
 
-	public CustomTypefaceSpan (android.os.Parcel p0) throws java.lang.Throwable
+	public CustomTypefaceSpan (android.os.Parcel p0)
 	{
 		super (p0);
 		if (getClass () == CustomTypefaceSpan.class)
@@ -25,7 +25,7 @@ public class CustomTypefaceSpan
 	}
 
 
-	public CustomTypefaceSpan (java.lang.String p0) throws java.lang.Throwable
+	public CustomTypefaceSpan (java.lang.String p0)
 	{
 		super (p0);
 		if (getClass () == CustomTypefaceSpan.class)

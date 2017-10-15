@@ -16,7 +16,7 @@ public class CalendarPickerView
 	}
 
 
-	public CalendarPickerView (android.content.Context p0) throws java.lang.Throwable
+	public CalendarPickerView (android.content.Context p0)
 	{
 		super (p0);
 		if (getClass () == CalendarPickerView.class)
@@ -24,7 +24,7 @@ public class CalendarPickerView
 	}
 
 
-	public CalendarPickerView (android.content.Context p0, android.util.AttributeSet p1) throws java.lang.Throwable
+	public CalendarPickerView (android.content.Context p0, android.util.AttributeSet p1)
 	{
 		super (p0, p1);
 		if (getClass () == CalendarPickerView.class)

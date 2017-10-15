@@ -16,7 +16,7 @@ public class HybridWebViewRenderer_ChromeClient
 	}
 
 
-	public HybridWebViewRenderer_ChromeClient () throws java.lang.Throwable
+	public HybridWebViewRenderer_ChromeClient ()
 	{
 		super ();
 		if (getClass () == HybridWebViewRenderer_ChromeClient.class)

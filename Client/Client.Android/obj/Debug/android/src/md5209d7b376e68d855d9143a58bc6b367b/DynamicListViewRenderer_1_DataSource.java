@@ -19,14 +19,14 @@ public class DynamicListViewRenderer_1_DataSource
 	}
 
 
-	public DynamicListViewRenderer_1_DataSource () throws java.lang.Throwable
+	public DynamicListViewRenderer_1_DataSource ()
 	{
 		super ();
 		if (getClass () == DynamicListViewRenderer_1_DataSource.class)
 			mono.android.TypeManager.Activate ("XLabs.Forms.Controls.DynamicListViewRenderer`1+DataSource, XLabs.Forms.Droid, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
-	public DynamicListViewRenderer_1_DataSource (md5209d7b376e68d855d9143a58bc6b367b.DynamicListViewRenderer_1 p0) throws java.lang.Throwable
+	public DynamicListViewRenderer_1_DataSource (md5209d7b376e68d855d9143a58bc6b367b.DynamicListViewRenderer_1 p0)
 	{
 		super ();
 		if (getClass () == DynamicListViewRenderer_1_DataSource.class)

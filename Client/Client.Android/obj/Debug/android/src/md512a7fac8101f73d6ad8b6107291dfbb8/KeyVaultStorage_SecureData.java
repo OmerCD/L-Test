@@ -21,14 +21,14 @@ public class KeyVaultStorage_SecureData
 	}
 
 
-	public KeyVaultStorage_SecureData () throws java.lang.Throwable
+	public KeyVaultStorage_SecureData ()
 	{
 		super ();
 		if (getClass () == KeyVaultStorage_SecureData.class)
 			mono.android.TypeManager.Activate ("XLabs.Platform.Services.KeyVaultStorage+SecureData, XLabs.Platform.Droid, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
-	public KeyVaultStorage_SecureData (byte[] p0) throws java.lang.Throwable
+	public KeyVaultStorage_SecureData (byte[] p0)
 	{
 		super ();
 		if (getClass () == KeyVaultStorage_SecureData.class)

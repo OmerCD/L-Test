@@ -21,7 +21,7 @@ public class XFormsApplicationDroid
 	}
 
 
-	public XFormsApplicationDroid () throws java.lang.Throwable
+	public XFormsApplicationDroid ()
 	{
 		super ();
 		if (getClass () == XFormsApplicationDroid.class)

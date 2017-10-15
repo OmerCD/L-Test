@@ -17,7 +17,7 @@ public class TextToSpeechService
 	}
 
 
-	public TextToSpeechService () throws java.lang.Throwable
+	public TextToSpeechService ()
 	{
 		super ();
 		if (getClass () == TextToSpeechService.class)

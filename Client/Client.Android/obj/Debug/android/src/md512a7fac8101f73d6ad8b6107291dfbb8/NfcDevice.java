@@ -17,14 +17,14 @@ public class NfcDevice
 	}
 
 
-	public NfcDevice () throws java.lang.Throwable
+	public NfcDevice ()
 	{
 		super ();
 		if (getClass () == NfcDevice.class)
 			mono.android.TypeManager.Activate ("XLabs.Platform.Services.NfcDevice, XLabs.Platform.Droid, Version=2.3.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
-	public NfcDevice (android.nfc.NfcAdapter p0) throws java.lang.Throwable
+	public NfcDevice (android.nfc.NfcAdapter p0)
 	{
 		super ();
 		if (getClass () == NfcDevice.class)

@@ -18,7 +18,7 @@ public class Accelerometer
 	}
 
 
-	public Accelerometer () throws java.lang.Throwable
+	public Accelerometer ()
 	{
 		super ();
 		if (getClass () == Accelerometer.class)
