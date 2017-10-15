@@ -8,15 +8,16 @@
             <ScrollView x:Name="ScrollView">
                 
             </ScrollView>
-            <progress:RadialProgressBar x:Name="Sure" Minimum="0" 
-                                    Maximum="60" 
-                                    HorizontalOptions="Start"
+            <progress:RadialProgressBar x:Name="Sure"
+                                        Minimum="0"
+                                        Maximum="50"
+                                    HorizontalOptions="Start"                                        
                                     VerticalOptions="Start"
                                     LabelHidden="False"
                                     ProgressColor="DeepSkyBlue"
                                     HeightRequest="50"                                      
                                     WidthRequest="50"
-                                        Margin="10,10,0,0"
+                                    Margin="10,10,0,0"
                                     />
         </Grid>
     </ContentPage.Content>

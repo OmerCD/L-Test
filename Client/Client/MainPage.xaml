@@ -24,7 +24,7 @@
             HorizontalOptions="Center" VerticalOptions="Center" FontFamily="Titillium Web SemiBold" TextColor="Black"/>
                     <Entry x:Name="Entry02" Placeholder="Şifre" IsPassword="true"  HorizontalTextAlignment="Center" HeightRequest="50" WidthRequest="200"
             HorizontalOptions="Center" VerticalOptions="Center" FontFamily="Titillium Web SemiBold" />
-                    <Button Text="Giriş Yap" StyleClass="Info"/>
+                    <Button Text="Giriş Yap" StyleClass="Info" Clicked="Giris_Clicked"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
                         <Label Text="Üyeliği Hatırla" Margin="0,4,0,0"/>
                         <Switch/>

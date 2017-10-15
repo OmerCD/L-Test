@@ -6,20 +6,20 @@ namespace Client
 {
     public class Giris:ContentPage
     {
-        readonly Grid Grid01;
-        readonly Grid Grid02;
-        readonly Label Label01;
-        readonly Frame Frame01;
-        readonly StackLayout Stack01;
-        readonly Entry Entry01;
-        readonly Entry Entry02;
-        readonly Button Button01;
-        readonly StackLayout Stack02;
-        readonly Label Label02;
-        readonly Switch Sw01;
-        readonly StackLayout Stack03;
-        readonly Label label03;
-        readonly Label label04;
+        //readonly Grid Grid01;
+        //readonly Grid Grid02;
+        //readonly Label Label01;
+        //readonly Frame Frame01;
+        //readonly StackLayout Stack01;
+        //readonly Entry Entry01;
+        //readonly Entry Entry02;
+        //readonly Button Button01;
+        //readonly StackLayout Stack02;
+        //readonly Label Label02;
+        //readonly Switch Sw01;
+        //readonly StackLayout Stack03;
+        //readonly Label label03;
+        //readonly Label label04;
 
         public Giris()
         {
@@ -71,28 +71,28 @@ namespace Client
             //    </ Grid >
             //</ Grid >
 
-            Grid01 = new Grid ();
-            Grid02 = new Grid {
-                HorizontalOptions = LayoutOptions.Center,
-                VerticalOptions = LayoutOptions.Center,
-            };
-            ColumnDefinition Column01 = new ColumnDefinition
-            {
-                Width = new GridLength(20, GridUnitType.Star)
-            };
-            Grid02.ColumnDefinitions.Add(Column01);
-           
-        }
-        public async Task Animasyon ()
-        {
-            const uint animasyonSuresi = 2700;
-            Easing easing = Easing.SpringOut;
-            await Task.WhenAll(
-                Label01.FadeTo(1, animasyonSuresi, easing),
-                Entry01.FadeTo(1, animasyonSuresi, easing),
-                Entry02.FadeTo(1, animasyonSuresi, easing),
-                Button01.FadeTo(1, animasyonSuresi, easing)
-            );
+            //    Grid01 = new Grid ();
+            //    Grid02 = new Grid {
+            //        HorizontalOptions = LayoutOptions.Center,
+            //        VerticalOptions = LayoutOptions.Center,
+            //    };
+            //    ColumnDefinition Column01 = new ColumnDefinition
+            //    {
+            //        Width = new GridLength(20, GridUnitType.Star)
+            //    };
+            //    Grid02.ColumnDefinitions.Add(Column01);
+
+            //}
+            //public async Task Animasyon ()
+            //{
+            //    const uint animasyonSuresi = 2700;
+            //    Easing easing = Easing.SpringOut;
+            //    await Task.WhenAll(
+            //        Label01.FadeTo(1, animasyonSuresi, easing),
+            //        Entry01.FadeTo(1, animasyonSuresi, easing),
+            //        Entry02.FadeTo(1, animasyonSuresi, easing),
+            //        Button01.FadeTo(1, animasyonSuresi, easing)
+            //    );
         }
     }
 }
