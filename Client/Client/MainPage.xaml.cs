@@ -13,10 +13,5 @@ namespace Client
 		{
 			InitializeComponent();
 		}
-
-        private void Giris_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new TestSayfasi());
-        }
-    }
+	}
 }

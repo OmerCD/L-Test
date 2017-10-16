@@ -17,7 +17,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)M_Classes\TestGoster.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)TestSayfasi.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)M_Classes\TestSayfasi.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)M_CustomControls\RadialProgressBar.cs" />

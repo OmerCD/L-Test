@@ -14,7 +14,7 @@ namespace Client
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MainPage());
+			MainPage = new TestSayfasi();
 
 		}
 
