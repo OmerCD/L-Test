@@ -12,14 +12,12 @@
                                     Maximum="60" 
                                     HorizontalOptions="Start"
                                     VerticalOptions="Start"
-                                    LabelHidden="True"
+                                    LabelHidden="False"
                                     ProgressColor="DeepSkyBlue"
                                     HeightRequest="50"                                      
                                     WidthRequest="50"
                                         Margin="10,10,0,0"
                                     />
-            <Label Margin="24,22,0,0" TextColor="White" FontSize="Medium" FontAttributes="Bold" BindingContext="{x:Reference Sure}"   
-                   Text="{Binding Value}"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

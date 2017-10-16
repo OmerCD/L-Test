@@ -1,10 +1,10 @@
-BundleAssemblies=false
-AotAssemblies=false
+BundleAssemblies=False
+AotAssemblies=False
 AndroidAotMode=
 ExplicitCrunch=False
 EnableProguard=
-UseSharedRuntime=false
-EmbedAssembliesIntoApk=true
+UseSharedRuntime=True
+EmbedAssembliesIntoApk=False
 AndroidLinkMode=None
 AndroidLinkSkip=
 AndroidSdkBuildToolsVersion=23.0.0
