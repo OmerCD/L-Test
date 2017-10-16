@@ -13,5 +13,10 @@ namespace Client
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void Giris_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new TestSayfasi();
+        }
+    }
 }

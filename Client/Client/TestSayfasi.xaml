@@ -12,12 +12,21 @@
                                     Maximum="60" 
                                     HorizontalOptions="Start"
                                     VerticalOptions="Start"
-                                    LabelHidden="False"
+                                    LabelHidden="True"
                                     ProgressColor="DeepSkyBlue"
                                     HeightRequest="50"                                      
                                     WidthRequest="50"
                                         Margin="10,10,0,0"
-                                    />
+                                    >
+            </progress:RadialProgressBar>
+            <Label 
+                BindingContext="{x:Reference Sure}"
+                Text="{Binding Value}"
+                Margin="24,20,0,0"               
+                TextColor="White"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                   />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
