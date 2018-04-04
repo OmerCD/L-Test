@@ -7,17 +7,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="683" d:DesignWidth="1024">
     <UserControl.Triggers>
-        <EventTrigger RoutedEvent="Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation
-                        Storyboard.TargetProperty="Opacity"
-                        From="0.0" To="1.0" Duration="0:0:0.5"/>
-                </Storyboard>
-            </BeginStoryboard>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Loading}"/>
         </EventTrigger>
     </UserControl.Triggers>
-    <Grid>
-         <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" Name="DataGrid1"/>   
+    <Grid Name="grid">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}" Name="DataGrid1"/>   
     </Grid>
 </UserControl>

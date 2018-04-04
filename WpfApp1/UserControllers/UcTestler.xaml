@@ -7,121 +7,42 @@
              mc:Ignorable="d" 
              d:DesignHeight="683" d:DesignWidth="1024" Loaded="UserControl_Loaded">
     <UserControl.Triggers>
-        <EventTrigger RoutedEvent="Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation
-                        Storyboard.TargetProperty="Opacity"
-                        From="0.0" To="1.0" Duration="0:0:0.5"
-                        />
-                </Storyboard>
-            </BeginStoryboard>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Loading}"/>
         </EventTrigger>
     </UserControl.Triggers>
-    <UserControl.Resources>
-        <!--Genel Tab Stringleri-->
-        <system:String x:Key="SureString">Süre</system:String>
-        <system:String x:Key="SureToolTip">Test süresini bu kısımdan belirtin.</system:String>
-        <system:String x:Key="SoruString">Soru Sayısı</system:String>
-        <system:String x:Key="SoruToolTip">Test içindeki soru sayısını bu kısımdan belirtin.</system:String>
-        <system:String x:Key="CevapString">Cevap Sayısı</system:String>
-        <system:String x:Key="CevapToolTip">Her soru için kaç cevap olacağını bu kısımdan ayarlayın.</system:String>
-        
-        <!--Tab1 ÖZEL Stringleri-->
-        <system:String x:Key="TabItem1String">Oluştur</system:String>
-        <system:String x:Key="TestString">Test Adı</system:String>
-        <system:String x:Key="TestToolTip">Test adını buradan belirtin.</system:String>
-        <system:String x:Key="OlusturString">Oluştur</system:String>
-        <system:String x:Key="OlusturToolTip">Testi oluşturmak için tıklayın.</system:String>
-        <system:String x:Key="KaydetString">Kaydet</system:String>
-        <system:String x:Key="KaydetToolTip">Testi kaydetmek için tıklayın.</system:String>
-
-        <!--Tab2 ÖZEL Stringleri-->
-        <system:String x:Key="TabItem2String">Düzenle</system:String>
-        <system:String x:Key="TestDuzeltString">Testler</system:String>
-        <system:String x:Key="TestDuzeltToolTip">Düzeltmek istediğiniz testi seçin.</system:String>
-        <system:String x:Key="DuzeltString">Düzelt</system:String>
-        <system:String x:Key="DuzeltToolTip">Düzeltiğiniz testi kaydetmek için tıklayın.</system:String>
-    </UserControl.Resources>
-    <UserControl.Background>
-        <ImageBrush Stretch="UniformToFill" ImageSource="/WpfApp1;component/Images/Background.png"/>
-    </UserControl.Background>
-    <Grid Background="#FFF7F7F7">
+    <Grid Background="{StaticResource SoftGrey}" Name="grid">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
         <Grid.RowDefinitions>
-            <RowDefinition Height="110" />
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="48"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <!--Sol Menü-->
-        <Grid Grid.Row="0" Name="UcTestlerGrid1" Background="#FFE5E5E5" Margin="5">
-            <Grid.Effect>
-                <DropShadowEffect 
-                        Direction="0" 
-                        Opacity="0.2" 
-                        BlurRadius="10"/>
-            </Grid.Effect>
-            <TabControl Background="{DynamicResource SoftColor}">
-                <TabItem Header="{StaticResource TabItem1String}" Width="98" FontFamily="Titillium Web SemiBold" FontSize="14" Foreground="#FF898484" BorderBrush="{x:Null}">
-                    <DockPanel Name="Olustur" x:FieldModifier="public">
-                        <DockPanel ToolTip="{StaticResource TestToolTip}" Margin="2">
-                            <Label DockPanel.Dock="Top" Content="{StaticResource TestString}" Width="90" Style="{DynamicResource Label}" />
-                            <TextBox x:Name="TestTextbox" Style="{DynamicResource TextBox}"/>
-                        </DockPanel>
-                        <DockPanel ToolTip="{StaticResource SureToolTip}" Margin="2">
-                            <Label DockPanel.Dock="Top" Content="{StaticResource SureString}" Width="90" Style="{DynamicResource Label}" />
-                            <TextBox x:Name="SureTextbox" PreviewTextInput="SayiKontrol"  Width="Auto" Style="{DynamicResource TextBox}"/>
-                        </DockPanel>
-                        <DockPanel ToolTip="{StaticResource SoruToolTip}" Margin="2">
-                            <Label DockPanel.Dock="Top" Content="{StaticResource SoruString}" Width="90" Style="{DynamicResource Label}"/>
-                            <TextBox x:Name="SoruTextbox" PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}"/>
-                        </DockPanel>
-                        <DockPanel ToolTip="{StaticResource CevapToolTip}" Margin="2" >
-                            <Label DockPanel.Dock="Top" Content="{StaticResource CevapString}" Width="90" Style="{DynamicResource Label}"/>
-                            <TextBox x:Name="CevapTextbox" PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" />
-                        </DockPanel>
-                        <Button Click="Olustur_Click" ToolTip="{StaticResource OlusturToolTip}" Style="{DynamicResource TestButonlar}" >
-                            <Label Content="{StaticResource OlusturString}" Style="{StaticResource Label}"/>
-                        </Button>
-                        <Button Click="Kaydet" ToolTip="{StaticResource KaydetToolTip}" Style="{DynamicResource TestButonlar}" >
-                            <Label Content="{StaticResource KaydetString}" Style="{StaticResource Label}"/>
-                        </Button>
-                        <DockPanel Style="{DynamicResource DockPanelStyle}">
-                        </DockPanel>
-                    </DockPanel>
-                </TabItem>
-                <TabItem Header="{StaticResource TabItem2String}" Width="98" FontFamily="Titillium Web SemiBold" FontSize="14" Foreground="#FF898484" BorderBrush="{x:Null}"  >
-                    <DockPanel Name="Duzenle" x:FieldModifier="public">
-                        <DockPanel ToolTip="{StaticResource TestDuzeltToolTip}" Margin="2">
-                            <Label DockPanel.Dock="Top" Content="{StaticResource TestDuzeltString}" Width="90" Style="{DynamicResource Label}" />
-                            <ComboBox x:Name="TestDuzeltCombobox" SelectionChanged="TestDuzeltCombobox_SelectionChanged" />
-                        </DockPanel>
-                        <DockPanel ToolTip="{StaticResource SureToolTip}" Margin="2">
-                            <Label DockPanel.Dock="Top" Content="{StaticResource SureString}" Width="90" Style="{DynamicResource Label}" />
-                            <TextBox x:Name="SureDuzeltTextbox" PreviewTextInput="SayiKontrol"  Width="Auto" Style="{DynamicResource TextBox}"/>
-                        </DockPanel>
-                        <DockPanel ToolTip="{StaticResource SoruToolTip}" Margin="2">
-                            <Label DockPanel.Dock="Top" Content="{StaticResource SoruString}" Width="90" Style="{DynamicResource Label}"/>
-                            <TextBox x:Name="SoruDuzeltTextbox" PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}"/>
-                        </DockPanel>
-                        <DockPanel ToolTip="{StaticResource CevapToolTip}" Margin="2">
-                            <Label DockPanel.Dock="Top" Content="{StaticResource CevapString}" Width="90" Style="{DynamicResource Label}"/>
-                            <TextBox x:Name="CevapDuzeltTextbox" PreviewTextInput="SayiKontrol" Style="{DynamicResource TextBox}" />
-                        </DockPanel>
-                        <DockPanel >
-                            <Button ToolTip="{StaticResource DuzeltToolTip}" Style="{DynamicResource TestButonlar}" >
-                                <Label Content="{StaticResource DuzeltString}" Style="{StaticResource Label}"/>
-                            </Button>
-                        </DockPanel>
-                        <DockPanel Style="{DynamicResource DockPanelStyle}">
-                        </DockPanel>
-                    </DockPanel>
-                </TabItem>
-            </TabControl>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Testler" Style="{StaticResource Header}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Separator Margin="10,47,10,0" Background="{StaticResource DarkGrey}"/>
+            <DockPanel x:Name="dockPanel">
+                <Button Style="{DynamicResource ContentMenuButton}" Click="UcOlustur">
+                    <TextBlock Text="Oluştur"  Style="{DynamicResource MenuTextBlock}"/>
+                </Button>
+                <Button Style="{DynamicResource ContentMenuButton}" Click="UcDuzenle">
+                    <TextBlock Text="Düzenle"  Style="{DynamicResource MenuTextBlock}"/>
+                </Button>
+            </DockPanel>
         </Grid>
         <!--Soru Hazırlama Kısmı-->
-        <ScrollViewer Grid.Row="1" DockPanel.Dock="Left" HorizontalAlignment="Stretch" Width="Auto" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <Grid Margin="10,20,10,10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid x:Name="testIcerik">
                 <!--Kod ile Doluyor-->
-                <DockPanel x:Name="SoruDock" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             </Grid>
         </ScrollViewer>
     </Grid>

@@ -43,21 +43,28 @@ namespace WpfApp1.Classes.FacedeLayer
             List<Cevaplar> itemList = null;
             var com = new SQLiteCommand("SELECT * FROM cevaplar WHERE SoruId=@SoruId", DatabaseManager.Baglanti);
             com.Parameters.AddWithValue("@SoruId", soruId);
-            var rdr = com.ExecuteReader();
-            if (rdr.HasRows)
+            using (var rdr = com.ExecuteReader())
             {
-                itemList = new List<Cevaplar>();
-                while (rdr.Read())
+                if (rdr.Read())
                 {
-                    var item = new Cevaplar
+                    var CevapId = Convert.ToInt16(rdr["CevapId"]);
+                    var SoruId = Convert.ToInt16(rdr["SoruId"]);
+                    var Cevap = rdr["Cevap"].ToString();
+                    var Dogru = Convert.ToInt16(rdr["Dogru"]);
+                    itemList = new List<Cevaplar>();
+                    while (rdr.Read())
                     {
-                        CevapId = Convert.ToInt16(rdr["CevapId"]),
-                        SoruId = Convert.ToInt16(rdr["SoruId"]),
-                        Cevap = rdr["Cevap"].ToString(),
-                        Dogru = Convert.ToInt16(rdr["Dogru"])
-                    };
-                    itemList.Add(item);
+                        Cevaplar item = new Cevaplar
+                        {
+                            CevapId = Convert.ToInt16(rdr["CevapId"]),
+                            SoruId = Convert.ToInt16(rdr["SoruId"]),
+                            Cevap = rdr["Cevap"].ToString(),
+                            Dogru = Convert.ToInt16(rdr["Dogru"])
+                        };
+                        itemList.Add(item);
+                    }
                 }
+
             }
             return itemList;
         }

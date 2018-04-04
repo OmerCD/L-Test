@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:progress="clr-namespace:Client.M_CustomControls"
+             Title="İsmini Girin"
+             x:Class="Client.NamePage">
+    <Grid>
+        <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+            <StackLayout>
+                <Frame Style="{StaticResource EntryBorder}">
+                    <Entry x:Name="Name" Placeholder="Oda Numarası" Style="{StaticResource EntryStyle}"/>
+                </Frame>
+                <Button Text="Onayla" x:Name="IsimGiris" BackgroundColor="#e59b0e" Clicked="SendName_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

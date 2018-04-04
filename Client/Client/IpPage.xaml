@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="L-Test"
+             x:Class="Client.IpPage">
+    <Grid>
+        <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
+            <StackLayout>
+                <Image Source="test.png" WidthRequest="128" HeightRequest="128" />
+                <Frame Style="{StaticResource EntryBorder}">
+                    <Entry x:Name="Ip" Placeholder="Ip Giriniz" Style="{StaticResource EntryStyle}"/>
+                </Frame>
+                <Label x:Name="Durum"/>
+                <Button Text="Giriş Yap" x:Name="Giris" BackgroundColor="#e59b0e" Clicked="Giris_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

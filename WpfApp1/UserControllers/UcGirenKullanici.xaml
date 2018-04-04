@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:WpfApp1.UserControllers"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="300">
+             Background="White"
+             d:DesignWidth="130">
     <UserControl.Resources>
         <system:String x:Key="KullaniciString">Kullanıcı Adı:</system:String>
         <system:String x:Key="DurumString">Durum:</system:String>
@@ -17,40 +18,30 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <Border Margin="5" BorderThickness="2" CornerRadius="8,8,8,8" BorderBrush="#FFBBBBBB" Background="WhiteSmoke">
-            <DockPanel>
-                <Ellipse Margin="2,0,0,0" Width="80" Height="80" HorizontalAlignment="Left">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="/WpfApp1;component/Images/default-kullanici-resmi.png"/>
-                    </Ellipse.Fill>
-                </Ellipse>
-                <Separator Style="{DynamicResource DikeySeparator}" Margin="0,5,0,5"/>
-                <StackPanel>
-                    <DockPanel Margin="2">
-                        <TextBlock
-                           Text="{StaticResource KullaniciString}"/>
-                        <TextBlock
-                           Text="Soul741 "/>
-                    </DockPanel>
-                    <DockPanel Margin="2">
-                        <TextBlock
-                           Text="{StaticResource DurumString}"/>
-                        <TextBlock
-                           TextAlignment="Center"        
-                           Text="Bağlı"       
-                           Background="#FF16E41F"/>
-                    </DockPanel>
-                    <DockPanel Margin="2">
-                        <TextBlock
-                           Text="{StaticResource TestDurumString}"/>
-                        <TextBlock
-                           TextAlignment="Center"        
-                           Text="Bitirmedi"       
-                           Background="#FFFF1700"/>
-                    </DockPanel>
-                </StackPanel>
-            </DockPanel>
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Border Panel.ZIndex="1000" Height="50" DockPanel.Dock="Top"  Background="{StaticResource FireBrickSoft}" Name="SiraBorder" CornerRadius="5">
+            <Border.Effect>
+                <DropShadowEffect RenderingBias="Quality" Direction="260" BlurRadius="20" Opacity="0.6"/>
+            </Border.Effect>
+            <Grid>
+                <TextBlock Text="1" Name="Sira" FontFamily="Titilium Web" FontSize="35" TextAlignment="Center" Foreground="{StaticResource LabelGrey}"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Style="{DynamicResource GirenKullaniciBorder}">
+            <StackPanel Margin="5,40,5,10" HorizontalAlignment="Center">
+                <DockPanel>
+                    <TextBlock Text="İsim:" Width="40" FontSize="18"/>
+                    <TextBlock Name="Name" HorizontalAlignment="Left" FontSize="18"/>
+                </DockPanel>
+                <DockPanel>
+                    <TextBlock Text="Ip:" Width="40" FontSize="18"/>
+                    <TextBlock Text="Connection" Name="Status" HorizontalAlignment="Left" FontSize="18"/>
+                </DockPanel>
+            </StackPanel>
         </Border>
     </Grid>
 </UserControl>

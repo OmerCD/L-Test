@@ -11,5 +11,7 @@ namespace WpfApp1.UserControllers
         {
             InitializeComponent();
         }
+
+        public int PanelCount { get; internal set; }
     }
 }

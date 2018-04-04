@@ -8,131 +8,50 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="600" Loaded="UserControl_Loaded">
     <UserControl.Triggers>
-        <EventTrigger RoutedEvent="Loaded">
-            <BeginStoryboard>
-                <Storyboard>
-                    <DoubleAnimation
-                        Storyboard.TargetProperty="Opacity"
-                        From="0.0" To="1.0" Duration="0:0:0.5"/>
-                </Storyboard>
-            </BeginStoryboard>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Loading}"/>
         </EventTrigger>
     </UserControl.Triggers>
-    <UserControl.Resources>
-        <system:String x:Key="BirinciString">1.</system:String>
-        <system:String x:Key="IkinciString">2.</system:String>
-        <system:String x:Key="UcuncuString">3.</system:String>
-        <system:String x:Key="AdımString">ADIM</system:String>
-        <system:String x:Key="OdaAdıString">Oda Adı</system:String>
-        <system:String x:Key="OdayıOlusturString">Odayı Oluştur</system:String>
-        <system:String x:Key="TestAdıString">Test Adı</system:String>
-        <system:String x:Key="TestiBaslatString">Testi Başlat</system:String>
-        <system:String x:Key="BitirString">Bitir</system:String>
-        <system:String x:Key="Sure">Sure</system:String>
-
-    </UserControl.Resources>
-    <UserControl.Background>
-        <ImageBrush 
-            ImageSource="/WpfApp1;component/Images/Background.png" 
-            Stretch="UniformToFill"/>
-    </UserControl.Background>
-    <Grid ShowGridLines="True">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <DockPanel 
-            Grid.Column="0" 
-            Name="UstDock" 
-            Margin="5">
-            <StackPanel Width="{Binding ActualWidth, ElementName=UstDock}">
-                <Button>
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <Image Width="130" Style="{DynamicResource DonusAnimasyonu}" Source="/WpfApp1;component/Images/tick.png" Margin="30,0"/>
-                                <TextBlock LineStackingStrategy="BlockLineHeight" LineHeight="100" Text="{StaticResource BirinciString}" FontFamily="Titillium Web Light" Foreground="#FF9C9C9C" FontSize="80" Width="60" Height="90"/>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
+    <Grid Background="{StaticResource SoftGrey}" Name="grid">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="48"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Ana Menü" Style="{StaticResource Header}"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Separator Margin="10,47,10,0" Background="{StaticResource DarkGrey}"/>
+            <DockPanel x:Name="dockPanel">
+                <Button Style="{DynamicResource ContentMenuButton}" Click="UcOdaBaslat">
+                    <TextBlock Text="Odayı Başlat"  Style="{DynamicResource MenuTextBlock}"/>
                 </Button>
-                <TextBlock Text="ADIM" FontFamily="Titillium Web Light" FontSize="20" Foreground="#FF999999" TextAlignment="Center" />
-                <Label Margin="0,5,0,0" Content="{StaticResource OdaAdıString}" Style="{DynamicResource Label}" HorizontalContentAlignment="Center" Background="LightGray"/>
-                <TextBox Style="{DynamicResource TextBox}" x:Name="OdaAdiTextBox"/>
-                <Button Click="OdayiOlustur" x:Name="OdaButon" Margin="0,75,0,0" Height="80" Style="{DynamicResource BaslangicOdaButon}">
-                    <Label Content="{StaticResource OdayıOlusturString}" x:Name="OdaButonLbl" FontFamily="Titillium Web SemiBold" FontSize="24" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <Button Style="{DynamicResource ContentMenuButton}" Click="UcTestBaslat">
+                    <TextBlock Text="Testi Başlat"  Style="{DynamicResource MenuTextBlock}"/>
                 </Button>
-            </StackPanel>
-        </DockPanel>
-
-        <DockPanel 
-            Grid.Column="1" 
-            Name="UstDock2" 
-            Margin="5">
-            <StackPanel Width="{Binding ActualWidth, ElementName=UstDock2}">
-                <Button>
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <Image Width="130" Style="{DynamicResource DonusAnimasyonu}" Source="/WpfApp1;component/Images/tick.png" Margin="30,0"/>
-                                <TextBlock LineStackingStrategy="BlockLineHeight" LineHeight="100" Text="{StaticResource IkinciString}" FontFamily="Titillium Web Light" Foreground="#FF9C9C9C" FontSize="80" Width="60" Height="90"/>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
+                <Button Style="{DynamicResource ContentMenuButton}" Click="UcBitir">
+                    <TextBlock Text="Bitir"  Style="{DynamicResource MenuTextBlock}"/>
                 </Button>
-                <TextBlock Text="{StaticResource AdımString}" FontFamily="Titillium Web Light" FontSize="20" Foreground="#FF999999" TextAlignment="Center" />
-                
-                <Label Margin="0,5,0,0" Content="{StaticResource TestAdıString}" Style="{DynamicResource Label}" HorizontalContentAlignment="Center" Background="LightGray"/>
-                <ComboBox  x:Name="TestAdiComboBox" HorizontalContentAlignment="Center" Height="30" FontFamily="Titillium Web" FontSize="16" SelectionChanged="TestAdiComboBox_SelectionChanged"/>
-
-                <Label Margin="0,5,0,0" Content="{StaticResource Sure}" Style="{DynamicResource Label}" HorizontalContentAlignment="Center" Background="LightGray"/>
-                <TextBox x:Name="Sure" Height="30" FontFamily="Titillium Web" FontSize="16" Style="{DynamicResource TextBox}" />
-
-                <Button  Click="TestiBaslat" x:Name="TestBaslatButton" Margin="0,10,0,0" Height="80" Style="{DynamicResource BaslangicTestButon}">
-                    <Label Content="{StaticResource TestiBaslatString}" Foreground="White"  FontFamily="Titillium Web SemiBold" FontSize="24"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                </Button>
-            </StackPanel>
-        </DockPanel>
-
-        <DockPanel 
-            Grid.Column="2" 
-            Name="UstDock3" 
-            Margin="5">
-            <StackPanel Width="{Binding ActualWidth, ElementName=UstDock2}">
-                <Button>
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Grid>
-                                <Image 
-                                    Width="130" 
-                                    Style="{DynamicResource DonusAnimasyonu}" 
-                                    Source="/WpfApp1;component/Images/tick.png" 
-                                    Margin="30,0"/>
-                                <TextBlock 
-                                    LineStackingStrategy="BlockLineHeight" 
-                                    LineHeight="100" 
-                                    Text="{StaticResource UcuncuString}" 
-                                    FontFamily="Titillium Web Light" 
-                                    Foreground="#FF9C9C9C" 
-                                    FontSize="80" 
-                                    Width="60" 
-                                    Height="90"/>
-                            </Grid>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <TextBlock 
-                    Text="{StaticResource AdımString}" 
-                    FontFamily="Titillium Web Light" 
-                    FontSize="20" 
-                    Foreground="#FF999999" 
-                    TextAlignment="Center" />
-                <Button Click="OdayiOlustur" Margin="0,140,0,0" Height="80" Style="{DynamicResource BaslangicBitirButon}">
-                    <Label Content="{StaticResource BitirString}" Foreground="White"  FontFamily="Titillium Web SemiBold" FontSize="24"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                </Button>
-            </StackPanel>
-        </DockPanel>
-
+            </DockPanel>
+        </Grid>
+        <Grid Grid.Row="2" x:Name="anaMenuIcerik" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+        </Grid>
     </Grid>
 </UserControl>

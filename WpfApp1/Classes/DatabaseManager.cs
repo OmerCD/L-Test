@@ -9,7 +9,8 @@ namespace WpfApp1.Classes
     class DatabaseManager
     {
         private static readonly string Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\L-Test\";
-        public static SQLiteConnection Baglanti = new SQLiteConnection("Data Source=" + Path + "database.db");
+        //public static SQLiteConnection Baglanti = new SQLiteConnection("Data Source= C:\\Users\\Hasan\\Documents\\GitHub\\L-Test\\database.db");
+        public static SQLiteConnection Baglanti = new SQLiteConnection("Data Source= "+Path+"database.db");
 
         public static void BaglantiAc()
         {
@@ -57,7 +58,7 @@ namespace WpfApp1.Classes
 
             tableQueries[2, 0] = "cevaplar";
             tableQueries[2, 1] = "CREATE TABLE `cevaplar` (" +
-                "`Cevap_id`	INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "`CevapId`	INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "`SoruId`	INTEGER," +
                 "`Cevap`	TEXT," +
                 "`Dogru`	INTEGER," +

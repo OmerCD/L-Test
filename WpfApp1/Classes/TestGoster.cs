@@ -11,100 +11,111 @@ namespace WpfApp1.Classes
     {
         private static int _soru;
         private static int _cevap;
-        public readonly DockPanel[] DockPanel;
-        public readonly Label[] Label;
-        public readonly DockPanel[] DockPanel2;
-        public readonly TextBox[] SoruTextBoxes;
-        public readonly Separator[] Sp;
-        public readonly TextBox[,] CevapTextboxes;
-        public readonly CheckBox[,] CevapCheckBoxes;
+        public readonly Border[] borders;
+        public readonly StackPanel[] stackPanels;
+        public readonly DockPanel[] dockPanelSoru;
+        public readonly Label[] label;
+        public readonly DockPanel[] dockPanelCevap;
+        public readonly TextBox[] soruTextBoxes;
+        public readonly TextBox[,] cevapTextboxes;
+        public readonly CheckBox[,] cevapCheckBoxes;
         public TestGoster(int soru, int cevap)
         {
             _soru = soru;
             _cevap = cevap;
-            DockPanel = new DockPanel[_soru];
-            Label = new Label[_soru];
-            DockPanel2 = new DockPanel[_soru];
-            SoruTextBoxes = new TextBox[_soru];
-            Sp = new Separator[_soru];
-            CevapTextboxes = new TextBox[_soru, _cevap];
-            CevapCheckBoxes = new CheckBox[_soru, _cevap];
+            borders = new Border[_soru];
+            stackPanels = new StackPanel[_soru];
+            dockPanelSoru = new DockPanel[_soru];
+            label = new Label[_soru];
+            dockPanelCevap = new DockPanel[_soru];
+            soruTextBoxes = new TextBox[_soru];
+            cevapTextboxes = new TextBox[_soru, _cevap];
+            cevapCheckBoxes = new CheckBox[_soru, _cevap];
         }
 
         public void ControlCreation()//Kontroller Burada Tanımlandı.
         {
             for (var i = 0; i < _soru; i++)
             {
-                DockPanel[i] = new DockPanel
+                stackPanels[i] = new StackPanel();
+                borders[i] = new Border
+                {
+                    Style = FindResource("BorderStyle") as Style,
+                    Padding=new Thickness(20)
+                };
+                dockPanelSoru[i] = new DockPanel
                 {
                     Margin = new Thickness(0, 0, 0, 10),
                     HorizontalAlignment = HorizontalAlignment.Stretch,
                     VerticalAlignment = VerticalAlignment.Stretch,
                     Width = double.NaN
                 };
-                Label[i] = new Label
+                label[i] = new Label
                 {
                     Content = "Soru " + (i + 1) + ":",
                     Style = FindResource("Label") as Style,
                     Width = 120,
+                    Foreground = Brushes.Black,
                     Height = double.NaN, // Auto için bunu yazdık. Niye acaba?Cevap : Onu öyle yapmışlar. Yapana sormak gerek.
-                    Background = Brushes.CornflowerBlue
-                };
-                SoruTextBoxes[i] = new TextBox
+                    Background = (SolidColorBrush)FindResource("FireBrickSoft")
+            };
+                soruTextBoxes[i] = new TextBox
                 {
                     Style = FindResource("TextBox") as Style,
                     FontFamily = new FontFamily("Titillium Web SemiBold"),
-                    Name = $"SoruTextBox{i}"
+                    Name = $"SoruTextBox{i}",
+                    Height=double.NaN
                 };
-                DockPanel2[i] = new DockPanel
+
+
+                dockPanelCevap[i] = new DockPanel
                 {
                     Name = $"stackPanel{i}",
                     VerticalAlignment = VerticalAlignment.Stretch,
                     HorizontalAlignment = HorizontalAlignment.Stretch,
                     Margin = new Thickness(0, 5, 5, 0)
                 };
-                Sp[i] = new Separator
-                {
-                    Margin = new Thickness(0, 10, 0, 10)
-                };
                 for (var k = 0; k < _cevap; k++)
                 {
-                    CevapCheckBoxes[i, k] = new CheckBox
+                    cevapCheckBoxes[i, k] = new CheckBox
                     {
                         Name = $"Soru{i}Cevap{k}",
                         Margin = new Thickness(0, 5, 0, 5)
                     };
                     //_checkBox[i, k].Checked += CheckBox_Checked;
-                    CevapTextboxes[i, k] = new TextBox
+                    cevapTextboxes[i, k] = new TextBox
                     {
                         Style = FindResource("TextBox") as Style,
-                        MinWidth = 600
+                        MinWidth = 600,
+                        Height = double.NaN,
+                        
                     };
-                    CevapCheckBoxes[i, k].Content = CevapTextboxes[i, k];
+                    cevapCheckBoxes[i, k].Content = cevapTextboxes[i, k];
                 }
             }
         }
-        public (TextBox[] Sorular,TextBox[,] Cevaplar, CheckBox[,] Şıklar) AddControlsToDockPanel(BindingBase binding, DockPanel soruDock)
+        public (TextBox[] Sorular,TextBox[,] Cevaplar, CheckBox[,] Şıklar) AddControlsToDockPanel(BindingBase binding, StackPanel stack)
         {
             for (var i = 0; i < _soru; i++) // Kontroller Burada DockPanellere Eklendi.
             {
-                System.Windows.Controls.DockPanel.SetDock(DockPanel[i], Dock.Top);
-                System.Windows.Controls.DockPanel.SetDock(DockPanel2[i], Dock.Top);
+                System.Windows.Controls.DockPanel.SetDock(dockPanelSoru[i], Dock.Top);
+                System.Windows.Controls.DockPanel.SetDock(dockPanelCevap[i], Dock.Top);
 
-                DockPanel[i].Children.Add(Label[i]);
-                DockPanel[i].Children.Add(SoruTextBoxes[i]);
-                BindingOperations.SetBinding(SoruTextBoxes[i], WidthProperty, binding);
-                soruDock.Children.Add(DockPanel[i]);
-                soruDock.Children.Add(DockPanel2[i]);
+                dockPanelSoru[i].Children.Add(label[i]);
+                dockPanelSoru[i].Children.Add(soruTextBoxes[i]);
+                BindingOperations.SetBinding(soruTextBoxes[i], WidthProperty, binding);
+                stackPanels[i].Children.Add(dockPanelSoru[i]);
+                stackPanels[i].Children.Add(dockPanelCevap[i]);
+                borders[i].Child=stackPanels[i];
+                stack.Children.Add(borders[i]);
                 for (var k = 0; k < _cevap; k++)
                 {
-                    System.Windows.Controls.DockPanel.SetDock(CevapCheckBoxes[i, k], Dock.Top);
-                    DockPanel2[i].Children.Add(CevapCheckBoxes[i, k]);
+                    System.Windows.Controls.DockPanel.SetDock(cevapCheckBoxes[i, k], Dock.Top);
+                    dockPanelCevap[i].Children.Add(cevapCheckBoxes[i, k]);
 
                 }
-                DockPanel2[i].Children.Add(Sp[i]);
             }
-            return (SoruTextBoxes,CevapTextboxes, CevapCheckBoxes);
+            return (soruTextBoxes,cevapTextboxes, cevapCheckBoxes);
         }
     }
 }

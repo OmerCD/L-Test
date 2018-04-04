@@ -14,9 +14,9 @@ namespace Client
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+            MainPage= new NavigationPage(new IpPage());
 
-		}
+        }
 
 		protected override void OnStart ()
 		{
@@ -25,12 +25,13 @@ namespace Client
 
 		protected override void OnSleep ()
 		{
-			// Handle when your app sleeps
+            IpPage.ClientSocket?.Send(Encoding.UTF8.GetBytes("Disconnected"));
+            IpPage.ClientSocket?.Close();
 		}
 
 		protected override void OnResume ()
 		{
-			// Handle when your app resumes
-		}
-	}
+            MainPage = new NavigationPage(new IpPage());
+        }
+    }
 }

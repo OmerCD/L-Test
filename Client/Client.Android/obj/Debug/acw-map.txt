@@ -18,6 +18,10 @@ RadialProgress.RadialProgressView, RadialProgress.Android;md565ae71dbe3b466a414b
 RadialProgress.RadialProgressView, RadialProgress.Android, Version=1.0.1.0, Culture=neutral, PublicKeyToken=null;md565ae71dbe3b466a414b8046441055195.RadialProgressView
 RadialProgress.RadialProgressView;md565ae71dbe3b466a414b8046441055195.RadialProgressView
 radialprogress.RadialProgressView;md565ae71dbe3b466a414b8046441055195.RadialProgressView
+SVG.Forms.Plugin.Droid.SvgImageRenderer, SVG.Forms.Plugin.Android;md51671442b5db9a17fb021b64c8e902007.SvgImageRenderer
+SVG.Forms.Plugin.Droid.SvgImageRenderer, SVG.Forms.Plugin.Android, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md51671442b5db9a17fb021b64c8e902007.SvgImageRenderer
+SVG.Forms.Plugin.Droid.SvgImageRenderer;md51671442b5db9a17fb021b64c8e902007.SvgImageRenderer
+svg.forms.plugin.droid.SvgImageRenderer;md51671442b5db9a17fb021b64c8e902007.SvgImageRenderer
 Android.Support.Design.Widget.Snackbar/SnackbarActionClickImplementor, Xamarin.Android.Support.Design;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar+SnackbarActionClickImplementor, Xamarin.Android.Support.Design, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar.SnackbarActionClickImplementor;android.support.design.widget.Snackbar_SnackbarActionClickImplementor

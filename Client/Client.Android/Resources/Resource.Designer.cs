@@ -27,6 +27,7 @@ namespace Client.Droid
 		public static void UpdateIdValues()
 		{
 			global::ModernHttpClient.Resource.String.library_name = global::Client.Droid.Resource.String.library_name;
+			global::NGraphics.Android.Custom.Resource.String.library_name = global::Client.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Client.Droid.Resource.Attribute.actionBarSize;
 			global::XLabs.Forms.Droid.Resource.Animation.abc_fade_in = global::Client.Droid.Resource.Animation.abc_fade_in;
 			global::XLabs.Forms.Droid.Resource.Animation.abc_fade_out = global::Client.Droid.Resource.Animation.abc_fade_out;
@@ -4088,8 +4089,11 @@ namespace Client.Droid
 			// aapt resource value: 0x7f0200a3
 			public const int mr_ic_play_light = 2130837667;
 			
+			// aapt resource value: 0x7f0200a5
+			public const int notification_template_icon_bg = 2130837669;
+			
 			// aapt resource value: 0x7f0200a4
-			public const int notification_template_icon_bg = 2130837668;
+			public const int test = 2130837668;
 			
 			static Drawable()
 			{

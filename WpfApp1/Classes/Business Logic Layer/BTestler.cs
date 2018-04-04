@@ -30,9 +30,9 @@ namespace WpfApp1.Classes.Business_Logic_Layer
             return testId > 0 ? FTestler.Delete(testId) : -1;
         }
 
-        public static Testler Select(string testAdi)
+        public static Testler Select(string testId)
         {
-            return FTestler.Select(testAdi);
+            return FTestler.Select(testId);
         }
 
         public static List<Testler> SelectAll()
