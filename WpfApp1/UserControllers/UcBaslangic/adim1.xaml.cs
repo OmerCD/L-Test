@@ -52,19 +52,27 @@ namespace ltest.UserControllers.UcBaslangic
                 Listener = new Listener(100);
                 Listener.SocketAccepted += new Listener.SocketAcceptedHandler(Listener_SocketAccepted);
                 Listener.Start();
+
+
+                // MainWindow Alt Bar Bilgilendirme
                 MainWindow.Active("Online");
                 MainWindow.Durum("Oda Oluşturuldu");
+
+                // Diğer Formlardan Test Durumu Hakkında Bilgi Edinmek İçin Oluşturuldu
+                Global.genelDurum = Global.GenelDurum.OdaOnline;
+
+                // Kullanıcı Sayfası İlk Defa Tanımlandıktan Sonra Destroy Edilmiyor. Yalnızca Gizleniyor. 
+                // Test kapatıldan sonra tekrar sayfa açıldığından dolayı bunu ekledim.
+                // Belki daha farklı bir yolu vardır?
+
+                //TODO Kullanıcı Sayfası oluşturma kontrol edilecek
+
                 if (kullaniciSayfasi==null)
                 {
                     kullaniciSayfasi = new KullaniciSayfasi();
                     kullaniciSayfasi.Show();
                 }
                 kullaniciSayfasi.Visibility = Visibility.Visible;
-
-
-
-                kullaniciSayfasi.Sorular.Children.Add(new UcSoru(12));
-
 
 
                 for (int i = 0; i < columnCount; i++)

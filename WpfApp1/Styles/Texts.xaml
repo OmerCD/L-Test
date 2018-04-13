@@ -19,7 +19,7 @@
             </DataTrigger>-->
         </Style.Triggers>
     </Style>
-
+    
     <Style x:Key="UstMenuLabelStyled" TargetType="Label">
         <Setter Property="Foreground" Value="{DynamicResource FireBrick}"/>
         <Setter Property="FontSize" Value="16"/>
@@ -53,10 +53,11 @@
 
     <Style x:Key="Header" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Margin" Value="25,0,0,0"/>
+        <!--<Setter Property="Margin" Value="25,0,0,0"/>-->
         <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="FontFamily" Value="Titillium Web Light"/>
-        <Setter Property="FontSize" Value="26"/>
+        <Setter Property="FontFamily" Value="Titillium Web"/>
+        <Setter Property="Padding" Value="15,0"/>
+        <Setter Property="FontSize" Value="28"/>
     </Style>
     <Style x:Key="TextBox" TargetType="TextBox">
         <Setter Property="FontSize" Value="14"/>
@@ -97,9 +98,10 @@
     </Style>
     <Style x:Key="MenuTextBlock" TargetType="TextBlock">
         <Setter Property="Foreground" Value="{DynamicResource DarkGrey}"/>
-        <Setter Property="FontSize" Value="18"/>
-        <Setter Property="FontFamily" Value="Titilium Web Light"/>
-        <Setter Property="Margin" Value="25,0,25,0"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="15,0"/>
+        <Setter Property="FontFamily" Value="Titilium Web"/>
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="True">
                 <Setter Property="Foreground" Value="Black"/>
@@ -108,9 +110,11 @@
     </Style>
     <Style x:Key="MenuTextBlockStyled" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Black"/>
-        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="FontFamily" Value="Titilium Web Light"/>
-        <Setter Property="Margin" Value="25,0,25,0"/>
+        <Setter Property="Padding" Value="15,0"/>
+
     </Style>
 
 

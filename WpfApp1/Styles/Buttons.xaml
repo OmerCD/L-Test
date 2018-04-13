@@ -40,7 +40,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Border Name="Border" Background="Transparent" HorizontalAlignment="Left" BorderThickness="0">
-                        <ContentPresenter Name="content" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        <ContentPresenter Name="content" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

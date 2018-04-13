@@ -26,9 +26,10 @@
             <RowDefinition Height="48"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+
+        <DockPanel Grid.Row="0">
             <TextBlock Text="Ana Menü" Style="{StaticResource Header}"/>
-        </Grid>
+        </DockPanel>
         <Grid Grid.Row="1">
             <Separator Margin="10,47,10,0" Background="{StaticResource DarkGrey}"/>
             <DockPanel x:Name="dockPanel">

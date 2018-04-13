@@ -127,7 +127,6 @@
     <Compile Include="Classes\Business Logic Layer\BSorular.cs" />
     <Compile Include="Classes\Business Logic Layer\BTestler.cs" />
     <Compile Include="Classes\Client.cs" />
-    <Compile Include="Classes\ColorPallet.cs" />
     <Compile Include="Classes\DatabaseManager.cs" />
     <Compile Include="Classes\EntityLayer\Cevaplar.cs" />
     <Compile Include="Classes\EntityLayer\Kullanicilar.cs" />
@@ -138,12 +137,16 @@
     <Compile Include="Classes\FacedeLayer\FSorular.cs" />
     <Compile Include="Classes\FacedeLayer\FTestler.cs" />
     <Compile Include="Classes\EntityLayer\Testler.cs" />
+    <Compile Include="Classes\Global.cs" />
     <Compile Include="Classes\Listener.cs" />
     <Compile Include="Classes\PermanentTrigger.cs" />
     <Compile Include="Classes\TestGoster.cs" />
     <Compile Include="Classes\UserControlClass.cs" />
     <Compile Include="KullaniciSayfasi.xaml.cs">
       <DependentUpon>KullaniciSayfasi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControllers\UcAyarlar.xaml.cs">
+      <DependentUpon>UcAyarlar.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\UcBaslangic.xaml.cs">
       <DependentUpon>UcBaslangic.xaml</DependentUpon>
@@ -157,13 +160,13 @@
     <Compile Include="UserControllers\UcBaslangic\adim3.xaml.cs">
       <DependentUpon>adim3.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControllers\UcGirenKullanici.xaml.cs">
+    <Compile Include="UserControllers\Others\UcGirenKullanici.xaml.cs">
       <DependentUpon>UcGirenKullanici.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\UcSonuclar.xaml.cs">
       <DependentUpon>UcSonuclar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControllers\UcSoru.xaml.cs">
+    <Compile Include="UserControllers\Others\UcSoru.xaml.cs">
       <DependentUpon>UcSoru.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControllers\UcTestler.xaml.cs">
@@ -219,6 +222,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControllers\UcAyarlar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControllers\UcBaslangic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -235,7 +242,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControllers\UcGirenKullanici.xaml">
+    <Page Include="UserControllers\Others\UcGirenKullanici.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,7 +250,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControllers\UcSoru.xaml">
+    <Page Include="UserControllers\Others\UcSoru.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

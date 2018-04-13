@@ -1,4 +1,6 @@
 ﻿using ltest.Classes;
+using ltest.Properties;
+using ltest.UserControllers;
 using System;
 using System.Drawing;
 using System.Windows;
@@ -14,19 +16,18 @@ using WpfApp1.UserControllers;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         static MainWindow _main;
         public static bool durum;
         PermanentTrigger permanent = new PermanentTrigger();
-
         public MainWindow()
         {
             _main = this;
             InitializeComponent();
+
+            Global.ChangeColour(Global.ToMediaColor(Settings.Default.color));
+
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             DatabaseManager.CreateDatabase();
@@ -37,7 +38,6 @@ namespace WpfApp1
         }
         public static void Active(string active)
         {
-            //Uyarı: Repeat Sorun Yaratabilir
             _main.ActiveLabel.Content = active;
             if (active=="Online")
             {
@@ -45,15 +45,16 @@ namespace WpfApp1
                 _main.ActiveLabel.Foreground = new SolidColorBrush(Colors.DarkGreen);
                 ImageBehavior.SetAnimatedSource(_main.ActiveImage, new BitmapImage(new Uri(@"/Images/online.gif", UriKind.Relative)));
                 ImageBehavior.SetRepeatBehavior(_main.ActiveImage, RepeatBehavior.Forever);
-
+                Global.genelDurum = Global.GenelDurum.OdaOnline;
             }
             else if(active=="Offline")
             {
                 durum = false;
                 _main.ActiveLabel.Foreground = new SolidColorBrush(Colors.Black);
                 ImageBehavior.SetAnimatedSource(_main.ActiveImage, new BitmapImage(new Uri(@"/Images/offline.gif", UriKind.Relative)));
+                Global.genelDurum = Global.GenelDurum.OdaOffline;
             }
-          
+
         }
         private void Kapat(object sender, RoutedEventArgs e)
         {
@@ -98,6 +99,16 @@ namespace WpfApp1
                     break;
             }
         }
+
+        private void Renkler(object sender, RoutedEventArgs e)
+        {
+        }
+
+
+        private void Ayarlar(object sender, RoutedEventArgs e)
+        {
+            UserControlClass.ControlAdd(icerik, new ChangeColor());
+        }
         #endregion
 
         private void Buyult(object sender, RoutedEventArgs e)
@@ -127,12 +138,6 @@ namespace WpfApp1
             //}
         }
 
-        private void Renkler(object sender, RoutedEventArgs e)
-        {
-            //var colors = new Colors();
-            //colors.ShowDialog();
-        }
-
 
         /// <summary>
         /// Her çözünürlük değişikliğinde pencere genişliğini alır ve buna göre dizaynı şekillendirir. Temel olarak 3 farklı dizayn şekli var.
@@ -149,7 +154,7 @@ namespace WpfApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        const int min = 48;
+        const int min = 53; // +5 Margin
         const int max = 320;
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {

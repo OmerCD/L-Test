@@ -2,19 +2,19 @@
 <XamlProjectMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Files>
     <XamlFileMeta>
-      <FilePath>D:\Projects\L-Test\Client\Client\NamePage.xaml</FilePath>
+      <FilePath>C:\Users\Hasan\Desktop\L-Test\Client\Client\NamePage.xaml</FilePath>
       <Hash>7B-D0-70-BD-B8-A2-B0-2F-95-D6-D2-0B-A6-1C-53-F5</Hash>
       <Properties>
         <string>Title</string>
       </Properties>
     </XamlFileMeta>
     <XamlFileMeta>
-      <FilePath>D:\Projects\L-Test\Client\Client\App.xaml</FilePath>
+      <FilePath>C:\Users\Hasan\Desktop\L-Test\Client\Client\App.xaml</FilePath>
       <Hash>AC-69-B4-DA-64-49-B3-C2-ED-31-B6-E5-39-08-F1-81</Hash>
       <Properties />
     </XamlFileMeta>
     <XamlFileMeta>
-      <FilePath>D:\Projects\L-Test\Client\Client\IpPage.xaml</FilePath>
+      <FilePath>C:\Users\Hasan\Desktop\L-Test\Client\Client\IpPage.xaml</FilePath>
       <Hash>0C-04-47-EC-05-6F-B3-A9-7D-FB-DF-F8-5B-2C-BA-69</Hash>
       <Properties>
         <string>Title</string>

@@ -21,53 +21,60 @@
         /// Menü Üstte taşınıyor.
         /// Sol Menü 48 px - Icon 16 px, 16 px margin var.
     -->
-    <Grid x:Name="AnaGrid" Loaded="AnaGrid_Loaded">
+    <Grid x:Name="AnaGrid" Loaded="AnaGrid_Loaded" Background="{StaticResource SoftGrey}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition MaxWidth="320" x:Name="sideBar"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Background="{StaticResource SoftGrey}" >
-            <StackPanel x:Name="menuStack">
-                <Button Style="{DynamicResource Toggle}" Click="Toggle">
-                    <Rectangle Style="{DynamicResource IconBox}" Margin="16,0,0,0">
-                        <Rectangle.OpacityMask>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource Menu}" />
-                        </Rectangle.OpacityMask>
-                    </Rectangle>
-                </Button>
-                <Border Height="48">
-                </Border>
-                <Button Style="{DynamicResource MenuButton}" Click="Baglangic">
-                    <DockPanel Style="{DynamicResource UstMenuDock}">
-                        <Rectangle Style="{DynamicResource IconBox}">
+        <Border Grid.Column="0" Style="{StaticResource BorderStyle}" Padding="0" Margin="0,0,5,0">
+            <Grid>
+                <StackPanel x:Name="menuStack">
+                    <Button Style="{DynamicResource Toggle}" Click="Toggle">
+                        <Rectangle Style="{DynamicResource IconBox}" Margin="16,0,0,0">
                             <Rectangle.OpacityMask>
-                                <VisualBrush Stretch="Fill" Visual="{StaticResource Home}" />
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource Menu}" />
                             </Rectangle.OpacityMask>
                         </Rectangle>
-                        <Label Content="Ana Menü" Style="{DynamicResource UstMenuLabel}" />
-                    </DockPanel>
-                </Button>
-                <Button Style="{DynamicResource MenuButton}" Click="Testler">
-                    <DockPanel Style="{DynamicResource UstMenuDock}">
-                        <Rectangle Style="{DynamicResource IconBox}">
-                            <Rectangle.OpacityMask>
-                                <VisualBrush Stretch="Fill" Visual="{StaticResource Test}" />
-                            </Rectangle.OpacityMask>
-                        </Rectangle>
-                        <Label Content="Testler" Style="{DynamicResource UstMenuLabel}"/>
-                    </DockPanel>
-                </Button>
-                <Button Style="{DynamicResource MenuButton}" Click="Sonuclar" >
-                    <DockPanel Style="{DynamicResource UstMenuDock}">
-                        <Rectangle Style="{DynamicResource IconBox}">
-                            <Rectangle.OpacityMask>
-                                <VisualBrush Stretch="Fill" Visual="{StaticResource Result}" />
-                            </Rectangle.OpacityMask>
-                        </Rectangle>                        
-                        <Label Content="Sonuçlar" Style="{DynamicResource UstMenuLabel}"/>
-                    </DockPanel>
-                </Button>
-                <Button Style="{DynamicResource MenuButton}" Click="Renkler">
+                    </Button>
+                    <Border Height="48">
+                    </Border>
+                    <Button Style="{DynamicResource MenuButton}" Click="Baglangic">
+                        <DockPanel Style="{DynamicResource UstMenuDock}">
+                            <Rectangle Style="{DynamicResource IconBox}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource Home}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <Label Style="{DynamicResource UstMenuLabel}">
+                                <TextBlock Text="Ana Menü" VerticalAlignment="Center"/>
+                            </Label>
+                        </DockPanel>
+                    </Button>
+                    <Button Style="{DynamicResource MenuButton}" Click="Testler">
+                        <DockPanel Style="{DynamicResource UstMenuDock}">
+                            <Rectangle Style="{DynamicResource IconBox}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource Test}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <Label Style="{DynamicResource UstMenuLabel}">
+                                <TextBlock Text="Testler" VerticalAlignment="Center"/>
+                            </Label>
+                        </DockPanel>
+                    </Button>
+                    <Button Style="{DynamicResource MenuButton}" Click="Sonuclar" >
+                        <DockPanel Style="{DynamicResource UstMenuDock}">
+                            <Rectangle Style="{DynamicResource IconBox}">
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource Result}" />
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+                            <Label Style="{DynamicResource UstMenuLabel}">
+                                <TextBlock Text="Sonuçlar" VerticalAlignment="Center"/>
+                            </Label>
+                        </DockPanel>
+                    </Button>
+                    <!--<Button Style="{DynamicResource MenuButton}" Click="Renkler">
                     <DockPanel Style="{DynamicResource UstMenuDock}">
                         <Rectangle Style="{DynamicResource IconBox}">
                             <Rectangle.OpacityMask>
@@ -76,53 +83,40 @@
                         </Rectangle>
                         <Label Content="Renkler" Style="{DynamicResource UstMenuLabel}"/>
                     </DockPanel>
-                </Button>
-            </StackPanel>
-            <StackPanel VerticalAlignment="Bottom">
-                <Button Style="{DynamicResource MenuButton}" Click="Renkler" VerticalAlignment="Bottom">
-                    <DockPanel Style="{DynamicResource UstMenuDock}">
-                        <Rectangle Style="{DynamicResource IconBox}">
+                </Button>-->
+                </StackPanel>
+                <StackPanel VerticalAlignment="Bottom">
+                    <Button Style="{DynamicResource Toggle}" Click="Ayarlar">
+                        <Rectangle Style="{DynamicResource IconBox}" Margin="16,0,0,0">
                             <Rectangle.OpacityMask>
-                                <VisualBrush Stretch="Fill" Visual="{StaticResource Color}" />
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource Setting}"/>
                             </Rectangle.OpacityMask>
                         </Rectangle>
-                        <Label Content="Ayarlar" Style="{DynamicResource UstMenuLabel}"/>
-                    </DockPanel>
-                </Button>
-                <Border Margin="20,10,20,5" CornerRadius="5" Padding="3">
-                    <Border.Style>
-                        <Style TargetType="Border">
-                            <Setter Property="Background" Value="LightGray"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="Background" Value="DarkGray"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Border.Style>
-                    <TextBlock Text="L-Test Uygulaması v1.0.0.0" HorizontalAlignment="Left" FontFamily="Cabin" FontSize="16" Margin="10,0"/>
-                </Border>
-            </StackPanel>
-        </Grid>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
         <!--Ana Grid-->
         <Grid Grid.Column="1" Background="{StaticResource SoftGrey}" x:Name="grid">
             <Grid.RowDefinitions>
                 <RowDefinition />
-                <RowDefinition Height="32"/>
+                <RowDefinition Height="48"/>
             </Grid.RowDefinitions>
             <!--İçerik-->
-            <Grid Grid.Row="0" x:Name="icerik">
+            <Grid Grid.Row="0" x:Name="icerik" Margin="0,0,5,0">
             </Grid>
             <!--Alt Border-->
-            <Grid Grid.Row="1" Background="{StaticResource FireBrickMedium}">
-                <Label x:Name="DurumLabel" x:FieldModifier="public" Style="{DynamicResource Label}" Foreground="White"  DockPanel.Dock="Left" />
-                <Border Background="{StaticResource SoftGrey}"  CornerRadius="5" Margin="5" Width="110" DockPanel.Dock="Right" HorizontalAlignment="Right" >
-                    <DockPanel Margin="2">
-                        <Image x:Name="ActiveImage" x:FieldModifier="public" Margin="3,0,0,0" Width="16" Height="16" HorizontalAlignment="Left" gif:ImageBehavior.RepeatBehavior="0x" gif:ImageBehavior.AnimatedSource="Images/offline.gif"/>
-                        <Label x:Name="ActiveLabel" x:FieldModifier="public" Width="82" Foreground="Black" Height="20" Padding="5,0,0,0" FontFamily="Titillium Web SemiBold" FontSize="12"/>
-                    </DockPanel>
-                </Border>
-            </Grid>
+            <Border Grid.Row="1" Background="{DynamicResource FireBrickMedium}" Style="{StaticResource BorderStyle}" Margin="0"> 
+                <Grid>
+                    <Label x:Name="DurumLabel" x:FieldModifier="public" Style="{DynamicResource Label}" Foreground="White"  DockPanel.Dock="Left" />
+                    <Border Background="{StaticResource SoftGrey}"  CornerRadius="5" Margin="5" Width="110" DockPanel.Dock="Right" HorizontalAlignment="Right" >
+                        <DockPanel Margin="2">
+                            <Image x:Name="ActiveImage" x:FieldModifier="public" Margin="3,0,0,0" Width="24" Height="24" HorizontalAlignment="Left" gif:ImageBehavior.RepeatBehavior="0x" gif:ImageBehavior.AnimatedSource="Images/offline.gif"/>
+                            <Label x:Name="ActiveLabel" x:FieldModifier="public" Content="Offline" Width="75" Foreground="Black" Height="24" Padding="6,0,0,0" FontFamily="Titillium Web SemiBold" FontSize="15"/>
+                        </DockPanel>
+                    </Border>
+                </Grid>
+            </Border>
         </Grid>
     </Grid>
 </Window>

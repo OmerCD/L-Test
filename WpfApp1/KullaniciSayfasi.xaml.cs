@@ -17,6 +17,8 @@ using WpfApp1;
 using WpfApp1.Classes;
 using WpfApp1.UserControllers;
 using System.Net.Sockets;
+using ltest.Classes;
+using ltest.UserControllers;
 
 namespace ltest
 {
@@ -39,6 +41,7 @@ namespace ltest
             {
                 ipadresi.Text = ipadresi.Text + " " + item;
             }
+            Sorular.Children.Add(new UcSoru(6));
             while (adim1.Clients.Count<1)
             {
                 await Bekle();
@@ -68,6 +71,7 @@ namespace ltest
             if (MessageBox.Show("Sayfayı Kapatırsanız, Odada Kapanacaktır. Kapatmak İstediğinizi Emin Misiniz?", "Uyarı", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No)==MessageBoxResult.Yes)
             {
                 this.Visibility = Visibility.Hidden;
+                Global.genelDurum = Global.GenelDurum.OdaOffline;
                 adim1.Listener.Stop();
                 MainWindow.Active("Offline");
             }

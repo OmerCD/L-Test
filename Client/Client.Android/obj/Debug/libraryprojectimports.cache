@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Paths>
   <Jars>
-    <Jar>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\1\jl\formsviewgroup.jar</Jar>
-    <Jar>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\6\jl\okhttp-2.3.0-jar-with-dependencies.jar</Jar>
+    <Jar>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\1\jl\formsviewgroup.jar</Jar>
+    <Jar>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\6\jl\okhttp-2.3.0-jar-with-dependencies.jar</Jar>
   </Jars>
   <ResolvedResourceDirectories>
-    <ResolvedResourceDirectory>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\2\jl\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\4\jl\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\7\jl\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\9\jl\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\21\jl\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\22\jl\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\23\jl\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\30\jl\res</ResolvedResourceDirectory>
-    <ResolvedResourceDirectory>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\33\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\2\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\4\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\7\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\9\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\21\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\22\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\23\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\30\jl\res</ResolvedResourceDirectory>
+    <ResolvedResourceDirectory>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\33\jl\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
     <ResolvedAssetDirectory>obj\Debug\lp\2\jl\assets</ResolvedAssetDirectory>
@@ -28,14 +28,14 @@
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
-    <ResolvedResourceDirectoryStamp>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\2.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\4.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\7.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\9.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\21.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\22.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\23.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\30.stamp</ResolvedResourceDirectoryStamp>
-    <ResolvedResourceDirectoryStamp>D:\Projects\L-Test\Client\Client.Android\obj\Debug\lp\33.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\2.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\4.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\7.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\9.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\21.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\22.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\23.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\30.stamp</ResolvedResourceDirectoryStamp>
+    <ResolvedResourceDirectoryStamp>C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\lp\33.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>
 </Paths>

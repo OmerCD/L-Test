@@ -55,10 +55,10 @@ namespace WpfApp1.Classes
                     Content = "Soru " + (i + 1) + ":",
                     Style = FindResource("Label") as Style,
                     Width = 120,
-                    Foreground = Brushes.Black,
+                    Foreground = Brushes.White,
                     Height = double.NaN, // Auto için bunu yazdık. Niye acaba?Cevap : Onu öyle yapmışlar. Yapana sormak gerek.
                     Background = (SolidColorBrush)FindResource("FireBrickSoft")
-            };
+                };
                 soruTextBoxes[i] = new TextBox
                 {
                     Style = FindResource("TextBox") as Style,

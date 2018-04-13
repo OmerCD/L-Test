@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ltest.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,7 @@ namespace ltest.UserControllers.UcBaslangic
 
         private void TestiBaslat(object sender, RoutedEventArgs e)
         {
-
+            Global.genelDurum = Global.GenelDurum.TestBaslatildi;
             //foreach (var item in clients)
             //{
             //    ipList.Items.Add(item.GetId());

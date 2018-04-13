@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ltest.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace ltest.UserControllers.UcBaslangic
         }
         private void Bitir(object sender, RoutedEventArgs e)
         {
-
+            Global.genelDurum = Global.GenelDurum.TestBitirildi;
         }
     }
 }

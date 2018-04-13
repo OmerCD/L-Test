@@ -58,10 +58,10 @@
                         <Label DockPanel.Dock="Top" Content="Cevap Sayısı"  Width="90" Style="{StaticResource Label}"/>
                         <TextBox x:Name="CevapTextbox" PreviewTextInput="SayiKontrol" MaxLength="1" Style="{DynamicResource TextBox}" />
                     </DockPanel>
-                    <Button Click="Olustur_Click" ToolTip="Testi oluşturmak için tıklayın." Style="{DynamicResource TestButonlar}" Margin="5,0,0,8">
+                    <Button Click="Olustur_Click" ToolTip="Testi oluşturmak için tıklayın." Style="{DynamicResource TestButonlar}" Margin="5,0,0,14">
                         <Label Content="Oluştur" Style="{DynamicResource Label}" />
                     </Button>
-                    <Button Click="Kaydet" ToolTip="Testi kaydetmek için tıklayın" Style="{DynamicResource TestButonlar}"  Margin="5,0,0,8">
+                    <Button Click="Kaydet" ToolTip="Testi kaydetmek için tıklayın" Style="{DynamicResource TestButonlar}"  Margin="5,0,0,14">
                         <Label Content="Kaydet" Style="{DynamicResource Label}" />
                     </Button>
                     <DockPanel Style="{DynamicResource DockPanelStyle}">
@@ -69,8 +69,7 @@
                 </DockPanel>
             </Grid>
         </Border>
-
-        <StackPanel Grid.Row="1" x:Name="SoruStack">
+        <StackPanel  Grid.Row="1" x:Name="SoruStack">
             <!--Kod ile Doluyor-->
         </StackPanel>
     </Grid>

@@ -200,7 +200,6 @@ C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic\adim1.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic\adim2.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic\adim3.g.cs
-C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcGirenKullanici.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcSonuclar.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcTestler.g.cs
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\App.g.cs
@@ -219,7 +218,6 @@ C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic\adim1.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic\adim2.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcBaslangic\adim3.baml
-C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcGirenKullanici.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcSonuclar.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\L-Test.g.resources
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\ltest.Properties.Resources.resources
@@ -233,5 +231,9 @@ C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcTestler\UcOlus
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcTestler\UcDuzenle.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcTestler\UcOlustur.baml
 C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\Server.csprojResolveAssemblyReference.cache
-C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcSoru.g.cs
-C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcSoru.baml
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcAyarlar.g.cs
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\UcAyarlar.baml
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\Others\UcGirenKullanici.g.cs
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\Others\UcSoru.g.cs
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\Others\UcGirenKullanici.baml
+C:\Users\Hasan\Desktop\L-Test\WpfApp1\obj\Debug\UserControllers\Others\UcSoru.baml
