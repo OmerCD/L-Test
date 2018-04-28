@@ -26,12 +26,11 @@ namespace Client
 		protected override void OnSleep ()
 		{
             IpPage.ClientSocket?.Send(Encoding.UTF8.GetBytes("Disconnected"));
-            IpPage.ClientSocket?.Close();
+		    IpPage.ClientSocket?.Close();
 		}
 
 		protected override void OnResume ()
 		{
-            MainPage = new NavigationPage(new IpPage());
         }
     }
 }

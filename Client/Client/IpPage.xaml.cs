@@ -20,24 +20,18 @@ namespace Client
         public static Socket ClientSocket;
         private void Giris_Clicked(object sender, EventArgs e)
         {
-            ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             string ip = Ip.Text;
-            for (int i = 0; i < 10; i++)
+            ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            IAsyncResult result = ClientSocket.BeginConnect(ip, 100,null,null);
+            bool success = result.AsyncWaitHandle.WaitOne(5000, true);
+            if (!ClientSocket.Connected)
             {
-                if (!ClientSocket.Connected)
-                {
-                    try
-                    {
-                        ClientSocket.Connect(ip, 100);
-                    }
-                    catch (SocketException)
-                    {
-                        Durum.Text = i.ToString() + ". bağlantı denemesi";
-                    }
-                }
+                ClientSocket.Close();
+                Durum.Text = "Bağlantı Başarısız.";
             }
-            if (ClientSocket.Connected)
+            else
             {
+                ClientSocket.EndConnect(result);
                 Navigation.PushModalAsync(new NamePage());
             }
         }

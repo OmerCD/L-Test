@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <SolidColorBrush x:Key="MainColor" Color="#c41515"/>
+    <SolidColorBrush x:Key="MainColorAnimation" Color="#DE2F2F"/>
+
+    <SolidColorBrush x:Key="MainColorMedium" Color="#F74848"/>
+    <SolidColorBrush x:Key="MainColorMediumAnimation" Color="#FF6262"/>
+
+    <SolidColorBrush x:Key="MainColorSoft" Color="#FF7B7B"/>
+    <SolidColorBrush x:Key="MainColorSoftAnimation" Color="#FF9494"/>
+
+
+    
+    <SolidColorBrush x:Key="SoftGrey" Color="#fafafa"/>
+    <SolidColorBrush x:Key="MediumGrey" Color="#dcdcdc"/>
+    <SolidColorBrush x:Key="DarkGrey" Color="#939393"/>
+    <SolidColorBrush x:Key="LabelGrey" Color="#4a4a49"/>
+
+    <SolidColorBrush x:Key="FireBrick" Color="#c41515"/>
+
+    <SolidColorBrush x:Key="Alizarin Crimson" Color="#E32636"/>
+    <SolidColorBrush x:Key="Aqua Forest" Color="#5FA777"/>
+    <SolidColorBrush x:Key="Barberry" Color="#DED717"/>
+    <SolidColorBrush x:Key="Blaze Orange" Color="#FF6600"/>
+</ResourceDictionary>
