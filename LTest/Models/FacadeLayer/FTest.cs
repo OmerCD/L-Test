@@ -1,15 +1,18 @@
-﻿using System;
+﻿using Entity;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using LTest.Models.EntityLayer;
 
 namespace LTest.Models.FacadeLayer
 {
     class FTest
     {
-        public static int Insert(Test item)
+        public FTest()
         {
             DatabaseManager.BaglantiAc();
+        }
+        public static int Insert(Test item)
+        {
             SQLiteCommand com = new SQLiteCommand("INSERT INTO Testler(Sure, SoruSayisi, CevapSayisi, TestAdi) VALUES(@Sure, @SoruSayisi, @CevapSayisi, @TestAdi); Select last_insert_rowid()", DatabaseManager.Baglanti);//; Select last_insert_rowid()
             com.Parameters.AddWithValue("@Sure",item.Sure);
             com.Parameters.AddWithValue("@SoruSayisi", item.SoruSayisi);
@@ -31,7 +34,7 @@ namespace LTest.Models.FacadeLayer
 
         public static int Delete(int testId)
         {
-            SQLiteCommand com = new SQLiteCommand("DELETE FROM Testler WHERE TestId=@TestId");
+            SQLiteCommand com = new SQLiteCommand("DELETE FROM Testler WHERE TestId=@TestId",DatabaseManager.Baglanti);
             com.Parameters.AddWithValue("TestId", testId);
             return com.ExecuteNonQuery();
         }

@@ -1,18 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage
+    xmlns:ınternals="http://xamarin.com/schemas/2014/forms" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="L-Test"
-             x:Class="Client.IpPage">
-    <Grid BackgroundColor="CornflowerBlue">
-        <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Margin="5" >
-            <StackLayout>
-                <Image Source="test.png" WidthRequest="128" HeightRequest="128" />
-                <Frame Style="{StaticResource EntryBorder}" > 
-                    <Entry x:Name="Ip" Placeholder="Giriş Kodu" Style="{StaticResource EntryStyle}"/>
-                </Frame>
-                <Button Text="Giriş Yap" x:Name="Giris" BackgroundColor="#e59b0e" Clicked="Giris_Clicked" HeightRequest="60" FontSize="Medium"/>
-                <Label x:Name="Durum"/>
-            </StackLayout>
-        </ScrollView>
+             x:Class="Client.IpPage" BackgroundColor="DarkOrchid">
+    <Grid>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300">
+            <Label x:Name="Info" TextColor="LightGray"/>
+            <Frame Style="{StaticResource EntryBorder}">
+                <Entry x:Name="Ip" Placeholder="iP Kodu" />
+            </Frame>
+            <Button Text="Giriş Yap" x:Name="Giris" Clicked="Giris_Clicked" Style="{StaticResource ButtonStyle}"/>
+            <Label Text="L-Test uygulamasına hoşgeldiniz." TextColor="White" FontSize="Medium"/>
+        </StackLayout>
+        <Frame Style="{StaticResource EntryBorder}" VerticalOptions="End" BackgroundColor="Orchid" Margin="0">
+            <Label Text="Sunucunun olduğu ağa bağlı olduğunuzdan emin olun." TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="Center"/>
+        </Frame>
     </Grid>
 </ContentPage>

@@ -3,15 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:progress="clr-namespace:Client.M_CustomControls"
              Title="İsmini Girin"
-             x:Class="Client.NamePage">
+             x:Class="Client.NamePage" BackgroundColor="SteelBlue">
     <Grid>
-        <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Margin="5">
-            <StackLayout>
-                <Frame Style="{StaticResource EntryBorder}">
-                    <Entry x:Name="Name" Placeholder="Oda Numarası" Style="{StaticResource EntryStyle}"/>
-                </Frame>
-                <Button Text="Onayla" x:Name="IsimGiris" BackgroundColor="#e59b0e" Clicked="SendName_Clicked"/>
-            </StackLayout>
-        </ScrollView>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300">
+            <Label x:Name="Info" TextColor="LightGray"/>
+            <Frame Style="{StaticResource EntryBorder}">
+                <Entry x:Name="Name" Placeholder="Adınızı Girin" />
+            </Frame>
+            <Button Text="Onayla" x:Name="IsimGiris" Clicked="SendName_Clicked" Style="{StaticResource ButtonStyle}"/>
+        </StackLayout>
+        <Frame Style="{StaticResource EntryBorder}" VerticalOptions="End" BackgroundColor="LightSteelBlue" Margin="0">
+            <Label Text="Ekranda adınızın göründüğünden emin olun." TextColor="White" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center"/>
+        </Frame>
     </Grid>
 </ContentPage>

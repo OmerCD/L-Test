@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entity;
+using LTest.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +15,7 @@ namespace Client
 		public App ()
 		{
 			InitializeComponent();
-
-            MainPage= new NavigationPage(new IpPage());
+            MainPage = new IpPage();
 
         }
 
@@ -25,8 +26,8 @@ namespace Client
 
 		protected override void OnSleep ()
 		{
-            IpPage.ClientSocket?.Send(Encoding.UTF8.GetBytes("Disconnected"));
-		    IpPage.ClientSocket?.Close();
+            //Listene?.Send(Encoding.UTF8.GetBytes("Disconnected"));
+            ClientListener.Stop();
 		}
 
 		protected override void OnResume ()

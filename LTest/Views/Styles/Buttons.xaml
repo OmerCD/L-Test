@@ -295,7 +295,63 @@
         </Style.Triggers>
     </Style>
 
-    
+    <!--Sil Standart Button-->
+    <Style x:Key="ButtonStyleRed" TargetType="Button">
+        <Setter Property="Margin" Value="15,24,0,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="Border" Background="Red" Height="40" Width="150">
+                        <Border.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Border.RenderTransform>
+                        <ContentPresenter Name="content"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="IndianRed"/>
+                            <Setter TargetName="Border" Property="BorderThickness" Value="3"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="DarkRed"/>
+                        </Trigger>
+                        <Trigger Property="Button.IsPressed" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="IndianRed"/>
+                            <Setter TargetName="Border" Property="BorderThickness" Value="0"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Border">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="0.95"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Border">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="0.95"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Border">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="1.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Border">
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.15" Value="1.5"/>
+                                            <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Custom MessageBox Button-->
     <Style TargetType="Button" 
 
 x:Key="MessageBoxButtonStyle">

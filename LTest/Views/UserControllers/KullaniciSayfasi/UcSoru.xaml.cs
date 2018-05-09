@@ -14,13 +14,17 @@ namespace LTest.Views.UserControllers.KullaniciSayfasi
     public partial class UcSoru : UserControl
     {
         public TextBlock[] textBlocks;
+        public Border[] borders;
+        public TextBlock[] bordersDogru;
+
         public UcSoru(int cevapSayisi)
         {
             InitializeComponent();
             
             int gridCount = Convert.ToInt16(Math.Ceiling((decimal)cevapSayisi / 2));
 
-            Border[] borders = new Border[cevapSayisi];
+            borders = new Border[cevapSayisi];
+            bordersDogru = new TextBlock[cevapSayisi];
             textBlocks = new TextBlock[cevapSayisi];
             Rectangle[] rectangles = new Rectangle[cevapSayisi];
             Viewbox[] viewboxes = new Viewbox[cevapSayisi];
@@ -52,6 +56,10 @@ namespace LTest.Views.UserControllers.KullaniciSayfasi
                     Style = FindResource("BorderStyle") as Style,
                     Margin = new Thickness(2),
                     Background = colors[i],
+                };
+                bordersDogru[i] = new TextBlock
+                {
+                    Visibility = Visibility.Hidden
                 };
                 viewboxes[i] = new Viewbox
                 {

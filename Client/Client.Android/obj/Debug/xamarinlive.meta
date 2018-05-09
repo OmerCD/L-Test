@@ -3,21 +3,23 @@
   <Files>
     <XamlFileMeta>
       <FilePath>C:\Users\Hasan\Desktop\L-Test\Client\Client\NamePage.xaml</FilePath>
-      <Hash>7B-D0-70-BD-B8-A2-B0-2F-95-D6-D2-0B-A6-1C-53-F5</Hash>
+      <Hash>38-AA-04-0C-A1-1C-5C-FD-DF-0A-A9-B4-80-FD-1D-05</Hash>
       <Properties>
         <string>Title</string>
+        <string>BackgroundColor</string>
       </Properties>
     </XamlFileMeta>
     <XamlFileMeta>
       <FilePath>C:\Users\Hasan\Desktop\L-Test\Client\Client\App.xaml</FilePath>
-      <Hash>C2-D6-15-C7-A3-65-3D-6A-8F-CA-57-C2-8F-E6-74-DF</Hash>
+      <Hash>9D-4B-60-8E-18-2A-26-92-2B-EA-BA-87-C7-F7-CE-0D</Hash>
       <Properties />
     </XamlFileMeta>
     <XamlFileMeta>
       <FilePath>C:\Users\Hasan\Desktop\L-Test\Client\Client\IpPage.xaml</FilePath>
-      <Hash>2F-99-DE-EF-79-D6-DA-A9-89-79-05-79-ED-66-AE-8B</Hash>
+      <Hash>77-4E-39-72-22-0E-CD-6D-D0-68-2F-43-11-FF-F5-ED</Hash>
       <Properties>
         <string>Title</string>
+        <string>BackgroundColor</string>
       </Properties>
     </XamlFileMeta>
   </Files>

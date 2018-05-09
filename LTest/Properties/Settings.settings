@@ -1,8 +1,8 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WpfApp1.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LTest.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ColorHex" Type="System.String" Scope="User">
+    <Setting Name="HexColor" Type="System.String" Scope="User">
       <Value Profile="(Default)">#c41515</Value>
     </Setting>
     <Setting Name="BaslangicSure" Type="System.Byte" Scope="User">

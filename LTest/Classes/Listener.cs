@@ -1,63 +1,55 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Windows;
 
 namespace LTest.Classes
 {
     public class Listener
     {
-        Socket _socket;
+        private Socket _socket;
         private bool _listening;
-        private int _port;
+        private List<Client> clients;
 
-        public bool GetListening()
-        {
-            return _listening;
-        }
+        public bool Listening() => _listening;
 
-        private void SetListening(bool value)
-        {
-            _listening = value;
-        }
+        private void Listening(bool value) => _listening = value;
 
-        public int GetPort()
-        {
-            return _port;
-        }
+        public int Port { get; }
 
-        private void SetPort(int value)
-        {
-            _port = value;
-        }
+        public List<Client> Clients { get => clients; set => clients = value; }
 
         public Listener(int port)
         {
-            SetPort(port);
+            Port = port;
             _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
         public void Start()
         {
-            if (GetListening())
+            if (Listening())
                 return;
-
-            _socket.Bind(new IPEndPoint(0, _port));
+            _listening = true;
+            _socket.Bind(new IPEndPoint(0, Port));
             _socket.Listen(0);
             _socket.BeginAccept(Callback, null);
-            SetListening(true);
         }
 
         public void Stop()
         {
-            if (!GetListening())
+            if (!Listening())
                 return;
+            _listening = false;
             _socket.Close();
             _socket.Dispose();
             _socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
-        void Callback(IAsyncResult ar)
+        private void Callback(IAsyncResult ar)
         {
             try
             {
@@ -68,6 +60,40 @@ namespace LTest.Classes
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
+            }
+        }
+
+        public void SendObject(object obj)
+        {
+            BinaryFormatter _formatter = new BinaryFormatter();
+            MemoryStream _memoryStream = new MemoryStream();
+            _formatter.Serialize(_memoryStream, obj);
+            byte[] buffer = _memoryStream.ToArray();
+            foreach (var client in clients)
+            {
+                client.Socket.Send(buffer);
+            }
+        }
+
+        public void SendText(string text)
+        {
+            foreach (var client in clients)
+            {
+                client.Socket.Send(Encoding.UTF8.GetBytes(text));
+            }
+        }
+
+        public object GetObject(byte[] data)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream(data);
+            if (ms!=null)
+            {
+                return formatter.Deserialize(ms);
+            }
+            else
+            {
+                return null;
             }
         }
 

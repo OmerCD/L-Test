@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using LTest.Classes;
-using LTest.Views.UserControllers.AnasayfaPages.Test;
+using LTest.Views.UserControllers.AnasayfaPages.TestPages;
 
 namespace LTest.Views.UserControllers.AnasayfaPages
 {

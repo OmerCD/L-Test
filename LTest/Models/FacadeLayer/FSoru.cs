@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Entity;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using LTest.Models.EntityLayer;
 
 namespace LTest.Models.FacadeLayer
 {
@@ -21,13 +21,13 @@ namespace LTest.Models.FacadeLayer
             SQLiteCommand com = new SQLiteCommand("UPDATE Sorular SET Soru=@Soru WHERE SoruId=@SoruId ", DatabaseManager.Baglanti);
             com.Parameters.AddWithValue("SoruId", item.SoruId);
             com.Parameters.AddWithValue("Soru", item.SoruText);
-            return com.ExecuteNonQuery();
+            return Convert.ToInt16(com.ExecuteNonQuery());
         }
 
-        public static int Delete(int soruId)
+        public static int DeleteAll(int testId)
         {
-            SQLiteCommand com = new SQLiteCommand("DELETE FROM Sorular WHERE SoruId=@SoruId");
-            com.Parameters.AddWithValue("SoruId", soruId);
+            SQLiteCommand com = new SQLiteCommand("DELETE FROM Sorular WHERE TestId=@TestId", DatabaseManager.Baglanti);
+            com.Parameters.AddWithValue("TestId", testId);
             return com.ExecuteNonQuery();
         }
 

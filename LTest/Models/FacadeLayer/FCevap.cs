@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Entity;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
-using LTest.Models.EntityLayer;
 
 namespace LTest.Models.FacadeLayer
 {
@@ -28,10 +28,10 @@ namespace LTest.Models.FacadeLayer
             return com.ExecuteNonQuery();
         }
 
-        public static int Delete(int cevapId)
+        public static int DeleteAll(int testId)
         {
-            SQLiteCommand com = new SQLiteCommand("DELETE FROM Cevaplar WHERE CevapId=@CevapId");
-            com.Parameters.AddWithValue("CevapId", cevapId);
+            SQLiteCommand com = new SQLiteCommand("DELETE FROM Cevaplar WHERE TestId=@TestId", DatabaseManager.Baglanti);
+            com.Parameters.AddWithValue("TestId", testId);
             return com.ExecuteNonQuery();
         }
 

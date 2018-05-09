@@ -26,12 +26,13 @@ namespace LTest.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("#c41515")]
-        public string ColorHex {
-            get {
-                return ((string)(this["ColorHex"]));
+        public string HexColor {
+            get
+            {
+                return ((string)(this["HexColor"]));
             }
             set {
-                this["ColorHex"] = value;
+                this["HexColor"] = value;
             }
         }
         

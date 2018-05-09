@@ -1,38 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net.Sockets;
-using System.Net;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using LTest.Classes;
 
 namespace Client
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class IpPage : ContentPage
 	{
-		public IpPage ()
+        public static Socket Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+        public IpPage ()
 		{
 			InitializeComponent ();
         }
-        public static Socket ClientSocket;
         private void Giris_Clicked(object sender, EventArgs e)
         {
-            string ip = Ip.Text;
-            ClientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            IAsyncResult result = ClientSocket.BeginConnect(ip, 100,null,null);
-            bool success = result.AsyncWaitHandle.WaitOne(5000, true);
-            if (!ClientSocket.Connected)
+            if (!string.IsNullOrEmpty(Ip.Text))
             {
-                ClientSocket.Close();
-                Durum.Text = "Bağlantı Başarısız.";
-            }
-            else
-            {
-                ClientSocket.EndConnect(result);
-                Navigation.PushModalAsync(new NamePage());
+                int deneme = 0;
+                string ip = Ip.Text;
+                while (!Socket.Connected)
+                {
+                    try
+                    {
+                        deneme++;
+                        Socket.Connect(ip, 100);
+                        Navigation.PushModalAsync(new NamePage());
+
+                    }
+                    catch (SocketException)
+                    {
+                        Info.Text = "Ağa " + deneme.ToString() + " defa bağlanılmaya çalışıldı ama bağlanamadı";
+                    }
+                }
+
             }
         }
     }

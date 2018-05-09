@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Windows.Shapes;
 using System.Windows.Threading;
+using Entity;
 using LTest.Classes;
-using LTest.Models.EntityLayer;
 using LTest.Models.FacadeLayer;
 using LTest.Properties;
 using LTest.Views.UserControllers.KullaniciSayfasi;
@@ -25,30 +26,33 @@ namespace LTest.Views
     {
         private Listener _listener;
         private readonly List<StackPanel> _stackPanels = new List<StackPanel>();
-
         private readonly List<UcGirenKullanici> _ucGirenKullanici = new List<UcGirenKullanici>();
         private readonly List<Kullanici> _kullanicilar = new List<Kullanici>();
         private readonly List<Client> _clients = new List<Client>();
 
         private readonly List<SolidColorBrush> _colors;
-        private readonly List<Path> _icons;
+        private readonly List<System.Windows.Shapes.Path> _icons;
 
         private UcSoru _ucSoru;
         private List<Soru> _sorular;
+        private List<Cevap> _cevaplar;
         private UcSkor _ucSkor;
         private Test _test;
         private byte _soruIndex;
-
+        Sure _sure = new Sure();
         private const int ColumnCount = 5;
-        private int _count = 0;
+        private int _userCount = 0;
         private int _panel = 0;
         private readonly string _testAdi;
+        byte[] receivedBuf = new Byte[1024 * 1024 * 50];
+
         public KullaniciSayfasi(string testAdi)
         {
             InitializeComponent();
             _colors = Global.Colors();
             _icons = Global.Icons();
             _testAdi = testAdi;
+            _test = FTest.Select(_testAdi);
         }
 
         //public static string ByteArrayToString(byte[] ba)
@@ -74,21 +78,24 @@ namespace LTest.Views
 
                 // Socket İşlemleri
                 _listener = new Listener(100);
-                _listener.SocketAccepted += new Listener.SocketAcceptedHandler(Listener_SocketAccepted);
+                _listener.SocketAccepted += Listener_SocketAccepted;
                 _listener.Start();
-
-                // Kullanıcıların eklenmesi için stackpanel oluşturuyorum.
-                for (int i = 0; i < ColumnCount; i++)
-                {
-                    _stackPanels.Add(new StackPanel());
-                    KullaniciGrid.Children.Add(_stackPanels[i]);
-                    Grid.SetColumn(_stackPanels[i], i);
-                }
             }
             catch (SocketException k)
             {
                 MessageBox.Show(k.ToString());
             }
+
+            // Kullanıcıların eklenmesi için stackpanel oluşturuyorum.
+            for (int i = 0; i < ColumnCount; i++)
+            {
+                _stackPanels.Add(new StackPanel());
+                KullaniciGrid.Children.Add(_stackPanels[i]);
+                Grid.SetColumn(_stackPanels[i], i);
+            }
+
+            _sure.BaslangicSure = Settings.Default.BaslangicSure;
+            _sure.SkorSure = Settings.Default.SkorSure;
 
             // Ip Adresi bulup, ekrana yazdırıyorum.
             var ipv4Addresses = Array.FindAll(
@@ -103,8 +110,10 @@ namespace LTest.Views
             {
                 await Bekle();
             }
-        }
 
+
+        }
+   
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             var result= MessageBox.Show("Sayfayı Kapatırsanız, Odada Kapanacaktır. Kapatmak İstediğinizi Emin Misiniz?",
@@ -124,29 +133,32 @@ namespace LTest.Views
         }
 
         #region Client İşlemleri
-        void Listener_SocketAccepted(Socket e)
+
+        private void Listener_SocketAccepted(Socket e)
         {
             var rnd = new Random();
             _clients.Add(new Client(e));
-            _clients[_count].Received += Client_Received;
-            _clients[_count].Disconnected += (Client_Disconnected);
+            _clients[_userCount].Received += Client_Received;
+            _clients[_userCount].Disconnected += Client_Disconnected;
             Dispatcher.BeginInvoke(new Action(delegate
             {
                 // TODO: Kullanıcının aldığını puanlar eklenecek.
                 _kullanicilar.Add(new Kullanici());
-
+                _kullanicilar[_userCount].EndPoint = _clients[_userCount].GetEndPoint().ToString();
+                _kullanicilar[_userCount].KullaniciId = _userCount;
+                _kullanicilar[_userCount].Sorular = new List<Kullanici.SoruOzellikleri>();
                 //Giren kullanıcıyla beraber bir UcGirenKullanici nesneyi türetiyor ve girdilerini ekliyorum.
                 _ucGirenKullanici.Add(new UcGirenKullanici());
-                _ucGirenKullanici[_count].Name.Text = "Bekleniyor...";
-                _ucGirenKullanici[_count].EndPoint.Text = _clients[_count].GetEndPoint().ToString();
-                _ucGirenKullanici[_count].Sira.Text = (_count + 1).ToString();
-                _ucGirenKullanici[_count].SiraBorder.Background = _colors[rnd.Next(0, 3)];
+                _ucGirenKullanici[_userCount].Name.Text = "Bekleniyor...";
+                _ucGirenKullanici[_userCount].EndPoint.Text = _clients[_userCount].GetEndPoint().ToString();
+                _ucGirenKullanici[_userCount].Sira.Text = (_userCount + 1).ToString();
+                _ucGirenKullanici[_userCount].SiraBorder.Background = _colors[rnd.Next(0, 3)];
 
-                Info.Text = "Kullanıcı Sayısı: " + (_count + 1).ToString();
+                Info.Text = "Kullanıcı Sayısı: " + (_userCount + 1).ToString();
 
-                _stackPanels[_panel].Children.Add(_ucGirenKullanici[_count]);
-                _ucGirenKullanici[_count].PanelCount = _panel;
-                _count++;
+                _stackPanels[_panel].Children.Add(_ucGirenKullanici[_userCount]);
+                _ucGirenKullanici[_userCount].PanelCount = _panel;
+                _userCount++;
                 _panel++;
                 if (_panel == 5)
                 {
@@ -165,15 +177,25 @@ namespace LTest.Views
                 _ucGirenKullanici.RemoveAt(i);
             }
         }
+
+        // Kullanıcıdan VERİ AL
         private void Client_Received(Client sender, byte[] data)
         {
             Dispatcher.BeginInvoke(new Action(delegate
             {
-                for (var i = 0; i < _count; i++)
+                for (var i = 0; i < _userCount; i++)
                 {
                     if (_clients[i].GetId() != sender.GetId()) continue;
-                    var incoming = Encoding.UTF8.GetString(data);
-                    _kullanicilar[i].KullaniciAdi=_ucGirenKullanici[i].Name.Text = incoming;
+                    object obj = _listener.GetObject(data);
+                    if (obj.GetType()==typeof(Kullanici))
+                    {
+                        _kullanicilar[i] = ((Kullanici)obj);
+                    }
+                    else if (obj.GetType() == typeof(Kullanici.SoruOzellikleri))
+                    {
+                        _kullanicilar[i].Sorular.Add((Kullanici.SoruOzellikleri)obj);
+                    }
+                    _ucGirenKullanici[i].Name.Text = _kullanicilar[i].KullaniciAdi;
                     break;
                 }
             }));
@@ -203,54 +225,94 @@ namespace LTest.Views
         private void TestBaslat_Click(object sender, RoutedEventArgs e)
         {
 
+            foreach (var item in KullaniciGrid.Children)
+            {
+                StackPanel stack = (StackPanel)item;
+                stack.Children.Clear();
+            }
             IpRow.Height = new GridLength(0);
             CountDownGrid.Visibility = Visibility.Visible;
             TestBaslatButton.Visibility = Visibility.Hidden;
             Global.GenelDurum = Global.Durum.TestBaslatildi;
 
+            // Anasayfadan seçilen test adi ile tüm test verileri çağrılıyor
 
-            _test = FTest.Select(_testAdi);
-            Info.Text = "Kullanıcı Sayısı: " + _count;
-
+            Info.Text = "Kullanıcı Sayısı: " + _userCount;
             _ucSoru = new UcSoru(_test.CevapSayisi);
             Sorular.Children.Add(_ucSoru);
             _sorular = FSoru.SelectAll(_test.TestId); // Tüm Sorular
             _ucSkor=new UcSkor();
+
+            for (int i = 0; i < _kullanicilar.Count; i++)
+            {
+                _kullanicilar[i].TestId = _test.TestId;
+            }
+            _listener.Clients = _clients;
+
+            _listener.SendObject(_sure);
+
+            _listener.SendObject(_test);
+
             BaslangicGeriSayim();
         }
 
+        public void SendObject(object obj)
+        {
+            BinaryFormatter _formatter = new BinaryFormatter();
+            MemoryStream _memoryStream = new MemoryStream();
+            _formatter.Serialize(_memoryStream, obj);
+            byte[] buffer = _memoryStream.ToArray();
+            foreach (var client in _clients)
+            {
+                client.Socket.Send(buffer);
+            }
+        }
         private void SiradakiSoru_Click(object sender, RoutedEventArgs e)
         {
-            SkorGoster();
+            SoruGoster();
         }
 
         private void SoruYazdir()
         {
             if (Global.GenelDurum == Global.Durum.TestBitti) return;
             SoruGeriSayim();
-            var cevaplar = FCevap.SelectBySoruId(_sorular[_soruIndex].SoruId);
+            _cevaplar = FCevap.SelectBySoruId(_sorular[_soruIndex].SoruId);
             _ucSoru.Soru.Text = _sorular[_soruIndex].SoruText;
             for (var i = 0; i < _ucSoru.textBlocks.Length; i++)
             {
-                _ucSoru.textBlocks[i].Text = cevaplar[i].CevapText;
+                _ucSoru.borders[i].Background = _colors[i];
+                _ucSoru.textBlocks[i].Text = _cevaplar[i].CevapText;
+                _ucSoru.bordersDogru[i].Text = _cevaplar[i].Dogru.ToString();
             }
             _soruIndex++;
+            for (int i = 0; i < _kullanicilar.Count; i++)
+            {
+                _kullanicilar[i].TestId = _test.TestId;
+                for (int j = 0; j < _sorular.Count; j++)
+                {
+                    _kullanicilar[i].Sorular.Add(new Kullanici.SoruOzellikleri
+                    {
+                        SoruId = _sorular[_soruIndex].SoruId,
+                        Dogru= _cevaplar[i].Dogru,
+                    });
+                    _soruIndex = 0;
+                }
+                _listener.SendObject(_kullanicilar[i]);
+            }
         }
-
         #region Geri Sayımlar
         private DispatcherTimer _timer;
         private void BaslangicGeriSayim()
         {
             // Timer başlamadan süreyi yazdırdım.
-            var sure = Settings.Default.BaslangicSure;
             AnimationRectangle.OpacityMask = new VisualBrush
             {
-                Visual = _icons[sure]
+                Visual = _icons[_sure.BaslangicSure]
             };
-            CountDown.Content = sure;
+            CountDown.Content = _sure.BaslangicSure;
 
             TimeSpan time;
-            time = TimeSpan.FromSeconds(sure);
+            time = TimeSpan.FromSeconds(_sure.BaslangicSure);
             _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
                 time = time.Add(TimeSpan.FromSeconds(-1));
@@ -290,8 +352,14 @@ namespace LTest.Views
                 _ucSoru.SureProgress.Value = time.Seconds;
                 if (time.Seconds == 0)
                 {
+                    for (int i = 0; i < _cevaplar.Count; i++)
+                    {
+                        if (_ucSoru.bordersDogru[i].Text=="0")
+                        {
+                            _ucSoru.borders[i].Background = Brushes.LightGray;
+                        }
+                    }
                     _timer.Stop();
-                    SkorGoster();
                 }
                 time = time.Add(TimeSpan.FromSeconds(-1));
             }, Application.Current.Dispatcher);
@@ -299,22 +367,26 @@ namespace LTest.Views
         }
 
         private DispatcherTimer _timerSkor;
-        private void SkorGoster()
+
+        private void SoruGoster()
         {
             TimeSpan time;
             SonrakiSoru.Visibility = Visibility.Hidden;
             Info.Visibility = Visibility.Hidden;
+
+            //Sorular Bitti, Tüm Skorları Göster
             if (_soruIndex >= _sorular.Count)
             {
                 Global.GenelDurum = Global.Durum.TestBitti;
                 Sorular.Children.Clear();
                 Sorular.Children.Add(new UcSkorListesi());
             }
+            // Skorları göster, sonra soruyu yaz
             else
             {
                 Sorular.Children.Clear();
                 Sorular.Children.Add(_ucSkor);
-                time = TimeSpan.FromSeconds(Settings.Default.SkorSure);
+                time = TimeSpan.FromSeconds(_sure.SkorSure);
                 _timerSkor = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
                 {
                     if (time.Seconds == 0)
@@ -332,6 +404,28 @@ namespace LTest.Views
             }
         }
 
+        private Dispatcher _timerDogru;
+
+        private void DogruGoster()
+        {
+            TimeSpan time;
+            time = TimeSpan.FromSeconds(4000);
+            _timerSkor = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                if (time.Seconds == 0)
+                {
+                    for (int i = 0; i < _cevaplar.Count; i++)
+                    {
+                        if (_ucSoru.bordersDogru[i].Text == "0")
+                        {
+                            _ucSoru.borders[i].Background = Brushes.LightGray;
+                        }
+                    }
+                }
+                time = time.Add(TimeSpan.FromSeconds(-1));
+            }, Application.Current.Dispatcher);
+            _timerSkor.Start();
+        }
         #endregion
     }
 }

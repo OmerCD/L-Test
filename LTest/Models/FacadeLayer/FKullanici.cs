@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Entity;
+using System.Collections.Generic;
 using System.Data.SQLite;
-using LTest.Models.EntityLayer;
 
 namespace LTest.Models.FacadeLayer
 {
@@ -11,11 +11,11 @@ namespace LTest.Models.FacadeLayer
             DatabaseManager.BaglantiAc();
         }
 
-        public static int Insert(Kullanici item)
+        public static int Insert(Kullanici item,Kullanici.SoruOzellikleri soruOzellikleri)
         {
             SQLiteCommand com = new SQLiteCommand("INSERT INTO Kullanicilar(KullaniciAdi,Puan,TestId) VALUES(@KullaniciAdi,@Puan, @TestId)", DatabaseManager.Baglanti);
             com.Parameters.AddWithValue("KullaniciAdi", item.KullaniciAdi);
-            com.Parameters.AddWithValue("KullaniciAdi", item.Puan);
+            com.Parameters.AddWithValue("KullaniciAdi", soruOzellikleri.Puan);
             com.Parameters.AddWithValue("KullaniciAdi", item.TestId);
             return com.ExecuteNonQuery();
         }
@@ -49,7 +49,6 @@ namespace LTest.Models.FacadeLayer
                     {
                         KullaniciId = (int)rdr["KullaniciId"],
                         KullaniciAdi = (string)rdr["KullaniciAdi"],
-                        Puan = (int)rdr["Puan"],
                         TestId = (int)rdr["TestId"]
 
                     };
@@ -72,7 +71,6 @@ namespace LTest.Models.FacadeLayer
                     {
                         KullaniciId = (int)rdr["KullaniciId"],
                         KullaniciAdi = (string)rdr["KullaniciAdi"],
-                        Puan = (int)rdr["Puan"],
                         TestId = (int)rdr["TestId"]
                     };
                     itemList.Add(item);

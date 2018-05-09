@@ -84,7 +84,7 @@ namespace LTest.Classes
         public static void ChangeColour(SolidColorBrush solidColor)
         {
             
-            Settings.Default.ColorHex = solidColor.Color.ToString();
+            Settings.Default.HexColor = solidColor.Color.ToString();
             Settings.Default.Save();
 
             Application.Current.Resources["MainColor"] = solidColor;

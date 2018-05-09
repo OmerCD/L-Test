@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Classes\ClientListener.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IpPage.xaml.cs">
       <DependentUpon>IpPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -19,8 +20,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)NamePage.xaml.cs">
       <DependentUpon>NamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Classes\TestGoster.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CustomControls\RadialProgressBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)BaslangicSure.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Soru.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SoruSonuc.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)NamePage.xaml">
@@ -33,30 +35,51 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Fonts\Cabin-Bold.ttf" />
-    <Content Include="$(MSBuildThisFileDirectory)Fonts\Cabin-BoldItalic.ttf" />
-    <Content Include="$(MSBuildThisFileDirectory)Fonts\Cabin-Italic.ttf" />
-    <Content Include="$(MSBuildThisFileDirectory)Fonts\Cabin-Medium.ttf" />
-    <Content Include="$(MSBuildThisFileDirectory)Fonts\Cabin-MediumItalic.ttf" />
-    <Content Include="$(MSBuildThisFileDirectory)Fonts\Cabin-Regular.ttf" />
-    <Content Include="$(MSBuildThisFileDirectory)Fonts\Cabin-SemiBold.ttf" />
-    <Content Include="$(MSBuildThisFileDirectory)Fonts\Cabin-SemiBoldItalic.ttf" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\icon01.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\icon02.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\icon03.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\icon04.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\icon05.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\Icon\icon06.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\test.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Images\MobilArkaplan.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)FileTransfer.dll" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\icon.ico" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\icon2.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)IpPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Icons.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)ListViewPage1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)MyStyles\Colors.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)Page1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Page2 - Copy (2).xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Page2 - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Page2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Page3.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Page4.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Page5.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Page6.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Soru.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Styles\Colors.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)View1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

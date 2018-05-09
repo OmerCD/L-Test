@@ -23,7 +23,7 @@ namespace LTest.Views
             _main = this;
             InitializeComponent();
 
-            Global.ChangeColour((SolidColorBrush)(new BrushConverter().ConvertFrom(Settings.Default.ColorHex)));
+            Global.ChangeColour((SolidColorBrush)(new BrushConverter().ConvertFrom(Settings.Default.HexColor)));
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             DatabaseManager.CreateDatabase();

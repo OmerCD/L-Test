@@ -94,16 +94,15 @@ namespace LTest.Classes
                 }
             }
         }
-        public (TextBox[] Sorular,TextBox[,] Cevaplar, CheckBox[,] Şıklar) AddControlsToDockPanel(BindingBase binding, StackPanel stack)
+        public void AddControlsToDockPanel(StackPanel stack)
         {
             for (var i = 0; i < _soru; i++) // Kontroller Burada DockPanellere Eklendi.
             {
-                System.Windows.Controls.DockPanel.SetDock(DockPanelSoru[i], Dock.Top);
-                System.Windows.Controls.DockPanel.SetDock(DockPanelCevap[i], Dock.Top);
+                DockPanel.SetDock(DockPanelSoru[i], Dock.Top);
+                DockPanel.SetDock(DockPanelCevap[i], Dock.Top);
 
                 DockPanelSoru[i].Children.Add(Label[i]);
                 DockPanelSoru[i].Children.Add(SoruTextBoxes[i]);
-                BindingOperations.SetBinding(SoruTextBoxes[i], WidthProperty, binding);
                 StackPanels[i].Children.Add(DockPanelSoru[i]);
                 StackPanels[i].Children.Add(DockPanelCevap[i]);
                 Borders[i].Child=StackPanels[i];
@@ -115,7 +114,6 @@ namespace LTest.Classes
 
                 }
             }
-            return (SoruTextBoxes,CevapTextboxes, CevapCheckBoxes);
         }
     }
 }

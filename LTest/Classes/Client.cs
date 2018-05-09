@@ -6,57 +6,44 @@ namespace LTest.Classes
 {
     public class Client
     {
-        private string _id;
-        private IPEndPoint _endPoint;
-        private readonly Socket _socket;
+        private readonly string _id;
+        private readonly IPEndPoint _endPoint;
+
+        public Socket Socket { get; }
 
         public string GetId()
         {
             return _id;
         }
 
-        private void SetId(string value)
-        {
-            _id = value;
-        }      
-
         public IPEndPoint GetEndPoint()
         {
             return _endPoint;
         }
 
-        private void SetEndPoint(IPEndPoint value)
-        {
-            _endPoint = value;
-        }
 
         public Client(Socket accepted)
         {
-            _socket = accepted;
+            Socket = accepted;
             _id = Guid.NewGuid().ToString();
-            _endPoint = (IPEndPoint)_socket.RemoteEndPoint;
-            _socket.BeginReceive(new byte[] { 0 }, 0, 0, 0, Callback, null);
+            _endPoint = (IPEndPoint)Socket.RemoteEndPoint;
+            Socket.BeginReceive(new byte[] { 0 }, 0, 0, 0, Callback, null);
         }
 
-        void Callback(IAsyncResult ar)
+        private void Callback(IAsyncResult ar)
         {
-
-                _socket.EndReceive(ar);
+                Socket.EndReceive(ar);
                 var buf = new byte[8192];
-                var recData = _socket.Receive(buf, buf.Length, 0);
+                var recData = Socket.Receive(buf, buf.Length, 0);
                 if (recData<buf.Length)
                 {
-                    Array.Resize<byte>(ref buf,recData);
+                    Array.Resize(ref buf,recData);
                 }
                 Received?.Invoke(this, buf);
-            _socket.BeginReceive(new byte[] { 0 }, 0, 0, 0, Callback, null);
+            Socket.BeginReceive(new byte[] { 0 }, 0, 0, 0, Callback, null);
         }
 
-        public void Close()
-        {
-            _socket.Close();
-            _socket.Dispose();
-        }
+
 
         public delegate void ClientReceivedHandler(Client sender, byte[] data);
         public delegate void ClientDisconnectedHandler(Client sender);
@@ -64,6 +51,10 @@ namespace LTest.Classes
         public event ClientReceivedHandler Received;
         public event ClientDisconnectedHandler Disconnected;
 
-
+        protected virtual void OnDisconnected()
+        {
+            Socket.Close();
+            Disconnected?.Invoke(this);
+        }
     }
 }
