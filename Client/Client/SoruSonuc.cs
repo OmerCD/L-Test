@@ -18,7 +18,7 @@ namespace Client
 
         public StackLayout StackLayout = new StackLayout();
 
-        public SoruSonuc()
+        public SoruSonuc(bool sonuc)
 		{
             StackLayout.Children.Add(Sonuc);
             Content = StackLayout;

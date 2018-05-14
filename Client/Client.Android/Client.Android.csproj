@@ -185,7 +185,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\icon.ico" />
-    <Content Include="Resources\Drawable\icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\image01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\image02.png" />
   </ItemGroup>
   <Import Project="..\Client\Client.projitems" Label="Shared" Condition="Exists('..\Client\Client.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

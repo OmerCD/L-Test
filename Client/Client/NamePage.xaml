@@ -3,17 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:progress="clr-namespace:Client.M_CustomControls"
              Title="İsmini Girin"
-             x:Class="Client.NamePage" BackgroundColor="SteelBlue">
+             x:Class="Client.NamePage" BackgroundColor="#E1E1E1" >
     <Grid>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="300">
-            <Label x:Name="Info" TextColor="LightGray"/>
-            <Frame Style="{StaticResource EntryBorder}">
-                <Entry x:Name="Name" Placeholder="Adınızı Girin" />
-            </Frame>
-            <Button Text="Onayla" x:Name="IsimGiris" Clicked="SendName_Clicked" Style="{StaticResource ButtonStyle}"/>
-        </StackLayout>
-        <Frame Style="{StaticResource EntryBorder}" VerticalOptions="End" BackgroundColor="LightSteelBlue" Margin="0">
-            <Label Text="Ekranda adınızın göründüğünden emin olun." TextColor="White" FontSize="Medium" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <ScrollView>
+            <Label x:Name="Info" TextColor="DarkGray"/>
+            <StackLayout VerticalOptions="Start">
+                <Frame Style="{StaticResource Border}">
+                    <StackLayout>
+                        <Image Margin="-25,-20,-25,0" Source="image02.png" Aspect="AspectFill" HeightRequest="196"></Image>
+                        <Label Text="Adınızı Giriniz" HorizontalOptions="Center" VerticalOptions="Center" TextColor="DarkGray" FontSize="Large"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Style="{StaticResource Border}">
+                    <StackLayout>
+                        <Entry x:Name="Name" Placeholder="Adınızı Girin" HorizontalTextAlignment="Center"/>
+                        <Button Text="Onayla" x:Name="IsimGiris" Clicked="SendName_Clicked" Style="{StaticResource ButtonStyle}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+        <Frame Style="{StaticResource Border}" VerticalOptions="End"  Margin="0">
+            <Label Text="Ekranda adınızın göründüğünden emin olun." TextColor="DarkGray" FontSize="Medium" HorizontalTextAlignment="Center" VerticalOptions="Center"/>
         </Frame>
     </Grid>
 </ContentPage>

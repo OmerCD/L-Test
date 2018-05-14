@@ -27,8 +27,7 @@ namespace LTest.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("#c41515")]
         public string HexColor {
-            get
-            {
+            get {
                 return ((string)(this["HexColor"]));
             }
             set {
@@ -57,6 +56,18 @@ namespace LTest.Properties {
             }
             set {
                 this["SkorSure"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public byte DogruSure {
+            get {
+                return ((byte)(this["DogruSure"]));
+            }
+            set {
+                this["DogruSure"] = value;
             }
         }
     }

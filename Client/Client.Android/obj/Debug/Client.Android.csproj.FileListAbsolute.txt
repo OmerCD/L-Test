@@ -161,6 +161,8 @@ C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\System.Windows.For
 C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\System.Drawing.xml
 C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\System.Numerics.xml
 C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\System.Runtime.Serialization.Formatters.Soap.xml
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\res\drawable\image02.png
+C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\res\drawable\image01.png
 C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\bin\Debug\Client.Android.dll
 C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\linksrc\Client.Android.dll.mdb
 C:\Users\Hasan\Desktop\L-Test\Client\Client.Android\obj\Debug\linksrc\Entity.dll.mdb

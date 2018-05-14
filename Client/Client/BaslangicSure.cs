@@ -24,15 +24,13 @@ namespace Client
 				}
 			};
 
-            sure.BaslangicSure -= 1;
-
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
                 label.Text = "Lütfen bekleyin " + sure.BaslangicSure + " saniye sonra oyun başlayacak.";
                 sure.BaslangicSure--;
                 if (sure.BaslangicSure==0)
                 {
-                    Navigation.PushModalAsync(new Soru(NamePage.Test));
+                    Navigation.PushModalAsync(new SoruGoster(NamePage.Test));
                     return false;
                 }
                 return true; // True = Repeat again, False = Stop the timer

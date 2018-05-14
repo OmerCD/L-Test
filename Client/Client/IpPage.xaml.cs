@@ -3,13 +3,14 @@ using System.Net.Sockets;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using LTest.Classes;
+using System.Threading;
 
 namespace Client
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class IpPage : ContentPage
 	{
-        public static Socket Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        public static Socket Socket;
 
         public IpPage ()
 		{
@@ -19,23 +20,27 @@ namespace Client
         {
             if (!string.IsNullOrEmpty(Ip.Text))
             {
-                int deneme = 0;
+                Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 string ip = Ip.Text;
-                while (!Socket.Connected)
+                try
                 {
-                    try
+                    var result = Socket.BeginConnect(ip, 100, null, null);
+                    bool success = result.AsyncWaitHandle.WaitOne(500);
+                    if (success)
                     {
-                        deneme++;
-                        Socket.Connect(ip, 100);
+                        Socket.EndConnect(result);
                         Navigation.PushModalAsync(new NamePage());
-
                     }
-                    catch (SocketException)
+                    else
                     {
-                        Info.Text = "Ağa " + deneme.ToString() + " defa bağlanılmaya çalışıldı ama bağlanamadı";
+                        throw new SocketException(10060);
                     }
                 }
-
+                catch (Exception)
+                {
+                    Socket.Close();
+                    Info.Text = "Ağa bağlanılamadı";
+                }
             }
         }
     }

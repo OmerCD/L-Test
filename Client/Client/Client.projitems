@@ -21,7 +21,7 @@
       <DependentUpon>NamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)BaslangicSure.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Soru.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SoruGoster.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SoruSonuc.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -36,7 +36,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Images\icon.ico" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Images\icon2.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\image01.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\image02.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)IpPage.xaml">

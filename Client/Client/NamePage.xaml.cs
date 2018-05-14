@@ -13,6 +13,8 @@ namespace Client
 	{
         byte[] receivedBuf = new Byte[1024*1024*50];
         public static Test Test=null;
+        public static List<Soru> Sorular = new List<Soru>();
+        public static List<Cevap> Cevaplar = new List<Cevap>();
         public static Sure Sure=null;
         public static Kullanici Kullanici;
         object obj;
@@ -64,7 +66,6 @@ namespace Client
 
                     obj = GetObject(buf);
 
-
                     if (obj.GetType() == typeof(Test))
                     {
                         Test = (Test)obj;
@@ -72,6 +73,14 @@ namespace Client
                     else if (obj.GetType() == typeof(Sure))
                     {
                         Sure = (Sure)obj;
+                    }
+                    else if (obj.GetType()==typeof(Soru))
+                    {
+                        Sorular = (List<Soru>)obj;
+                    }
+                    else if (obj.GetType() == typeof(Cevap))
+                    {
+                        Cevaplar = (List<Cevap>)obj;
                     }
                     if (Test!=null && Sure!=null)
                     {

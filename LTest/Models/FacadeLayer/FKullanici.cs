@@ -16,7 +16,6 @@ namespace LTest.Models.FacadeLayer
             SQLiteCommand com = new SQLiteCommand("INSERT INTO Kullanicilar(KullaniciAdi,Puan,TestId) VALUES(@KullaniciAdi,@Puan, @TestId)", DatabaseManager.Baglanti);
             com.Parameters.AddWithValue("KullaniciAdi", item.KullaniciAdi);
             com.Parameters.AddWithValue("KullaniciAdi", soruOzellikleri.Puan);
-            com.Parameters.AddWithValue("KullaniciAdi", item.TestId);
             return com.ExecuteNonQuery();
         }
 
@@ -47,9 +46,7 @@ namespace LTest.Models.FacadeLayer
                 {
                     item = new Kullanici
                     {
-                        KullaniciId = (int)rdr["KullaniciId"],
                         KullaniciAdi = (string)rdr["KullaniciAdi"],
-                        TestId = (int)rdr["TestId"]
 
                     };
                 }
@@ -69,9 +66,7 @@ namespace LTest.Models.FacadeLayer
                 {
                     Kullanici item = new Kullanici
                     {
-                        KullaniciId = (int)rdr["KullaniciId"],
                         KullaniciAdi = (string)rdr["KullaniciAdi"],
-                        TestId = (int)rdr["TestId"]
                     };
                     itemList.Add(item);
                 }

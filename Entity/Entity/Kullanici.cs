@@ -5,17 +5,9 @@ namespace Entity
     [System.Serializable]
     public class Kullanici
     {
-
-        public int KullaniciId { get; set; }
-
         public string KullaniciAdi { get; set; }
 
-        public int TestId { get; set; }
-
-        public string EndPoint { get; set; }
-
         public List<SoruOzellikleri> Sorular { get; set; }
-
         [System.Serializable]
         public class SoruOzellikleri
         {

@@ -183,7 +183,7 @@ Listener.Instance;}public class Listener{private static Lazy<Listener>o=new Lazy
 <Listener>(()=>new Listener());public static Listener Instance{get{return o.
 Value;}}private readonly R p=new R();private readonly byte[]q=new byte[1024*100]
 ;private readonly _ r;private const int s=53032;private const int t=53050;
-private string u;private a5 v;private string w="192.168.1.34";private Listener(){p.
+private string u;private a5 v;private string w="192.168.1.35";private Listener(){p.
 MessageReceived+=D;r=new _(new[]{w,"127.0.0.1","169.254.80.80","10.0.2.2",
 "10.0.3.2"},y,x);}private void x(){M.p("Failed to find find a handshake server"+
 Environment.NewLine+"1) Is phone connected to the same WiFi network?"+
