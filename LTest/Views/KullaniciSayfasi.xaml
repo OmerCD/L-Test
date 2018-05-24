@@ -28,7 +28,7 @@
                 <Grid Grid.Row="1" VerticalAlignment="Center" >
                     <TextBlock HorizontalAlignment="Left" Text="Kullanıcılar Bekleniyor" x:Name="Info" FontFamily="Cabin Medium"  Width="220" FontSize="18" Margin="10" />
                     <Button HorizontalAlignment="Right" Margin="0,0,10,0" Style="{DynamicResource ButtonStyle}" Click="TestBaslat_Click" x:Name="TestBaslatButton">
-                        <Label Content="Odayı Başlat" Style="{DynamicResource ButtonText}"/>
+                        <Label Content="Testi Başlat" Style="{DynamicResource ButtonText}"/>
                     </Button>
                     <Button Style="{StaticResource UcSoruButton}" Name="SonrakiSoru" ToolTip="Sıradaki Soru" Width="150" HorizontalAlignment="Right" Margin="0,0,10,0" Visibility="Collapsed" Click="SiradakiSoru_Click">
                         <TextBlock Text="Sonraki Soru"  FontFamily="Cabin" FontSize="18" Foreground="{DynamicResource SoftGrey}"/>

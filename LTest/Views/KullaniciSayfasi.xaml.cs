@@ -258,9 +258,9 @@ namespace LTest.Views
 
             _listener.Clients = _clients;
 
-            //_listener.SendObject(_sure); // Başlangıç, SkorSüresi, DogruSüresi
+            _listener.SendObject(_sure); // Başlangıç, SkorSüresi, DogruSüresi
 
-            //_listener.SendObject(_test); // Test Bilgilerini Gönder
+            _listener.SendObject(_test); // Test Bilgilerini Gönder
 
             _listener.SendObject(_sorular); // Soruları Gönder
 
@@ -278,7 +278,7 @@ namespace LTest.Views
             }
             else
             {
-                DogruGoster();
+                DogruGosterWithTimer();
             }
         }
 
@@ -436,16 +436,10 @@ namespace LTest.Views
         }
 
         // Soru Göstere Gidiyor.
-        private void DogruGoster()
+        private void DogruGosterWithTimer()
         {
             TimerControl();
-            for (int i = 0; i < _cevaplar.Count; i++)
-            {
-                if (_ucSoru.bordersDogru[i].Text == "0")
-                {
-                    _ucSoru.borders[i].Background = Brushes.LightGray;
-                }
-            }
+            DogruGoster();
             TimeSpan time = TimeSpan.FromSeconds(Settings.Default.DogruSure);
             _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
@@ -462,7 +456,16 @@ namespace LTest.Views
             _timer.Start();
         }
 
-
+        private void DogruGoster()
+        {
+            for (int i = 0; i < _cevaplar.Count; i++)
+            {
+                if (_ucSoru.bordersDogru[i].Text == "0")
+                {
+                    _ucSoru.borders[i].Background = Brushes.LightGray;
+                }
+            }
+        }
 
         private void TimerControl()
         {

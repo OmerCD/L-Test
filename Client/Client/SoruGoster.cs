@@ -10,7 +10,7 @@ namespace Client
         List<Button> buttons=new List<Button>();
         List<Rectangle> rectangles = new List<Rectangle>();
         List<Color> colors = new List<Color>();
-        int cevap;
+        int cevap=99;
         double sure=0;
         public SoruGoster(Test test)
 		{
@@ -23,7 +23,8 @@ namespace Client
                 ColumnDefinitions =
                 {
                     new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star)  },
-                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },                }
+                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
+                }
             };
 
             for (int i = 0; i < gridRowCount; i++)

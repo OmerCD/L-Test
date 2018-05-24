@@ -5,6 +5,7 @@ ModernHttpClient
 netstandard
 Newtonsoft.Json
 OkHttp
+PresentationCore
 RadialProgress.Android
 System.Runtime
 System.Xaml
@@ -28,4 +29,3 @@ Xamarin.Forms.Core
 Xamarin.Forms.Platform.Android
 Xamarin.Forms.Platform
 Xamarin.Forms.Xaml
-PresentationCore

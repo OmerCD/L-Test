@@ -22,9 +22,7 @@
                     <RowDefinition Height="75"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" VerticalAlignment="Bottom">
-                    <Viewbox>
-                        <TextBlock x:Name="Ucuncu" Text="Hasan Can Gedik" FontSize="16"  VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource TextBlock}"  Padding="5" Foreground="Black"/>
-                    </Viewbox>
+                    <TextBlock x:Name="Ucuncu" Text="Üçüncü" FontSize="32" VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto" Foreground="Black" Padding="5" Style="{StaticResource TextBlock}" />
                     <Rectangle Fill="DarkMagenta" Height="125"/>
                 </StackPanel>
                 <Grid Grid.Row="1" Background="DarkMagenta" Margin="0,10,0,0">
@@ -46,9 +44,7 @@
                             <VisualBrush Stretch="Fill" Visual="{StaticResource Tropy}"/>
                         </Rectangle.OpacityMask>
                     </Rectangle>
-                    <Viewbox>
-                        <TextBlock x:Name="Birinci" Text="Hasan Can Gedik" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource TextBlock}" Foreground="Black" Padding="5"/>
-                    </Viewbox>
+                    <TextBlock x:Name="Birinci" Text="Lider" FontSize="48" VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto" Foreground="Black" Padding="5" Style="{StaticResource TextBlock}" />
                     <Rectangle Fill="DarkCyan" Height="375"/>
                 </StackPanel>
                 <Grid Grid.Row="1" Background="DarkCyan" Margin="0,10,0,0">
@@ -66,9 +62,8 @@
                     <RowDefinition Height="75"/>
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" VerticalAlignment="Bottom">
-                    <Viewbox>
-                        <TextBlock x:Name="Ikinci" Text="Hasan Can Gedik" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource TextBlock}" Foreground="Black" Padding="5"/>
-                    </Viewbox>
+                    <TextBlock x:Name="Ikinci" Text="İkinci" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" Height="Auto" Foreground="Black" Padding="5" Style="{StaticResource TextBlock}" />
+
                     <Rectangle Fill="DarkOrange" Height="250"/>
                 </StackPanel>
                 <Grid Grid.Row="1" Background="DarkOrange" Margin="0,10,0,0">

@@ -82,7 +82,7 @@ namespace Client
                     {
                         Cevaplar = (List<Cevap>)obj;
                     }
-                    if (Test!=null && Sure!=null)
+                    if (Test!=null && Sure!=null && Sorular!=null && Cevaplar!=null)
                     {
                         break;
                     }
