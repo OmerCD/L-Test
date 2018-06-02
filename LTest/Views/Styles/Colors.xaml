@@ -10,9 +10,17 @@
     <SolidColorBrush x:Key="MainColorSoft" Color="#FF7B7B"/>
     <SolidColorBrush x:Key="MainColorSoftAnimation" Color="#FF9494"/>
 
+    <SolidColorBrush x:Key="WarningColor" Color="#d9534f"/>
+    <SolidColorBrush x:Key="WarningSoftColor" Color="#F36D69"/>
 
-    
-    <SolidColorBrush x:Key="SoftGrey" Color="#fafafa"/>
+    <SolidColorBrush x:Key="SuccessColor" Color="#5cb85c"/>
+    <SolidColorBrush x:Key="SuccessSoftColor" Color="#76D276"/>
+
+    <SolidColorBrush x:Key="InfoColor" Color="#5bc0de"/>
+    <SolidColorBrush x:Key="InfoSoftColor" Color="#75DAF8"/>
+
+
+    <SolidColorBrush x:Key="SoftGrey" Color="#F7F7F7"/>
     <SolidColorBrush x:Key="MediumGrey" Color="#dcdcdc"/>
     <SolidColorBrush x:Key="DarkGrey" Color="#939393"/>
     <SolidColorBrush x:Key="LabelGrey" Color="#4a4a49"/>

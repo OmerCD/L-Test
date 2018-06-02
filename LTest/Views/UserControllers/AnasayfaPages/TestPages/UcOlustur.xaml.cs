@@ -29,7 +29,7 @@ namespace LTest.Views.UserControllers.AnasayfaPages.TestPages
         {
             if (SoruTextbox.Text==string.Empty || CevapTextbox.Text==string.Empty || SureTextbox.Text == string.Empty || TestTextbox.Text==string.Empty)
             {
-                Views.Anasayfa.Durum("Lütfen tüm alanları doldurun", Global.Warning);
+                UcAnasayfa.Durum("Lütfen tüm alanları doldurun", Global.Warning);
                 return;
             }
             Global.GenelDurum = Global.Durum.TestOlusturuldu;
@@ -40,14 +40,14 @@ namespace LTest.Views.UserControllers.AnasayfaPages.TestPages
             tst = new TestGoster(_soru, _cevap);
             tst.ControlCreation();
             tst.AddControlsToDockPanel(SoruStack);
-            Anasayfa.Durum("Test Şablonu Oluşturuldu", Global.Done);
+            UcAnasayfa.Durum("Test Şablonu Oluşturuldu", Global.Done);
         }
 
         private void Kaydet(object sender, RoutedEventArgs e)
         {
             if (Global.GenelDurum!=Global.Durum.TestOlusturuldu)
             {
-                Anasayfa.Durum("Kaydedilecek bir şey yok!", Global.Warning);
+                UcAnasayfa.Durum("Kaydedilecek bir şey yok!", Global.Warning);
                 return;
             }
 
@@ -56,7 +56,8 @@ namespace LTest.Views.UserControllers.AnasayfaPages.TestPages
                 TestAdi = TestTextbox.Text,
                 CevapSayisi = _cevap,
                 SoruSayisi = _soru,
-                Sure = Convert.ToInt32(SureTextbox.Text)
+                Sure = Convert.ToInt32(SureTextbox.Text),
+                KullaniciId=Global.ServerKullanici.KullaniciId
             };
 
             List<Soru> sorular = new List<Soru>();
@@ -82,11 +83,11 @@ namespace LTest.Views.UserControllers.AnasayfaPages.TestPages
             SoruStack.Children.Clear();
             if (sonuc>=0)
             {
-                Anasayfa.Durum("Test Başarıyla Kaydedildi", Global.Done);
+                UcAnasayfa.Durum("Test Başarıyla Kaydedildi", Global.Done);
             }
             else
             {
-                Anasayfa.Durum("Test Kaydı Başarısız", Global.Failed);
+                UcAnasayfa.Durum("Test Kaydı Başarısız", Global.Failed);
             }
         }
 

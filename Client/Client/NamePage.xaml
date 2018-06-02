@@ -6,7 +6,9 @@
              x:Class="Client.NamePage" BackgroundColor="#E1E1E1" >
     <Grid>
         <ScrollView>
-            <Label x:Name="Info" TextColor="DarkGray"/>
+            <Frame Style="{StaticResource Border}" IsVisible="False">
+                <Label x:Name="Info" TextColor="DarkGray" HorizontalOptions="CenterAndExpand"/>
+            </Frame>
             <StackLayout VerticalOptions="Start">
                 <Frame Style="{StaticResource Border}">
                     <StackLayout>

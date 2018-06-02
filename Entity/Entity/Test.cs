@@ -14,5 +14,7 @@
 
         public string TestAdi { get; set; }
 
+        public int KullaniciId { get; set; }
+
     }
 }

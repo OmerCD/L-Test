@@ -36,6 +36,7 @@ C:\Users\Hasan\Desktop\L-Test\LTest\bin\Debug\Xamarin.Forms.Core.xml
 C:\Users\Hasan\Desktop\L-Test\LTest\bin\Debug\Xamarin.Forms.Xaml.pdb
 C:\Users\Hasan\Desktop\L-Test\LTest\bin\Debug\Xamarin.Forms.Xaml.xml
 C:\Users\Hasan\Desktop\L-Test\LTest\bin\Debug\en\Microsoft.Windows.Design.Extensibility.resources.dll
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Server.csprojResolveAssemblyReference.cache
 C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\CustomMessageBox.baml
 C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\Anasayfa.baml
 C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\Styles\Buttons.baml
@@ -80,4 +81,13 @@ C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Server.csproj.CoreCompileInputs.ca
 C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Server.csproj.CopyComplete
 C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\LTest.exe
 C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\LTest.pdb
-C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\GirisPages\UcGirisYap.baml
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\GirisPages\UcGirisYap.g.cs
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\GirisPages\UcYeniSifre.g.cs
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\GirisPages\UcYeniUyelik.g.cs
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\GirisPages\UcYeniSifre.baml
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\GirisPages\UcYeniUyelik.baml
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\UcGiris.baml
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\UcGiris.g.cs
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\UcAnasayfa.baml
+C:\Users\Hasan\Desktop\L-Test\LTest\obj\Debug\Views\UserControllers\UcAnasayfa.g.cs

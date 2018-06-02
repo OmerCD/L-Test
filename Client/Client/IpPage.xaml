@@ -7,7 +7,9 @@
     <Grid>
         <ScrollView>
             <StackLayout VerticalOptions="Start">
-                <Label x:Name="Info" TextColor="DarkGray" HorizontalOptions="CenterAndExpand"/>
+                <Frame Style="{StaticResource Border}" IsVisible="False">
+                    <Label x:Name="Info" TextColor="DarkGray" HorizontalOptions="CenterAndExpand"/>
+                </Frame>
                 <Frame Style="{StaticResource Border}">
                     <StackLayout >
                         <Image Margin="-25,-20,-25,0" Source="image01.png" Aspect="AspectFill" HeightRequest="196"></Image>

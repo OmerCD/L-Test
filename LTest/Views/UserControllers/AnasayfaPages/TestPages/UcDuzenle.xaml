@@ -57,10 +57,10 @@
                         <Label Content="Cevap Sayısı"  Width="90" Style="{StaticResource Label}"/>
                         <TextBox x:Name="CevapTextbox" PreviewTextInput="SayiKontrol" MaxLength="1" Style="{DynamicResource TextBox}" TextChanged="Textbox_TextChanged" IsReadOnly="True"/>
                     </StackPanel>
-                    <Button ToolTip="Değişiklikleri kaydetmek için tıklayın." Style="{DynamicResource ButtonStyleBiggerMargin}" Click="Duzelt">
+                    <Button ToolTip="Değişiklikleri kaydetmek için tıklayın." Style="{DynamicResource ButtonStyleBiggerSize}" Click="Duzelt">
                         <Label Content="Değişiklikleri Kaydet" Style="{DynamicResource ButtonText}"/>
                     </Button>
-                    <Button ToolTip="Testi silmek için tıklayın" Style="{DynamicResource ButtonStyleRed}" Click="Test_Sil">
+                    <Button ToolTip="Testi silmek için tıklayın" Style="{DynamicResource ButtonStyleWarningWithMargin}" Click="Test_Sil">
                         <Label Content="Testi Sil" Style="{DynamicResource ButtonText}"/>
                     </Button>
                     <!--<Button ToolTip="Test Belgesini Word'e çıkarın." Style="{DynamicResource WordButton}" Click="WordAktar_Click">

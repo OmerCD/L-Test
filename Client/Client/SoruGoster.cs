@@ -1,4 +1,5 @@
 ﻿using Entity;
+using LTest.Classes;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -86,12 +87,12 @@ namespace Client
                 sure += 0.1;
                 if (sure>=test.Sure)
                 {
-                    NamePage.Kullanici.Sorular.Add(new Kullanici.SoruOzellikleri
+                    ClientListener.Kullanici.Sorular.Add(new ClientKullanici.SoruOzellikleri
                     {
                         Cevap = 99,
                         CevapSuresi = sure,
                     });
-                    NamePage.SendObject(NamePage.Kullanici);
+                    ClientListener.SendObject();
 
                     return false;
                 }
@@ -102,6 +103,7 @@ namespace Client
         public static byte soruIndex = 0;
         private void Button_Clicked(object sender, EventArgs e)
         {
+            // Soruya Ait Cevapları Bul
             List<Cevap> cevaplar = new List<Cevap>();
             int soruId = NamePage.Sorular[soruIndex++].SoruId;
             foreach (Cevap cevap in NamePage.Cevaplar)
@@ -114,18 +116,21 @@ namespace Client
 
             Button button = (Button)sender;
 
+            // Tıklanılan butonun indexini bul ve Hangi Cevabın verildiğini tespit et.
             int cevapIndex = buttons.IndexOf(button);
 
             bool sonuc = Convert.ToBoolean(cevaplar[cevapIndex].Dogru);
 
-            NamePage.Kullanici.Sorular.Add(new Kullanici.SoruOzellikleri {
+            NamePage.Kullanici.Sorular.Add(new ClientKullanici.SoruOzellikleri {
                 Cevap = cevap,
                 CevapSuresi = sure,
 
             });
 
+            // Cevabı Gönder
             NamePage.SendObject(NamePage.Kullanici);
 
+            // Bekleme Ekranını AÇ
             Navigation.PushModalAsync(new SoruSonuc(sonuc));
 
         }

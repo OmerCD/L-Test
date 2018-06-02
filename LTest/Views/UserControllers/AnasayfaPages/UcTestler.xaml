@@ -41,9 +41,8 @@
         </Grid>
         <!--Soru Hazırlama Kısmı-->
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <Grid x:Name="testIcerik">
-                <!--Kod ile Doluyor-->
-            </Grid>
+            <ContentControl x:Name="Icerik"/>
+            <!--Kod ile Doluyor-->
         </ScrollViewer>
     </Grid>
 </UserControl>

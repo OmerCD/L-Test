@@ -48,7 +48,7 @@ namespace LTest.Views.UserControllers.AnasayfaPages
         {
             if (TestAdiComboBox.SelectedValue==null)
             {
-                Views.Anasayfa.Durum("Lütfen bir test seçin!", Global.Warning);
+                UcAnasayfa.Durum("Lütfen bir test seçin!", Global.Warning);
                 return;
             }
 
@@ -57,8 +57,8 @@ namespace LTest.Views.UserControllers.AnasayfaPages
 
 
             // Anasayfa Alt Bar Bilgilendirme
-            Views.Anasayfa.Active("Online");
-            Views.Anasayfa.Durum("Oda Oluşturuldu", Global.Done);
+            UcAnasayfa.Active("Online");
+            UcAnasayfa.Durum("Oda Oluşturuldu", Global.Done);
 
             // Diğer Formlardan Test Durumu Hakkında Bilgi Edinmek İçin Oluşturuldu
             Global.GenelDurum = Global.Durum.OdaOnline;
@@ -77,7 +77,10 @@ namespace LTest.Views.UserControllers.AnasayfaPages
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             testler = new List<Test>();
-            testler = FTest.SelectAll();
+            if (Global.ServerKullanici == null) return;
+        
+            testler = FTest.SelectAll(Global.ServerKullanici.KullaniciId);
+
             if (testler == null) return;
             foreach (var test in testler)
             {

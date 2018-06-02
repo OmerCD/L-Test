@@ -20,14 +20,14 @@ namespace LTest.Views.UserControllers.AnasayfaPages
         private void UcOdaBaslat(object sender, RoutedEventArgs e)
         {
             permanent.Change(dockPanel, (Button)sender);
-            UserControlClass.ControlAdd(anaMenuIcerik, new UcOdaBaslat());
+            Icerik.Content =new UcOdaBaslat();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             PermanentTrigger permanent = new PermanentTrigger();
             permanent.Change(dockPanel, OdaBaslat);
-            UserControlClass.ControlAdd(anaMenuIcerik, new UcOdaBaslat());
+            Icerik.Content = new UcOdaBaslat();
         }
     }
 }

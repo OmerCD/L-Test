@@ -15,6 +15,7 @@ using Entity;
 using LTest.Classes;
 using LTest.Models.FacadeLayer;
 using LTest.Properties;
+using LTest.Views.UserControllers;
 using LTest.Views.UserControllers.KullaniciSayfasi;
 using UcSkorListesi = LTest.Views.UserControllers.KullaniciSayfasi.UcSkorListesi;
 
@@ -29,7 +30,7 @@ namespace LTest.Views
         private Listener _listener;
         private readonly List<StackPanel> _stackPanels = new List<StackPanel>();
         private readonly List<UcGirenKullanici> _ucGirenKullanici = new List<UcGirenKullanici>();
-        private readonly List<Kullanici> _kullanicilar = new List<Kullanici>();
+        private readonly List<ClientKullanici> _kullanicilar = new List<ClientKullanici>();
         private readonly List<Client> _clients = new List<Client>();
 
         private readonly List<SolidColorBrush> _colors;
@@ -50,7 +51,7 @@ namespace LTest.Views
         private bool sureBitti = false;
         #endregion
 
-        public KullaniciSayfasi(string testAdi)
+        public KullaniciSayfasi(string testAdi= "HASAN")
         {
             InitializeComponent();
             _colors = Global.Colors();
@@ -131,7 +132,7 @@ namespace LTest.Views
             {
                 Global.GenelDurum = Global.Durum.OdaOffline;
                 _listener.Stop();
-                Anasayfa.Active("Offline");
+                UcAnasayfa.Active("Offline");
             }
             //CustomMessageBox.Show("Merhaba Dünyalı");
         }
@@ -186,9 +187,10 @@ namespace LTest.Views
                 {
                     if (_clients[i].GetId() != sender.GetId()) continue;
                     object obj = _listener.GetObject(data);
-                    if (obj.GetType()==typeof(Kullanici))
+                    if (obj == null) continue;
+                    if (obj.GetType()==typeof(ClientKullanici))
                     {
-                        Kullanici gelenKullanici = ((Kullanici)obj);
+                        ClientKullanici gelenKullanici = ((ClientKullanici)obj);
                         bool yeniKullanici = true;
                         foreach (var kullanici in _kullanicilar)
                         {
@@ -206,7 +208,7 @@ namespace LTest.Views
                         if (yeniKullanici)
                         {
                             _kullanicilar.Add(gelenKullanici);
-                            _kullanicilar[_userCount-1].Sorular = new List<Kullanici.SoruOzellikleri>();
+                            _kullanicilar[_userCount-1].Sorular = new List<ClientKullanici.SoruOzellikleri>();
                         }
                     }
                     _ucGirenKullanici[i].Name.Text = _kullanicilar[i].KullaniciAdi;
@@ -264,7 +266,9 @@ namespace LTest.Views
 
             _listener.SendObject(_sorular); // Soruları Gönder
 
-            _listener.SendObject(FCevap.SelectByTestId(_test.TestId)); // Tüm Cevapları Gönder
+            var cevaplar = FCevap.SelectByTestId(_test.TestId);
+
+            _listener.SendObject(cevaplar); // Tüm Cevapları Gönder
 
 
             BaslangicGeriSayim();

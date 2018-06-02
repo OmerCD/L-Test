@@ -20,27 +20,38 @@ namespace Client
         {
             if (!string.IsNullOrEmpty(Ip.Text))
             {
-                Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                string ip = Ip.Text;
-                try
+
+                //Socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                ClientListener.Ip = Ip.Text;
+                var result=ClientListener.Start();
+                if (result)
                 {
-                    var result = Socket.BeginConnect(ip, 100, null, null);
-                    bool success = result.AsyncWaitHandle.WaitOne(500);
-                    if (success)
-                    {
-                        Socket.EndConnect(result);
-                        Navigation.PushModalAsync(new NamePage());
-                    }
-                    else
-                    {
-                        throw new SocketException(10060);
-                    }
+                    Navigation.PushModalAsync(new NamePage());
                 }
-                catch (Exception)
+                else
                 {
-                    Socket.Close();
+                    Info.IsVisible = true;
                     Info.Text = "Ağa bağlanılamadı";
                 }
+                //try
+                //{
+                //    var result = Socket.BeginConnect(ip, 100, null, null);
+                //    bool success = result.AsyncWaitHandle.WaitOne(500);
+                //    if (success)
+                //    {
+                //        Socket.EndConnect(result);
+                //        Navigation.PushModalAsync(new NamePage());
+                //    }
+                //    else
+                //    {
+                //        throw new SocketException(10060);
+                //    }
+                //}
+                //catch (Exception)
+                //{
+                //    Socket.Close();
+                //    Info.Text = "Ağa bağlanılamadı";
+                //}
             }
         }
     }

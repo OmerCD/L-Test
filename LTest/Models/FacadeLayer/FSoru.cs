@@ -9,50 +9,87 @@ namespace LTest.Models.FacadeLayer
     {
         public static int Insert(Soru item)
         {
-            DatabaseManager.BaglantiAc();
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO Sorular(TestId, Soru) VALUES(@TestId, @Soru); Select last_insert_rowid()", DatabaseManager.Baglanti);//
-            com.Parameters.AddWithValue("@TestId", item.TestId);
-            com.Parameters.AddWithValue("@Soru", item.SoruText);
-            return Convert.ToInt16(com.ExecuteScalar());
+            using (SQLiteConnection Baglanti = new SQLiteConnection(DatabaseManager.ConnectionString))
+            {
+                using (SQLiteCommand com = new SQLiteCommand("INSERT INTO Sorular(TestId, Soru) VALUES(@TestId, @Soru); Select last_insert_rowid()", Baglanti))
+                {
+                    Baglanti.Open();
+                    com.Parameters.AddWithValue("@TestId", item.TestId);
+                    com.Parameters.AddWithValue("@Soru", item.SoruText);
+
+                    var result = com.ExecuteNonQuery();
+                    Baglanti.Close();
+                    return result;
+                }
+            }
         }
 
         public static int Update(Soru item)
         {
-            SQLiteCommand com = new SQLiteCommand("UPDATE Sorular SET Soru=@Soru WHERE SoruId=@SoruId ", DatabaseManager.Baglanti);
-            com.Parameters.AddWithValue("SoruId", item.SoruId);
-            com.Parameters.AddWithValue("Soru", item.SoruText);
-            return Convert.ToInt16(com.ExecuteNonQuery());
+            using (SQLiteConnection Baglanti = new SQLiteConnection(DatabaseManager.ConnectionString))
+            {
+                using (SQLiteCommand com = new SQLiteCommand("UPDATE Sorular SET Soru=@Soru WHERE SoruId=@SoruId ", Baglanti))
+                {
+                    Baglanti.Open();
+
+                    com.Parameters.AddWithValue("SoruId", item.SoruId);
+                    com.Parameters.AddWithValue("Soru", item.SoruText);
+
+                    var result = com.ExecuteNonQuery();
+                    Baglanti.Close();
+                    return result;
+                }
+            }
         }
 
         public static int DeleteAll(int testId)
         {
-            SQLiteCommand com = new SQLiteCommand("DELETE FROM Sorular WHERE TestId=@TestId", DatabaseManager.Baglanti);
-            com.Parameters.AddWithValue("TestId", testId);
-            return com.ExecuteNonQuery();
+            using (SQLiteConnection Baglanti = new SQLiteConnection(DatabaseManager.ConnectionString))
+            {
+                using (SQLiteCommand com = new SQLiteCommand("DELETE FROM Sorular WHERE TestId=@TestId", Baglanti))
+                {
+                    Baglanti.Open();
+
+                    com.Parameters.AddWithValue("TestId", testId);
+
+                    var result = com.ExecuteNonQuery();
+                    Baglanti.Close();
+                    return result;
+                }
+            }
+
         }
 
         public static List<Soru> SelectAll(int testId)
         {
-            DatabaseManager.BaglantiAc();
-            List<Soru> itemList = null;
-            SQLiteCommand com = new SQLiteCommand("SELECT * FROM Sorular WHERE TestId=@TestId", DatabaseManager.Baglanti);
-            com.Parameters.AddWithValue("@TestId", testId);
-            SQLiteDataReader rdr = com.ExecuteReader();
-            if (rdr.HasRows)
+            using (SQLiteConnection Baglanti = new SQLiteConnection(DatabaseManager.ConnectionString))
             {
-                itemList = new List<Soru>();
-                while (rdr.Read())
+                using (SQLiteCommand com = new SQLiteCommand("SELECT * FROM Sorular WHERE TestId=@TestId", Baglanti))
                 {
-                    var item = new Soru
+                    Baglanti.Open();
+                    List<Soru> itemList = null;
+                    com.Parameters.AddWithValue("@TestId", testId);
+                    using (SQLiteDataReader rdr = com.ExecuteReader())
                     {
-                        TestId = Convert.ToInt16(rdr["TestId"]),
-                        SoruId = Convert.ToInt16(rdr["SoruId"]),
-                        SoruText = rdr["Soru"].ToString()
-                    };
-                    itemList.Add(item);
+                        if (rdr.HasRows)
+                        {
+                            itemList = new List<Soru>();
+                            while (rdr.Read())
+                            {
+                                var item = new Soru
+                                {
+                                    TestId = Convert.ToInt16(rdr["TestId"]),
+                                    SoruId = Convert.ToInt16(rdr["SoruId"]),
+                                    SoruText = rdr["Soru"].ToString()
+                                };
+                                itemList.Add(item);
+                            }
+                        }
+                        Baglanti.Close();
+                        return itemList;
+                    }
                 }
             }
-            return itemList;
         }
     }
 }

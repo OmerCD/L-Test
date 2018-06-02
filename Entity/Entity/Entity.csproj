@@ -41,8 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServerKullanici.cs" />
     <Compile Include="Cevap.cs" />
-    <Compile Include="Kullanici.cs" />
+    <Compile Include="ClientKullanici.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rapor.cs" />
     <Compile Include="Soru.cs" />

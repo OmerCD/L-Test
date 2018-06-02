@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using Entity;
 using LTest.Properties;
 using Application = System.Windows.Application;
 
@@ -26,6 +27,12 @@ namespace LTest.Classes
         public static Path Done { get; } = (Path)Application.Current.FindResource("Done");
         public static Path Failed { get; } = (Path)Application.Current.FindResource("Failed");
 
+        public static ServerKullanici ServerKullanici;
+
+        public static void AktifKullanici(ServerKullanici serverKullanici)
+        {
+            ServerKullanici = serverKullanici;
+        }
 
         public static List<Path> Icons()
         {
@@ -78,18 +85,18 @@ namespace LTest.Classes
                 blue = (255 - blue) * correctionFactor + blue;
             }
 
-            return Color.FromArgb(solid.Color.A, (byte) red, (byte) green, (byte) blue);
+            return Color.FromArgb(solid.Color.A, (byte)red, (byte)green, (byte)blue);
         }
 
         public static void ChangeColour(SolidColorBrush solidColor)
         {
-            
+
             Settings.Default.HexColor = solidColor.Color.ToString();
             Settings.Default.Save();
 
             Application.Current.Resources["MainColor"] = solidColor;
             Application.Current.Resources["MainColorAnimation"] = solidColor;
-            
+
             Application.Current.Resources["MainColorMedium"] = new SolidColorBrush(ChangeColorBrightness(solidColor, 0.20f)); ;
             Application.Current.Resources["MainColorMediumAnimation"] = new SolidColorBrush(ChangeColorBrightness(solidColor, 0.25f));
 

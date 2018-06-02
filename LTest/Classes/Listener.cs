@@ -85,13 +85,20 @@ namespace LTest.Classes
 
         public object GetObject(byte[] data)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            MemoryStream ms = new MemoryStream(data);
-            if (ms!=null)
+            try
             {
-                return formatter.Deserialize(ms);
+                BinaryFormatter formatter = new BinaryFormatter();
+                MemoryStream ms = new MemoryStream(data);
+                if (ms != null)
+                {
+                    return formatter.Deserialize(ms);
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch (Exception)
             {
                 return null;
             }

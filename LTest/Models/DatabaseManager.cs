@@ -10,22 +10,8 @@ namespace LTest.Models
     {
         private static readonly string Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\L-Test\";
         //public static SQLiteConnection Baglanti = new SQLiteConnection("Data Source= C:\\Users\\Hasan\\Documents\\GitHub\\L-Test\\database.db");
-        public static SQLiteConnection Baglanti = new SQLiteConnection("Data Source= "+Path+"database.db");
+        public static string ConnectionString= "Data Source= "+Path+"database.db";
 
-        public static void BaglantiAc()
-        {
-            if (Baglanti.State==ConnectionState.Closed)
-            {
-                try
-                {
-                    Baglanti.Open();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Hata Kodu: 0x04 " + ex.Message);
-                }
-            }
-        }
         public static void CreateDatabase()
         {
             if (!Directory.Exists(Path))
@@ -70,23 +56,24 @@ namespace LTest.Models
 
         private static void CheckTables(string[,] tableQueries)
         {
-            if (Baglanti.State == ConnectionState.Closed)
-                Baglanti.Open();
-            for (var i = 0; i < tableQueries.GetLength(0); i++)
+            using (SQLiteConnection Baglanti=new SQLiteConnection(DatabaseManager.ConnectionString))
             {
-                var tableName = tableQueries[i, 0];
-                var query = tableQueries[i, 1];
-                using (var cmd = new SQLiteCommand($"Select count(*) From sqlite_master Where type = 'table' AND name = '{tableName}' ", Baglanti))
+                Baglanti.Open();
+                for (var i = 0; i < tableQueries.GetLength(0); i++)
                 {
-                    if (Convert.ToBoolean(cmd.ExecuteScalar())) continue;
-                    using (var tableCreateCommand = new SQLiteCommand(query, Baglanti))
+                    var tableName = tableQueries[i, 0];
+                    var query = tableQueries[i, 1];
+                    using (var cmd = new SQLiteCommand($"Select count(*) From sqlite_master Where type = 'table' AND name = '{tableName}' ", Baglanti))
                     {
-                        tableCreateCommand.ExecuteNonQuery();
+                        if (Convert.ToBoolean(cmd.ExecuteScalar())) continue;
+                        using (var tableCreateCommand = new SQLiteCommand(query, Baglanti))
+                        {
+                            tableCreateCommand.ExecuteNonQuery();
+                        }
                     }
                 }
-            }
-            if (Baglanti.State == ConnectionState.Open)
                 Baglanti.Close();
+            }
         }
     }
 }

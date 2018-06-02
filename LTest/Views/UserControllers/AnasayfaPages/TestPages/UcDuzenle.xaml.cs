@@ -63,7 +63,7 @@ namespace LTest.Views.UserControllers.AnasayfaPages.TestPages
         {
             if (Global.GenelDurum!=Global.Durum.TestDuzenleSecildi)
             {
-                Anasayfa.Durum("Herhangi bir test seçilmedi.", Global.Warning);
+                UcAnasayfa.Durum("Herhangi bir test seçilmedi.", Global.Warning);
                 return;
             }
 
@@ -84,18 +84,18 @@ namespace LTest.Views.UserControllers.AnasayfaPages.TestPages
             int sonuc= CRUD.Update(_seciliTest, _sorular, _cevaplar);
             if (sonuc>0)
             {
-                Anasayfa.Durum("Test Güncellendi", Global.Done);
+                UcAnasayfa.Durum("Test Güncellendi", Global.Done);
             }
             else
             {
-                Anasayfa.Durum("Test Güncellenemedi", Global.Failed);
+                UcAnasayfa.Durum("Test Güncellenemedi", Global.Failed);
             }
         }
         void TestAdiDoldur()
         {
             TestCombobox.Items.Clear();
             testler = new List<Test>();
-            testler = FTest.SelectAll();
+            testler = FTest.SelectAll(Global.ServerKullanici.KullaniciId);
             if (testler == null) return;
             foreach (var test in testler)
             {
@@ -117,13 +117,13 @@ namespace LTest.Views.UserControllers.AnasayfaPages.TestPages
         {
             if (Global.GenelDurum != Global.Durum.TestDuzenleSecildi)
             {
-                Anasayfa.Durum("Herhangi bir test seçilmedi.", Global.Warning);
+                UcAnasayfa.Durum("Herhangi bir test seçilmedi.", Global.Warning);
                 return;
             }
             int sonuc=CRUD.Delete(_seciliTest);
             if (sonuc>0)
             {
-                Anasayfa.Durum("Test Başarıyla Silindi", Global.Done);
+                UcAnasayfa.Durum("Test Başarıyla Silindi", Global.Done);
                 SoruStack.Children.Clear();
                 TestAdiDoldur();
                 SureTextbox.Text = string.Empty;
@@ -132,7 +132,7 @@ namespace LTest.Views.UserControllers.AnasayfaPages.TestPages
             }
             else
             {
-                Anasayfa.Durum("Test Silinemedi", Global.Failed);
+                UcAnasayfa.Durum("Test Silinemedi", Global.Failed);
             }
         }
 

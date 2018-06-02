@@ -6,17 +6,19 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Net.Sockets;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Client
 {
     public partial class NamePage : ContentPage
 	{
         byte[] receivedBuf = new Byte[1024*1024*50];
+        byte[] buffer = new Byte[1024];
         public static Test Test=null;
-        public static List<Soru> Sorular = new List<Soru>();
-        public static List<Cevap> Cevaplar = new List<Cevap>();
+        public static List<Soru> Sorular = null;
+        public static List<Cevap> Cevaplar = null;
         public static Sure Sure=null;
-        public static Kullanici Kullanici;
+        public static ClientKullanici Kullanici;
         object obj;
         public NamePage()
 		{
@@ -25,13 +27,19 @@ namespace Client
         }
         private void SendName_Clicked(object sender, EventArgs e)
         {
-            Kullanici = new Kullanici
+            ClientListener.Kullanici= new ClientKullanici
             {
                 KullaniciAdi = Name.Text,
-                Sorular=new List<Kullanici.SoruOzellikleri>()
+                Sorular=new List<ClientKullanici.SoruOzellikleri>()
             };
-            SendObject(Kullanici);
-            Bekle();
+            
+            ClientListener.SendObject();
+            var result = ClientListener.WaitForData();
+            if (result)
+            {
+                Navigation.PushModalAsync(new BaslangicSure(Sure));
+            }
+            //Bekle();
         }
 
         public static object GetObject(byte[] data)
@@ -84,6 +92,8 @@ namespace Client
                     }
                     if (Test!=null && Sure!=null && Sorular!=null && Cevaplar!=null)
                     {
+                        buffer = Encoding.UTF8.GetBytes("Nesneler Alındı");
+                        IpPage.Socket.Send(buffer);
                         break;
                     }
                 }

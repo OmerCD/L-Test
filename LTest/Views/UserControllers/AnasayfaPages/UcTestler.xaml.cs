@@ -20,20 +20,20 @@ namespace LTest.Views.UserControllers.AnasayfaPages
         private void UcOlustur(object sender, RoutedEventArgs e)
         {
             _permanent.Change(dockPanel, (Button)sender);
-            UserControlClass.ControlAdd(testIcerik, new UcOlustur());
+            Icerik.Content = new UcOlustur();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             var permanent = new PermanentTrigger();
             permanent.Change(dockPanel, Olustur);
-            UserControlClass.ControlAdd(testIcerik, new UcOlustur());
+            Icerik.Content= new UcOlustur();
         }
 
         private void UcDuzenle(object sender, RoutedEventArgs e)
         {
             _permanent.Change(dockPanel, (Button)sender);
-            UserControlClass.ControlAdd(testIcerik, new UcDuzenle());
+            Icerik.Content = new UcDuzenle();
 
         }
 

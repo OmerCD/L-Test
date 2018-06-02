@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Hasan\Desktop\L-Test\LTest\App.xaml
-20-1769864314
+25-601696956
 
-33-574386109
+39-123429925
 90-998316386
-Views\CustomMessageBox.xaml;Views\KullaniciSayfasi.xaml;Views\Anasayfa.xaml;Views\Styles\Animations.xaml;Views\Styles\Buttons.xaml;Views\Styles\Colors.xaml;Views\Styles\Icons.xaml;Views\Styles\Images.xaml;Views\Styles\Others.xaml;Views\Styles\Texts.xaml;Views\UserControllers\AnasayfaPages\UcAyarlar.xaml;Views\UserControllers\AnasayfaPages\UcBaslangic.xaml;Views\UserControllers\AnasayfaPages\BaslangicPages\UcOdaBaslat.xaml;Views\UserControllers\KullaniciSayfasi\UcGirenKullanici.xaml;Views\UserControllers\KullaniciSayfasi\UcSkor.xaml;Views\UserControllers\KullaniciSayfasi\UcSkorListesi.xaml;Views\UserControllers\KullaniciSayfasi\UcSoru.xaml;Views\UserControllers\AnasayfaPages\UcTestler.xaml;Views\UserControllers\AnasayfaPages\TestPages\UcDuzenle.xaml;Views\UserControllers\AnasayfaPages\TestPages\UcOlustur.xaml;
+Views\CustomMessageBox.xaml;Views\KullaniciSayfasi.xaml;Views\Anasayfa.xaml;Views\Styles\Animations.xaml;Views\Styles\Buttons.xaml;Views\Styles\Colors.xaml;Views\Styles\Icons.xaml;Views\Styles\Images.xaml;Views\Styles\Others.xaml;Views\Styles\Texts.xaml;Views\UserControllers\UcAnasayfa.xaml;Views\UserControllers\AnasayfaPages\UcAyarlar.xaml;Views\UserControllers\AnasayfaPages\UcBaslangic.xaml;Views\UserControllers\AnasayfaPages\BaslangicPages\UcOdaBaslat.xaml;Views\UserControllers\UcGiris.xaml;Views\UserControllers\GirisPages\UcGirisYap.xaml;Views\UserControllers\GirisPages\UcYeniSifre.xaml;Views\UserControllers\GirisPages\UcYeniUyelik.xaml;Views\UserControllers\KullaniciSayfasi\UcGirenKullanici.xaml;Views\UserControllers\KullaniciSayfasi\UcSkor.xaml;Views\UserControllers\KullaniciSayfasi\UcSkorListesi.xaml;Views\UserControllers\KullaniciSayfasi\UcSoru.xaml;Views\UserControllers\AnasayfaPages\UcTestler.xaml;Views\UserControllers\AnasayfaPages\TestPages\UcDuzenle.xaml;Views\UserControllers\AnasayfaPages\TestPages\UcOlustur.xaml;
 
 True
 
