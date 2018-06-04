@@ -6,7 +6,7 @@
         x:Class="LTest.Views.KullaniciSayfasi"
         xmlns:local="clr-namespace:LTest"
         mc:Ignorable="d"
-        Title="Kullanıcı Sayfası" MinWidth="1250" MinHeight="800" Loaded="Window_Loaded" Closing="Window_Closing" Icon="Images/KullaniciSayfasi.png" ResizeMode="CanResizeWithGrip">
+        Title="Kullanıcı Sayfası" MinWidth="1150" MinHeight="950" Loaded="Window_Loaded" Closing="Window_Closing" Icon="Images/KullaniciSayfasi.png" ResizeMode="CanResizeWithGrip">
     <Window.Triggers>
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard x:Name="Animation" Storyboard="{DynamicResource CountDownStory2}"/>

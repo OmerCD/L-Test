@@ -186,6 +186,8 @@ namespace Client
                 }
             }
 
+            ClientListener.Kullanici.TotalPuan = totalPuan;
+
             // Cevabı Gönder
             ClientListener.SendObject();
 

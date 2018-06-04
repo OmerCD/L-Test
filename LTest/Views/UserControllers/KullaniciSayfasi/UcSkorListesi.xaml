@@ -82,7 +82,7 @@
                     <TextBlock Text="Tüm Skorlar" Style="{StaticResource Header}" Margin="0,5,0,0"/>
                     <Border Style="{StaticResource BorderStyle}">
                         <Grid>
-                            <ListView ItemsSource="{Binding .}" x:Name="EnCokKazanan" BorderThickness="0" Padding="5">
+                            <ListView ItemsSource="{Binding .}" x:Name="TumSkorlar" BorderThickness="0" Padding="5">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="Kullanıcı Adı" HeaderContainerStyle="{StaticResource ColumnHeader}" Width="{Binding ElementName=HelperField1, Path=ActualWidth}">
@@ -95,7 +95,7 @@
                                         <GridViewColumn Header="Puan" HeaderContainerStyle="{StaticResource ColumnHeader}" Width="{Binding ElementName=HelperField2, Path=ActualWidth}">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding Puan}" Style="{StaticResource ListViewText}"/>
+                                                    <TextBlock Text="{Binding TotalPuan}" Style="{StaticResource ListViewText}"/>
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
                                         </GridViewColumn>

@@ -6,7 +6,7 @@ namespace Entity
     public class ClientKullanici
     {
         public string KullaniciAdi { get; set; }
-
+        public float TotalPuan { get; set; }
         public List<SoruOzellikleri> Sorular { get; set; }
         [System.Serializable]
         public class SoruOzellikleri

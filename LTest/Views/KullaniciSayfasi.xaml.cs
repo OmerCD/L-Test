@@ -281,6 +281,7 @@ namespace LTest.Views
 
         private void SiradakiSoru_Click(object sender, RoutedEventArgs e)
         {
+            _kullanicilar.OrderBy(x => x.TotalPuan);
             if (_soruIndex < _sorular.Count)
             {
                 if (sureBitti)
@@ -299,11 +300,54 @@ namespace LTest.Views
                 _listener.SendObject(_message.Txt = "Sorular Bitti");
                 Global.GenelDurum = Global.Durum.TestBitti;
                 Sorular.Children.Clear();
-                Sorular.Children.Add(new UcSkorListesi
-                {
-
-                });
+                UcSkorListesiGoster();
             }
+        }
+
+        private void UcSkorListesiGoster()
+        {
+            UcSkorListesi ucSkorListesi = new UcSkorListesi();
+            int count = _kullanicilar.Count;
+            if (count>0)
+            {
+                ucSkorListesi.Birinci.Text = _kullanicilar[0].KullaniciAdi;
+                if (count>1)
+                {
+                    ucSkorListesi.Ikinci.Text = _kullanicilar[1].KullaniciAdi;
+                    if (count>2)
+                    {
+                        ucSkorListesi.Ucuncu.Text = _kullanicilar[2].KullaniciAdi;
+                    }
+                }
+            }
+            ucSkorListesi.TumSkorlar.DataContext = _kullanicilar;
+            Sorular.Children.Add(ucSkorListesi);
+
+        }
+
+        private void UcSkorGoster()
+        {
+            UcSkor ucSkor = new UcSkor();
+            int count = _kullanicilar.Count;
+            if (count > 0)
+            {
+                ucSkor.Birinci.Text = _kullanicilar[0].KullaniciAdi;
+                ucSkor.BirinciSkor.Text = _kullanicilar[0].TotalPuan.ToString();
+                if (count > 1)
+                {
+                    ucSkor.Ikinci.Text = _kullanicilar[1].KullaniciAdi;
+                    ucSkor.IkinciSkor.Text = _kullanicilar[1].TotalPuan.ToString();
+
+                    if (count > 2)
+                    {
+                        ucSkor.Ucuncu.Text = _kullanicilar[2].KullaniciAdi;
+                        ucSkor.UcuncuSkor.Text = _kullanicilar[2].TotalPuan.ToString();
+
+                    }
+                }
+            }
+            Sorular.Children.Add(ucSkor);
+
         }
 
         public void SendObject(object obj)
@@ -407,32 +451,8 @@ namespace LTest.Views
             // Skorları göster, sonra soruyu yaz
             Sorular.Children.Clear();
 
+            UcSkorGoster();
 
-            //float birinci = 0;
-            //string birinciAdi;
-            //float totalSkor = 0;
-            //foreach (var kullanici in _kullanicilar)
-            //{
-            //    foreach (var kullaniciSorular in kullanici.Sorular)
-            //    {
-            //        totalSkor += kullaniciSorular.Puan;
-            //    }
-            //    if (totalSkor>birinci)
-            //    {
-            //        birinci = totalSkor;
-            //        birinciAdi = kullanici.KullaniciAdi;
-            //    }
-            //}
-
-
-            //var peopleInOrder = _kullanicilar.OrderBy(_kullanicilar => _kullanicilar.Sorular.ToList());
-
-
-
-            Sorular.Children.Add(new UcSkor
-            {
-
-            });
             var time = TimeSpan.FromSeconds(_sure.SkorSure);
             _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {
