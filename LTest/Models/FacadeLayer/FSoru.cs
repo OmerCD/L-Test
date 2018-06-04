@@ -11,18 +11,38 @@ namespace LTest.Models.FacadeLayer
         {
             using (SQLiteConnection Baglanti = new SQLiteConnection(DatabaseManager.ConnectionString))
             {
-                using (SQLiteCommand com = new SQLiteCommand("INSERT INTO Sorular(TestId, Soru) VALUES(@TestId, @Soru); Select last_insert_rowid()", Baglanti))
+                //SQLiteCommand com = new SQLiteCommand("INSERT INTO Sorular(TestId, Soru) VALUES(@TestId, @Soru)", Baglanti);
+                Baglanti.Open();
+                SQLiteTransaction transaction = null;
+                transaction = Baglanti.BeginTransaction();
+
+                using (SQLiteCommand com = new SQLiteCommand("INSERT INTO Sorular(TestId, Soru) VALUES(@TestId, @Soru)", Baglanti))
                 {
-                    Baglanti.Open();
                     com.Parameters.AddWithValue("@TestId", item.TestId);
                     com.Parameters.AddWithValue("@Soru", item.SoruText);
+                    com.ExecuteScalar();
+                };
 
-                    var result = com.ExecuteNonQuery();
-                    Baglanti.Close();
-                    return result;
-                }
+                int result = Convert.ToInt32(Baglanti.LastInsertRowId);
+                transaction.Commit();
+
+                Baglanti.Close();
+                return result;
             }
         }
+
+
+    //                    using (SQLiteCommand com = new SQLiteCommand("INSERT INTO Sorular(TestId, Soru) VALUES(@TestId, @Soru) Select last_insert_rowid()", Baglanti))
+    //            {
+    //                Baglanti.Open();
+    //                com.Parameters.AddWithValue("@TestId", item.TestId);
+    //                com.Parameters.AddWithValue("@Soru", item.SoruText);
+
+    //                int result = Convert.ToInt32(com.ExecuteScalar());
+
+    //Baglanti.Close();
+    //                return result;
+    //            }
 
         public static int Update(Soru item)
         {

@@ -66,7 +66,7 @@ namespace LTest.Views.UserControllers.AnasayfaPages.TestPages
             {
                 sorular.Add(new Soru
                 {
-                    SoruText = tst.SoruTextBoxes[i].Text
+                    SoruText = tst.SoruTextBoxes[i].Text,
                 });
 
                 for (var j = 0; j < _cevap; j++)

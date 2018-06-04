@@ -11,17 +11,23 @@ namespace LTest.Models.FacadeLayer
         {
             using (SQLiteConnection Baglanti = new SQLiteConnection(DatabaseManager.ConnectionString))
             {
+                Baglanti.Open();
+                SQLiteTransaction transaction = null;
+                transaction = Baglanti.BeginTransaction();
+
                 using (SQLiteCommand com = new SQLiteCommand("INSERT INTO Testler(Sure, SoruSayisi, CevapSayisi, TestAdi, KullaniciId) VALUES(@Sure, @SoruSayisi, @CevapSayisi, @TestAdi, @KullaniciId); Select last_insert_rowid()", Baglanti))
                 {
-                    Baglanti.Open();
 
                     com.Parameters.AddWithValue("@Sure", item.Sure);
                     com.Parameters.AddWithValue("@SoruSayisi", item.SoruSayisi);
                     com.Parameters.AddWithValue("@CevapSayisi", item.CevapSayisi);
                     com.Parameters.AddWithValue("@TestAdi", item.TestAdi);
                     com.Parameters.AddWithValue("@KullaniciId", item.KullaniciId);
+                    com.ExecuteScalar();
 
-                    var result = com.ExecuteNonQuery();
+                    int result = Convert.ToInt32(Baglanti.LastInsertRowId);
+                    transaction.Commit();
+
                     Baglanti.Close();
                     return result;
                 }
