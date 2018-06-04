@@ -1,4 +1,5 @@
 ﻿using Entity;
+using LTest.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +14,24 @@ namespace Client
         private Label label = new Label
         {
             VerticalOptions = LayoutOptions.CenterAndExpand,
-            HorizontalOptions=LayoutOptions.Center,
-            FontSize= Device.GetNamedSize(NamedSize.Medium, typeof(Label))
+            HorizontalOptions = LayoutOptions.Center,
+            FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))
         };
-        public BaslangicSure (Sure sure)
+        public BaslangicSure ()
 		{
             Content = new StackLayout {
 				Children = {
                     label,
 				}
 			};
-
+            int sure = ClientListener.Data.Sure.BaslangicSure;
             Device.StartTimer(TimeSpan.FromSeconds(1), () =>
             {
-                label.Text = "Lütfen bekleyin " + sure.BaslangicSure + " saniye sonra oyun başlayacak.";
-                sure.BaslangicSure--;
-                if (sure.BaslangicSure==0)
+                label.Text = "Lütfen bekleyin " + sure + " saniye sonra oyun başlayacak.";
+                sure--;
+                if (sure==0)
                 {
-                    Navigation.PushModalAsync(new SoruGoster(NamePage.Test));
+                    Navigation.PushModalAsync(new SoruGoster());
                     return false;
                 }
                 return true; // True = Repeat again, False = Stop the timer

@@ -21,8 +21,9 @@ namespace LTest.Models.FacadeLayer
                     com.Parameters.AddWithValue("@TestAdi", item.TestAdi);
                     com.Parameters.AddWithValue("@KullaniciId", item.KullaniciId);
 
+                    var result = com.ExecuteNonQuery();
                     Baglanti.Close();
-                    return Convert.ToInt16(com.ExecuteScalar());
+                    return result;
                 }
             }
         }

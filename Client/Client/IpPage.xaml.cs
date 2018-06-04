@@ -30,7 +30,6 @@ namespace Client
                 }
                 else
                 {
-                    Info.IsVisible = true;
                     Info.Text = "Ağa bağlanılamadı";
                 }
                 //try

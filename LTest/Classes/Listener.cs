@@ -13,15 +13,13 @@ namespace LTest.Classes
     {
         private Socket _socket;
         private bool _listening;
-        private List<Client> clients;
+        private List<Client> _clients;
 
-        public bool Listening() => _listening;
-
-        private void Listening(bool value) => _listening = value;
+        public bool Listening {get=>_listening; set=> _listening=value;}
 
         public int Port { get; }
 
-        public List<Client> Clients { get => clients; set => clients = value; }
+        public List<Client> Clients { get => _clients; set => _clients = value; }
 
         public Listener(int port)
         {
@@ -31,7 +29,7 @@ namespace LTest.Classes
 
         public void Start()
         {
-            if (Listening())
+            if (_listening)
                 return;
             _listening = true;
             _socket.Bind(new IPEndPoint(0, Port));
@@ -41,7 +39,7 @@ namespace LTest.Classes
 
         public void Stop()
         {
-            if (!Listening())
+            if (!_listening)
                 return;
             _listening = false;
             _socket.Close();
@@ -65,11 +63,11 @@ namespace LTest.Classes
 
         public void SendObject(object obj)
         {
-            BinaryFormatter _formatter = new BinaryFormatter();
-            MemoryStream _memoryStream = new MemoryStream();
-            _formatter.Serialize(_memoryStream, obj);
-            byte[] buffer = _memoryStream.ToArray();
-            foreach (var client in clients)
+            BinaryFormatter formatter = new BinaryFormatter();
+            MemoryStream memoryStream = new MemoryStream();
+            formatter.Serialize(memoryStream, obj);
+            byte[] buffer = memoryStream.ToArray();
+            foreach (var client in _clients)
             {
                 client.Socket.Send(buffer);
             }
@@ -77,7 +75,7 @@ namespace LTest.Classes
 
         public void SendText(string text)
         {
-            foreach (var client in clients)
+            foreach (var client in _clients)
             {
                 client.Socket.Send(Encoding.UTF8.GetBytes(text));
             }

@@ -8,7 +8,7 @@ namespace LTest.Models
 {
     class DatabaseManager
     {
-        private static readonly string Path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\L-Test\";
+        private static readonly string Path = AppDomain.CurrentDomain.BaseDirectory;
         //public static SQLiteConnection Baglanti = new SQLiteConnection("Data Source= C:\\Users\\Hasan\\Documents\\GitHub\\L-Test\\database.db");
         public static string ConnectionString= "Data Source= "+Path+"database.db";
 

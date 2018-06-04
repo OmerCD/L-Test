@@ -32,14 +32,14 @@
                 </Grid>
             </Border>
             <Border Style="{StaticResource BorderStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" Height="48">
-                <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <DockPanel Margin="0,5,10,5">
                         <Image Source="/LTest;component/Views/Images/icon.ico"  Style="{StaticResource Icon}"/>
                     </DockPanel>
                     <DockPanel>
                         <Label Style="{StaticResource GirisText}"  Content="LTest Uygulaması V1.0.0"/>
                     </DockPanel>
-                </StackPanel>-->
+                </StackPanel>
             </Border>
         </StackPanel>
     </Grid>

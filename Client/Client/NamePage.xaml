@@ -6,10 +6,10 @@
              x:Class="Client.NamePage" BackgroundColor="#E1E1E1" >
     <Grid>
         <ScrollView>
-            <Frame Style="{StaticResource Border}" IsVisible="False">
-                <Label x:Name="Info" TextColor="DarkGray" HorizontalOptions="CenterAndExpand"/>
-            </Frame>
             <StackLayout VerticalOptions="Start">
+                <Frame Style="{StaticResource Border}">
+                    <Label x:Name="Info" TextColor="DarkGray" HorizontalOptions="CenterAndExpand"/>
+                </Frame>
                 <Frame Style="{StaticResource Border}">
                     <StackLayout>
                         <Image Margin="-25,-20,-25,0" Source="image02.png" Aspect="AspectFill" HeightRequest="196"></Image>

@@ -15,8 +15,8 @@ namespace Entity
             public int SoruId { get; set; }
             public int Cevap { get; set; }
             public int Dogru { get; set; }
-            public double CevapSuresi { get; set; }
-            public int Puan { get; set; }
+            public float CevapSuresi { get; set; }
+            public float Puan { get; set; }
 
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -39,7 +40,7 @@ namespace LTest.Views
         private UcSoru _ucSoru;
         private List<Soru> _sorular;
         private List<Cevap> _cevaplar;
-        private UcSkor _ucSkor=new UcSkor();
+        
         private Test _test;
         private byte _soruIndex;
         Sure _sure = new Sure();
@@ -49,15 +50,16 @@ namespace LTest.Views
         private readonly string _testAdi;
         byte[] receivedBuf = new Byte[1024 * 1024 * 50];
         private bool sureBitti = false;
+        private Message _message=new Message();
         #endregion
 
-        public KullaniciSayfasi(string testAdi= "HASAN")
+        public KullaniciSayfasi(string testAdi)
         {
             InitializeComponent();
             _colors = Global.Colors();
             _icons = Global.Icons();
             _testAdi = testAdi;
-            _test = FTest.Select(_testAdi);
+            _test = FTest.Select(_testAdi); // Boş Yapma
         }
 
         //public static string ByteArrayToString(byte[] ba)
@@ -118,13 +120,13 @@ namespace LTest.Views
 
 
         }
-   
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var result= MessageBox.Show("Sayfayı Kapatırsanız, Odada Kapanacaktır. Kapatmak İstediğinizi Emin Misiniz?",
+            var result = MessageBox.Show("Sayfayı Kapatırsanız, Odada Kapanacaktır. Kapatmak İstediğinizi Emin Misiniz?",
                     "Uyarı", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
 
-            if (result==MessageBoxResult.No)
+            if (result == MessageBoxResult.No)
             {
                 e.Cancel = true;
             }
@@ -188,7 +190,7 @@ namespace LTest.Views
                     if (_clients[i].GetId() != sender.GetId()) continue;
                     object obj = _listener.GetObject(data);
                     if (obj == null) continue;
-                    if (obj.GetType()==typeof(ClientKullanici))
+                    if (obj.GetType() == typeof(ClientKullanici))
                     {
                         ClientKullanici gelenKullanici = ((ClientKullanici)obj);
                         bool yeniKullanici = true;
@@ -208,7 +210,7 @@ namespace LTest.Views
                         if (yeniKullanici)
                         {
                             _kullanicilar.Add(gelenKullanici);
-                            _kullanicilar[_userCount-1].Sorular = new List<ClientKullanici.SoruOzellikleri>();
+                            _kullanicilar[_userCount - 1].Sorular = new List<ClientKullanici.SoruOzellikleri>();
                         }
                     }
                     _ucGirenKullanici[i].Name.Text = _kullanicilar[i].KullaniciAdi;
@@ -260,29 +262,47 @@ namespace LTest.Views
 
             _listener.Clients = _clients;
 
-            _listener.SendObject(_sure); // Başlangıç, SkorSüresi, DogruSüresi
-
-            _listener.SendObject(_test); // Test Bilgilerini Gönder
-
-            _listener.SendObject(_sorular); // Soruları Gönder
-
             var cevaplar = FCevap.SelectByTestId(_test.TestId);
 
-            _listener.SendObject(cevaplar); // Tüm Cevapları Gönder
+            TotalData data = new TotalData
+            {
+                Sure = _sure,
+                Test = _test,
+                Sorular = _sorular,
+                Cevaplar = cevaplar
+            };
 
 
-            BaslangicGeriSayim();
+            _listener.SendObject(data); // Her şeyi gönder
+
+
+             BaslangicGeriSayim();
         }
 
         private void SiradakiSoru_Click(object sender, RoutedEventArgs e)
         {
-            if (sureBitti)
+            if (_soruIndex < _sorular.Count)
             {
-                SoruGoster();
+                if (sureBitti)
+                {
+                    _listener.SendObject(_message.Txt = "Sure Bitti Siradaki Soru");
+                    SoruGoster();
+                }
+                else
+                {
+                    _listener.SendObject(_message.Txt = "Sure Bitmedi Siradaki Soru");
+                    DogruGosterWithTimer();
+                }
             }
             else
             {
-                DogruGosterWithTimer();
+                _listener.SendObject(_message.Txt = "Sorular Bitti");
+                Global.GenelDurum = Global.Durum.TestBitti;
+                Sorular.Children.Clear();
+                Sorular.Children.Add(new UcSkorListesi
+                {
+
+                });
             }
         }
 
@@ -297,7 +317,7 @@ namespace LTest.Views
                 client.Socket.Send(buffer);
             }
         }
-        
+
         public void SendText(string txt)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(txt);
@@ -332,7 +352,7 @@ namespace LTest.Views
             //        });
             //        _soruIndex = 0;
             //    }
-                //_listener.SendObject(_kullanicilar[i]);
+            //_listener.SendObject(_kullanicilar[i]);
             //}
         }
 
@@ -385,37 +405,51 @@ namespace LTest.Views
             Info.Visibility = Visibility.Hidden;
 
             // Skorları göster, sonra soruyu yaz
-            if (_soruIndex < _sorular.Count)
+            Sorular.Children.Clear();
+
+
+            //float birinci = 0;
+            //string birinciAdi;
+            //float totalSkor = 0;
+            //foreach (var kullanici in _kullanicilar)
+            //{
+            //    foreach (var kullaniciSorular in kullanici.Sorular)
+            //    {
+            //        totalSkor += kullaniciSorular.Puan;
+            //    }
+            //    if (totalSkor>birinci)
+            //    {
+            //        birinci = totalSkor;
+            //        birinciAdi = kullanici.KullaniciAdi;
+            //    }
+            //}
+
+
+            //var peopleInOrder = _kullanicilar.OrderBy(_kullanicilar => _kullanicilar.Sorular.ToList());
+
+
+
+            Sorular.Children.Add(new UcSkor
             {
-                Sorular.Children.Clear();
-                Sorular.Children.Add(_ucSkor);
-                var time = TimeSpan.FromSeconds(_sure.SkorSure);
-                _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+
+            });
+            var time = TimeSpan.FromSeconds(_sure.SkorSure);
+            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                if (time.Seconds == 0)
                 {
-                    if (time.Seconds == 0)
-                    {
-                        _timer.Stop();
-                        SonrakiSoru.Visibility = Visibility.Visible;
-                        Info.Visibility = Visibility.Visible;
-                        Sorular.Children.Clear();
-                        Sorular.Children.Add(_ucSoru);
-                        SoruYazdir();
-                    }
-                    time = time.Add(TimeSpan.FromSeconds(-1));
-                }, Application.Current.Dispatcher);
-                _timer.Start();
-            }
+                    _timer.Stop();
+                    SonrakiSoru.Visibility = Visibility.Visible;
+                    Info.Visibility = Visibility.Visible;
+                    Sorular.Children.Clear();
+                    Sorular.Children.Add(_ucSoru);
+                    SoruYazdir();
+                }
+                time = time.Add(TimeSpan.FromSeconds(-1));
+            }, Application.Current.Dispatcher);
+            _timer.Start();
+
             //Sorular Bitti, Tüm Skorları Göster
-
-            else
-            {
-                Global.GenelDurum = Global.Durum.TestBitti;
-                Sorular.Children.Clear();
-                Sorular.Children.Add(new UcSkorListesi
-                {
-
-                });
-            }
         }
 
         // Doğru Göster'e Gidiyor

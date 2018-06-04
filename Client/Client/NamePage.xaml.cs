@@ -14,15 +14,15 @@ namespace Client
 	{
         byte[] receivedBuf = new Byte[1024*1024*50];
         byte[] buffer = new Byte[1024];
-        public static Test Test=null;
-        public static List<Soru> Sorular = null;
-        public static List<Cevap> Cevaplar = null;
-        public static Sure Sure=null;
         public static ClientKullanici Kullanici;
-        object obj;
         public NamePage()
 		{
 			InitializeComponent();
+            ClientListener.ObjectArrived += TestBaslat;
+        }
+        ~NamePage()
+        {
+            ClientListener.ObjectArrived -= TestBaslat;
 
         }
         private void SendName_Clicked(object sender, EventArgs e)
@@ -34,13 +34,19 @@ namespace Client
             };
             
             ClientListener.SendObject();
-            var result = ClientListener.WaitForData();
-            if (result)
-            {
-                Navigation.PushModalAsync(new BaslangicSure(Sure));
-            }
+
+
             //Bekle();
         }
+
+        private void TestBaslat()
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                Navigation.PushModalAsync(new BaslangicSure());
+            });
+        }
+
 
         public static object GetObject(byte[] data)
         {
@@ -63,46 +69,46 @@ namespace Client
 
             }
         }
-        void Bekle()
-        {
-            while (true)
-            {
-                try
-                {
-                    var buf = new byte[8192];
-                    var recData = IpPage.Socket.Receive(buf);
+        //void Bekle()
+        //{
+        //    while (true)
+        //    {
+        //        try
+        //        {
+        //            var buf = new byte[8192];
+        //            var recData = IpPage.Socket.Receive(buf);
 
-                    obj = GetObject(buf);
+        //            obj = GetObject(buf);
 
-                    if (obj.GetType() == typeof(Test))
-                    {
-                        Test = (Test)obj;
-                    }
-                    else if (obj.GetType() == typeof(Sure))
-                    {
-                        Sure = (Sure)obj;
-                    }
-                    else if (obj.GetType()==typeof(Soru))
-                    {
-                        Sorular = (List<Soru>)obj;
-                    }
-                    else if (obj.GetType() == typeof(Cevap))
-                    {
-                        Cevaplar = (List<Cevap>)obj;
-                    }
-                    if (Test!=null && Sure!=null && Sorular!=null && Cevaplar!=null)
-                    {
-                        buffer = Encoding.UTF8.GetBytes("Nesneler Alındı");
-                        IpPage.Socket.Send(buffer);
-                        break;
-                    }
-                }
-                catch (Exception)
-                {
+        //            if (obj.GetType() == typeof(Test))
+        //            {
+        //                Test = (Test)obj;
+        //            }
+        //            else if (obj.GetType() == typeof(Sure))
+        //            {
+        //                Sure = (Sure)obj;
+        //            }
+        //            else if (obj.GetType()==typeof(Soru))
+        //            {
+        //                Sorular = (List<Soru>)obj;
+        //            }
+        //            else if (obj.GetType() == typeof(Cevap))
+        //            {
+        //                Cevaplar = (List<Cevap>)obj;
+        //            }
+        //            if (Test!=null && Sure!=null && Sorular!=null && Cevaplar!=null)
+        //            {
+        //                buffer = Encoding.UTF8.GetBytes("Nesneler Alındı");
+        //                IpPage.Socket.Send(buffer);
+        //                break;
+        //            }
+        //        }
+        //        catch (Exception)
+        //        {
 
-                }
-            }
-            Navigation.PushModalAsync(new BaslangicSure(Sure));
-        }
+        //        }
+        //    }
+        //    Navigation.PushModalAsync(new BaslangicSure(Sure));
+        //}
     }
 }

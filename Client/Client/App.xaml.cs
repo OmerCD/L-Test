@@ -27,7 +27,7 @@ namespace Client
 		protected override void OnSleep ()
 		{
             //Listene?.Send(Encoding.UTF8.GetBytes("Disconnected"));
-            ClientListener.Stop();
+            //ClientListener.Stop();
 		}
 
 		protected override void OnResume ()

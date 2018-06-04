@@ -27,7 +27,7 @@
                                 </Rectangle.OpacityMask>
                             </Rectangle>
                             <TextBlock x:Name="Birinci" Grid.Column="1" Text="Birinci" Style="{StaticResource TextBlock}" Margin="20,0,0,0" FontSize="64" Height="Auto" Foreground="Gold"/>
-                            <TextBlock x:Name="BirinciSkor" Grid.Column="2" Text="+985" Style="{StaticResource TextBlock}" Foreground="Gold" FontSize="48" Height="Auto" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="BirinciSkor" Grid.Column="2" Text="" Style="{StaticResource TextBlock}" Foreground="Gold" FontSize="48" Height="Auto" VerticalAlignment="Center"/>
                         </Grid>
                     </DockPanel>
                 </Border>
@@ -40,7 +40,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Name="Ikinci" Grid.Column="1" Text="İkinci" Style="{StaticResource TextBlock}"  Margin="20,0,0,0" FontSize="48" Height="Auto" Foreground="DeepSkyBlue"/>
-                            <TextBlock x:Name="IkinciSkor" Grid.Column="2" Text="+985" Style="{StaticResource TextBlock}" Foreground="DeepSkyBlue" FontSize="36" Height="Auto" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="IkinciSkor" Grid.Column="2" Text="" Style="{StaticResource TextBlock}" Foreground="DeepSkyBlue" FontSize="36" Height="Auto" VerticalAlignment="Center"/>
                         </Grid>
                     </DockPanel>
 
@@ -54,7 +54,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock x:Name="Ucuncu" Grid.Column="1" Text="Üçüncü" Style="{StaticResource TextBlock}"  Margin="20,0,0,0" FontSize="32" Height="Auto" Foreground="MediumSeaGreen"/>
-                            <TextBlock x:Name="UcuncuSkor" Grid.Column="2" Text="+985" Style="{StaticResource TextBlock}" Foreground="MediumSeaGreen" FontSize="28" Height="Auto" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="UcuncuSkor" Grid.Column="2" Text="" Style="{StaticResource TextBlock}" Foreground="MediumSeaGreen" FontSize="28" Height="Auto" VerticalAlignment="Center"/>
                         </Grid>
                     </DockPanel>
 
